@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>Substorms in MHD</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=1024, user-scalable=no">
+	<meta http-equiv="x-ua-compatible" content="ie=edge">
+	<link rel="stylesheet" href="styles/screen.css">
+	<link rel="stylesheet" href="styles/fonts.css">
+	<style>
+	  h3{font-weight:bold};
+	</style>
+</head>
+<body class="list">
+	<!--
+		Debug class on <body> enables
+		cyan grid on slides
+		-->
+	<header class="caption">
+		<h1>Substorms and plasmoid dynamics in MHD</h1>
+		<p>John Haiducek</p>
+		
+	</header>
+	<section class="slide cover" id="titleslide"><div>
+	    <h2>Can global MHD be used to predict substorms?</h2>
+	    <h3>John Haiducek, Dan Welling, Natasha Ganjushkina, Steve Morley, Doga Ozturk</h3>
+	    <h3>Jan 30, 2018</h3>
+	    <img src="pictures/titleslide.png" alt="">
+	    <style>
+	      #titleslide h2,#titleslide h3{color:#e8d4ca;}
+	      #titleslide img{width:100%;}
+	    </style>
+	</div></section>
+	<section class="slide" id="summary"><div>
+	    <h2>Summary</h2>
+	    <ul>
+	      <li>Why and how we study substorms with MHD simulations</li>
+	      <li>Overview of month</li>
+	      <li>General model performance for month</li>
+	      <li>Substorm identification methodology</li>
+	      <li>Substorm validation results</li>
+	    </ul>
+	    <style>
+	      #methodology li{font-size:1.25em;}
+	      #methodology ol{padding-top:2em;}
+	    </style>
+	</div></section>
+	<section class="slide"><div>
+	    <h2>An explosive energy release from the magnetotail</h2>
+	    <img id="timings" src="pictures/plasmoid_blines_sampled.svg">
+	    <div>
+	    <style>
+	      #timings{height:400px; position:relative; left:100px;}
+	    </style>
+	    </div>
+	</div></section>
+	<section class="slide" id="objectives"><div>
+	    <img src="pictures/applications.png" id="applications">
+	    <div>
+	    <h2>Why study substorms with SWMF?</h2>
+	    <ul>
+	      <li>Key source for geogmagnetically induced currents</li>
+	      <li>Contribute to spacecraft charging</li>
+	      <li>Substorms are near the limit of what we can model</li>
+	      <li>Majority of existing MHD-substorm work is case studies</li>
+	      <li>No MHD model has been validated for substorm prediction</li>
+	      <li>SWMF can predict substorm effects if the substorm itself is accurately represented</li>
+	      <li>SWMF is already being used operationally</li>
+	    </ul>
+	  </div>
+	    <style>
+	      #applications{
+	      position:absolute;
+	      top:0;
+	      left:610px;
+	      height:100%;
+	      z-index:0;
+	      }
+	      #objectives>div>div{
+	      width:700px;
+	      }
+	    </style>
+	</div></section>
+	<section class="slide" id="methodology"><div>
+	    <h2>Substorm validation effort</h2>
+	    <ol>
+	      <li>Use a &ldquo;vanilla&rdquo; SWMF global magnetosphere set-up</li>
+	      <li>Feed a month (January, 2005) of observed solar wind data into it</li>
+	      <li>Look for substorms</li>
+	    </ol>
+	    <style>
+	      #methodology li{font-size:1.25em;}
+	      #methodology ol{padding-top:2em;}
+	    </style>
+	</div></section>
+	<section class="slide" id="movie_demo"><div>
+	    <h2>Solar wind drives coupled model</h2>
+	    <video controls loop>
+	      <source src="movies/demo_zoom.mp4" controls="true"/>
+	    </video>
+	    <img id="operational" src="pictures/swmf_operational_adjusted.svg">
+	    <style>
+	      #movie_demo video{height:85%; position:relative; top:8%; z-index:0;}
+	      #movie_demo h2{position:absolute; top:20px; z-index:1;}
+	      #operational{height:85%; float:left; position:relative; left:600px; top:-80%; z-index:0;}
+	    </style>
+	</div></section>
+	<section class="slide" id="grids"><div>
+	    <h2>Refined version of SWPC grid</h2>
+	    <img id="grid" src="pictures/grid.svg">
+	    <style>
+	      #grid{height:80%; float:left; }
+	    </style>
+	</div></section>
+	<section class="slide" id="month_stats"><div>
+	    <h2>Overview of the month</h2>
+	    <table>
+	      <thead>
+		<tr>
+		  <td/>
+		  <td>Min</td>
+		  <td>Median</td>
+		  <td>Max</td>
+		</tr>
+	      </thead>
+	      <tbody>
+		<tr>
+		  <td>IMF Bz (nT)</td>
+		  <td>-27.97</td>
+		  <td>0.28</td>
+		  <td>30.92</td>
+		</tr>
+		<tr>
+		  <td>Solar wind Ux (km/s)</td>
+		  <td>318</td>
+		  <td>570</td>
+		  <td>1055</td>
+		</tr>
+		<tr>
+		  <td>Solar wind dynamic pressure (nPa)</td>
+		  <td>0.09</td>
+		  <td>2.07</td>
+		  <td>80.62</td>
+		</tr>
+		<tr>
+		  <td>Kp</td>
+		  <td>0</td>
+		  <td>3</td>
+		  <td>8</td>
+		</tr>
+		<tr>
+		  <td>Sym-H (nT)</td>
+		  <td>-112</td>
+		  <td>-17</td>
+		  <td>57</td>
+		</tr>
+		<tr>
+		  <td>AL (nT)</td>
+		  <td>-4418</td>
+		  <td>-123</td>
+		  <td>10</td>
+		</tr>
+	      </tbody>
+	    </table>
+	</div></section>
+	<section class="slide" id="symh_storms"><div>
+	    <h2>Model does great at predicting Sym-H</h2>
+	    <img id="symh_storms_timeseries" src="pictures/symh_storms_timeseries.svg"/>
+	    <style>
+	      #symh_storms_timeseries{width:47%; position:relative; top:-30px;}
+	      #grid{height:80%; float:left; }
+	    </style>
+	</div></section>
+	<section class="slide" id="symh_dist"><div>
+	    <h2>Model does great at predicting Sym-H</h2>
+	    <img id="symh_error_interpolated" src="pictures/Sym_H_error_interpolated_large.svg"/>
+	    <style>
+	      #symh_error_interpolated{width:70%; position:relative; top:-30px;}
+	      #grid{height:80%; float:left; }
+	    </style>
+	</div></section>
+	<section class="slide" id="al_overview"><div>
+	    <h2>AL...not quite so good</h2>
+	    <img id="al_dist" src="pictures/AL_error_interpolated_log.svg"/>
+	    <style>
+	      #al_dist{width:100%; position:relative; top:-30px;}
+	    </style>
+	</div></section>
+	<section class="slide" id="substorm_id_challenges"><div>
+	    <h2>Substorm identification challenges</h2>
+	    <ul>
+	      <li>Substorm identification is contentious</li>
+	      <li>Observational analyses of substorms use widely varying methodology</li>
+	      <li>Events may be missed due to location</li>
+	      <li>Other processes can sometimes be mistaken for substorms</li>
+	    </ul>
+	    <p>Our approach: Identify substorms using multiple methods, and combine the results from each into a single list</p>
+	    <style>
+	      #challenges div div{width:45%;float:left; padding:2%;}
+	      /*div#logistical_challenges{width:50%;float:left}
+	      div#analysis_challenges{width:50%;float:left}*/
+	    </style>
+	</div></section>
+	<section class="slide" id="substorm_id_overview"><div>
+	    <h2>Substorm identification process</h2>
+	    <ul>
+	      <li>Identify substorm signatures: As many different kinds as possible
+		<ul>
+		  <li>Plasmoid releases (model)</li>
+		  <li>Ground magnetometers (model+observations)</li>
+		  <li>Satellite magnetic fields (model+observations)</li>
+		  <li>Energetic particle injections (observations)</li>
+		  <li>Auroral brightening (observations)</li>
+		</ul>
+	      </li>
+	      <li>Divide month into 30 minute time intervals</li>
+	      <li>Identify intervals in which multiple signatures occurred</li>
+	    </ul>
+	    <style>
+	      #challenges div div{width:45%;float:left; padding:2%;}
+	      /*div#logistical_challenges{width:50%;float:left}
+	      div#analysis_challenges{width:50%;float:left}*/
+	    </style>
+	</div></section>
+	<section class="slide" id="id_example"><div>
+	    <h2>Plasmoids must be identified manually</h2>
+	    <img class="example_plasmoid" src="pictures/example_plasmoid_1.png"/>
+	    <img class="next example_plasmoid" src="pictures/example_plasmoid_2.png"/>
+	    <img class="next example_plasmoid" src="pictures/example_plasmoid.png"/>
+	    <style>
+	      img.example_plasmoid{width:70%; position:absolute; top:100px; left:150px;}
+	    </style>
+	</div></section>
+	<section class="slide" id="id_example_magdata"><div>
+	    <h2>Magnetometer signatures can be identified automatically</h2>
+	    <img class="example_magdata_horizontal" src="pictures/example_magdata_horizontal_1.svg"/>
+	    <img class="next example_magdata_horizontal" src="pictures/example_magdata_horizontal_2.svg"/>
+	    <img class="next example_magdata_horizontal" src="pictures/example_magdata_horizontal_3.svg"/>
+	    <p style="margin-top:300px";>Spurious detections are avoided by using multiple signatures.</p>
+	    <style>
+	      img.example_magdata_horizontal{width:90%; position:absolute; top:200px;}
+	    </style>
+	</div></section>
+	<section class="slide" id="id_example_epdata"><div>
+	    <h2>Energetic particle signatures</h2>
+	    <ul>
+	      <li>LANL SOPA instrument detects particle fluxes in geosynchronous orbit</li>
+	      <li>Visually inspected particle data for dispersionless injections</li>
+	    </ul>
+	    <style>
+	      img.example_magdata_horizontal{width:90%; position:absolute; top:200px;}
+	    </style>
+	</div></section>
+	<section class="slide" id="id_example_image_fuv"><div>
+	    <h2>IMAGE-FUV signatures</h2>
+	    <img id="image-fuv-example" src="pictures/image-fuv-example.png"/>
+	    <div id="image-fuv-example-credit">Mende, et al., 2003</div>
+	    <ul id="image-fuv-bullets">
+	      <li>Auroral brightenings identified with the Wideband Imaging Camera (WIC)</li>
+	      <li>Use list from Frey et al., 2004</li>
+	    </ul>
+	    <style>
+	      img#image-fuv-example{width:52%; position:absolute; top:110px;}
+	      #image-fuv-example-credit{position:absolute; top:520px; z-index:100}
+	      #image-fuv-bullets{position:relative; left:600px; width:35%}
+	    </style>
+	</div></section>
+	<section class="slide" id="combining_signatures"><div>
+	    <h2>Combining signatures</h2>
+	    <ul>
+	      <li>Count number of distict signatures in each 30-minute bin</li>
+	      <li>If more than <i>n</i> signatures is present in a bin, count it as a substorm</li>
+	      <li>Use the time of the first signature as the substorm onset time</li>
+	    </ul>
+	    <p>For the model <i>n</i>=3. For observations, <i>n</i>=2 (to account for data gaps in observations)</p>
+	    <style>
+	      img.example_magdata_horizontal{width:90%; position:absolute; top:200px;}
+	    </style>
+	</div></section>
+	<section class="slide" id="predictive_skill"><div>
+	    <h2>Skill scores measure the model's accuracy</h2>
+	    <div id="stats">
+	    <ul>
+	      <li>Heidke skill score: 0.126</li>
+	      <li>Total model substorms: 118</li>
+	      <li>Total observed substorms: 163</li>
+	    </ul>
+	    </div>
+	    
+	    <table id="contingency_table_large">
+	      <tr>
+		<td rowspan="2" colspan="2"></td>
+		<td colspan="2">Observations</td>
+	      </tr>
+	      <tr>
+		<td>Y</td><td>N</td>
+	      </tr>
+	      <tr>
+		<td rowspan="2"><span class="rotate-outer"><span class="rotate-inner">Model</span></span></td>
+		<td>Y</td>
+		<td class="cont-inner hits">29</td>
+		<td class="cont-inner false-positives">89</td>
+	      </tr>
+	      <tr>
+		<td>N</td>
+		<td class="cont-inner misses">134</td>
+		<td class="cont-inner true-negatives">1,236</td>
+	      </tr>
+	    </table>
+
+	    <style>
+		div#stats{float:right; width:50%; position:relative; top:10%; font-size:1.25em;}
+	      div#boxplots_container{width:60%; position:absolute; left:40%; top:100px;}
+	      div#boxplots_container img{width:100%;}
+	      /*img#epsilon_boxplots{width:70%; position:relative; top:-100px;}
+		img#al_strength_boxplots{width:29%; position:relative; top:-70px;}*/
+		table#contingency_table_large tr{border:none; background:white;}
+		table#contingency_table_large td{border:none; background:white; width:100px;}
+		table#contingency_table_large{width:30%; font-size:1.25em;}
+	      
+	table#contingency_table_large td{background-color:solid white; text-align:center;}
+	      table#contingency_table_large td.cont-inner{border:1px solid black;}
+		table#contingency_table tr{border:none; background:white;}
+		table#contingency_table td{border:none; background:white; width:80px;}
+	      .rotate-outer {
+    display: inline-block;
+    overflow: hidden;
+    width: 1.5em;
+    line-height: 1.5;
+}
+.rotate-inner {
+    display: inline-block;
+    white-space: nowrap;
+    -webkit-transform: translate(0,100%) rotate(-90deg);
+       -moz-transform: translate(0,100%) rotate(-90deg);
+        -ms-transform: translate(0,100%) rotate(-90deg);
+         -o-transform: translate(0,100%) rotate(-90deg);
+            transform: translate(0,100%) rotate(-90deg);
+    -webkit-transform-origin: 0 0;
+       -moz-transform-origin: 0 0;
+        -ms-transform-origin: 0 0;
+         -o-transform-origin: 0 0;
+            transform-origin: 0 0;
+}
+/* This element stretches the parent to be square
+   by using the mechanics of vertical margins  */
+.rotate-inner:before {
+    content: "";
+	      float: left;
+	      margin-top: 100%;
+}
+	    </style>
+	</div></section>
+	<section class="slide" id="al_strength_hits"><div>
+	    <h2>Model event strength is weaker than observed</h2>
+	    <img class="al_strength_boxplots" src="pictures/al_strength_boxplots_hits.svg"/>
+	    <style>
+	      img.al_strength_boxplots{height:85%;position:relative;left:15%;}
+	    </style>
+	</div></section>
+	<section class="slide" id="al_strength_obs"><div>
+	    <h2>Model is best at predicting stronger events</h2>
+	    <img class="al_strength_boxplots" src="pictures/al_strength_boxplots_obs.svg"/>
+	</div></section>
+	<section class="slide" id="next_steps"><div>
+	    <h2>Conclusions</h2>
+	    <ul>
+	      <li>MHD has some skill in predicting substorms</li>
+	      <li>Predictive skill seems to improve with stronger driving</li>
+	      <li>MHD under-predicts substorm frequency and strength</li>
+	      <li>Unclear whether the level of skill is of practical significance</li>
+	    </ul>
+	    <style>
+	      #next_steps li{line-height:150%;}
+	    </style>
+	</div></section>
+
+	<!--
+		To hide progress bar from entire presentation
+		just remove “progress” element.
+		-->
+	<div class="progress"><div></div></div>
+	<script src="node_modules/shower-core/shower.min.js"></script>
+	<!-- Copyright © 2015 John Haiducek -->
+</body>
+</html>
