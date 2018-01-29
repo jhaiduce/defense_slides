@@ -24,24 +24,30 @@
 	<section class="slide cover" id="titleslide"><div>
 	    <h2>Can global MHD be used to predict substorms?</h2>
 	    <h3>John Haiducek, Dan Welling, Natasha Ganjushkina, Steve Morley, Doga Ozturk</h3>
-	    <h3>Jan 30, 2018</h3>
+	    <h3>Jan 24, 2018</h3>
 	    <img src="pictures/titleslide.png" alt="">
 	    <style>
 	      #titleslide h2,#titleslide h3{color:#e8d4ca;}
-	      #titleslide img{width:100%;}
+	      #titleslide img{width:100%;position:absolute;top:0px; left:0px;}
 	    </style>
 	</div></section>
 	<section class="slide cover" id="title_backgroundonly"><div>
+	    <h2>Output from a magnetohydrodynamic (MHD) model</h2>
 	    <img src="pictures/titleslide.png" alt="">
+	    <img class="next" src="pictures/titleslide_annotated_earth.svg" alt="">
+	    <img class="next" src="pictures/titleslide_annotated_solarwind.svg" alt="">
+	    <img class="next" src="pictures/titleslide_annotated_magnetotail.svg" alt="">
+	    <img class="next" src="pictures/titleslide_annotated_plasmoid.svg" alt="">
 	    <style>
-	      #title_backgroundonly img{width:100%;}
+	      #title_backgroundonly h2,#title_backgroundonly h3{color:#e8d4ca;}
+	      #title_backgroundonly img{width:100%;position:absolute;top:0px; left:0px;}
 	    </style>
 	</div></section>
 	<section class="slide" id="summary"><div>
 	    <h2>Summary</h2>
 	    <ul>
-	      <li>What is a substorm</li>
-	      <li>Why and how we study substorms with MHD simulations</li>
+	      <li>What a substorm is, and why you should care</li>
+	      <li>More about our MHD model</li>
 	      <li>Overview of model performance</li>
 	      <li>Substorm identification methodology</li>
 	      <li>Substorm validation results</li>
@@ -88,13 +94,14 @@
 	    </div>
 	</div></section>
         <section class="slide" id="surface_signatures"><div>
-            <h2>Currents affect magnetic fields at the surface</h2>
+            <h2>Substorm currents affect magnetic fields at the surface</h2>
             <div id="mag_grid_sphere">
-              <img src="pictures/mag_grid_sphere_resampled.svg"/>
+              <img src="pictures/mag_grid_sphere_crosstailonly.svg"/>
+              <img class="next" src="pictures/mag_grid_sphere_nocurrentfield.svg"/>
             </div>
             <style>
               #mag_grid_sphere{width:116%; position:relative; top:-18%; left:-8%; z-index:0;}
-              #mag_grid_sphere img{width:100%;}
+              #mag_grid_sphere img{width:100%; position:absolute; top:0px; left:0px;}
               #surface_signatures h2{position:relative; z-index:1;}
               #surface_signatures>div{background-color:black;}
             </style>
@@ -123,6 +130,32 @@
 	      #objectives>div>div{
 	      width:700px;
 	      }
+	    </style>
+	</div></section>
+	<section class="slide" id="summary_mhd"><div>
+	    <h2>Summary</h2>
+	    <ul>
+	      <li>What a substorm is, and why you should care</li>
+	      <li><b>More about our MHD model</b></li>
+	      <li>Overview of model performance</li>
+	      <li>Substorm identification methodology</li>
+	      <li>Substorm validation results</li>
+	    </ul>
+	    <style>
+	      #methodology li{font-size:1.25em;}
+	      #methodology ol{padding-top:2em;}
+	    </style>
+	</div></section>
+	<section class="slide" id="swmf"><div>
+	    <h2>The Space Weather Modeling Framework</h2>
+	    <ul>
+	      <li>Developed at the University of Michigan</li>
+	      <li>Provides an MHD code and the ability to couple to other codes</li>
+	      <li>Currently being used operationally at NOAA Space Weather Prediction Center (SWPC)</li>
+	    </ul>
+	    <style>
+	      #methodology li{font-size:1.25em;}
+	      #methodology ol{padding-top:2em;}
 	    </style>
 	</div></section>
 	<section class="slide" id="movie_demo"><div>
@@ -156,81 +189,70 @@
 	      #methodology ol{padding-top:2em;}
 	    </style>
 	</div></section>
-	<section class="slide" id="month_stats"><div>
-	    <h2>Overview of the month</h2>
-	    <table>
-	      <thead>
-		<tr>
-		  <td/>
-		  <td>Min</td>
-		  <td>Median</td>
-		  <td>Max</td>
-		</tr>
-	      </thead>
-	      <tbody>
-		<tr>
-		  <td>IMF Bz (nT)</td>
-		  <td>-27.97</td>
-		  <td>0.28</td>
-		  <td>30.92</td>
-		</tr>
-		<tr>
-		  <td>Solar wind Ux (km/s)</td>
-		  <td>318</td>
-		  <td>570</td>
-		  <td>1055</td>
-		</tr>
-		<tr>
-		  <td>Solar wind dynamic pressure (nPa)</td>
-		  <td>0.09</td>
-		  <td>2.07</td>
-		  <td>80.62</td>
-		</tr>
-		<tr>
-		  <td>Kp</td>
-		  <td>0</td>
-		  <td>3</td>
-		  <td>8</td>
-		</tr>
-		<tr>
-		  <td>Sym-H (nT)</td>
-		  <td>-112</td>
-		  <td>-17</td>
-		  <td>57</td>
-		</tr>
-		<tr>
-		  <td>AL (nT)</td>
-		  <td>-4418</td>
-		  <td>-123</td>
-		  <td>10</td>
-		</tr>
-	      </tbody>
-	    </table>
+	<section class="slide" id="summary_month"><div>
+	    <h2>Summary</h2>
+	    <ul>
+	      <li>What a substorm is, and why you should care</li>
+	      <li>More about our MHD model</li>
+	      <li><b>Overview of model performance</b></li>
+	      <li>Substorm identification methodology</li>
+	      <li>Substorm validation results</li>
+	    </ul>
+	    <style>
+	      #methodology li{font-size:1.25em;}
+	      #methodology ol{padding-top:2em;}
+	    </style>
 	</div></section>
 	<section class="slide" id="symh_storms"><div>
 	    <h2>Model does great at predicting Sym-H</h2>
-	    <img id="symh_storms_timeseries" src="pictures/symh_storms_timeseries.svg"/>
+	    <img class="symh_storms_timeseries" src="pictures/symh_storms_timeseries_build0.svg"/>
+	    <img class="next symh_storms_timeseries" src="pictures/symh_storms_timeseries_build2.svg"/>
+	    <div id="symh_bullets">
 	    <ul>
-	      <li>Indicates that our ring current is reasonably accurate</li>
-	      <li>Important part of storm dynamics</li>
+	      <li>Sym-H
+		<ul>
+		  <li>Computed from low-latitude magnetometers</li>
+		  <li>Sensitive to ring current</li>
+		  </ul>
+	      </li>
+	      <li>Good Sym-H predictions
+		<ul>
+		  <li>Indicate model has realistic ring currents</li>
+		  <li>Important for storm-time accuracy</li>
+		</ul>
 	    </ul>
+	    </div>
 	    <style>
-	      #symh_storms_timeseries{width:47%; position:relative; top:-30px;}
-	      #symh_storms ul{width:50%; position:absolute; left:50%; top:150px;}
+	      img.symh_storms_timeseries{width:42%; position:absolute; top:105px; left:-0px;}
+	      div#symh_bullets{width:50%; position:absolute; left:50%; top:150px;}
 	    </style>
 	</div></section>
 	<section class="slide" id="symh_dist"><div>
 	    <h2>Model does great at predicting Sym-H</h2>
-	    <img id="symh_error_interpolated" src="pictures/Sym_H_error_interpolated.svg"/>
+	    <img id="symh_error_interpolated" src="pictures/Sym_H_interpolated_error.svg"/>
 	    <style>
 	      #symh_error_interpolated{width:100%; position:relative; top:-30px;}
 	    </style>
 	</div></section>
 	<section class="slide" id="al_overview"><div>
 	    <h2>AL...not quite so good</h2>
-	    <img id="al_dist" src="pictures/AL_error_interpolated_log.svg"/>
+	    <img id="al_dist" src="pictures/AL_error_interpolated_log_nonorcm.svg"/>
 	    <style>
 	      #al_dist{width:100%; position:relative; top:-30px;}
+	    </style>
+	</div></section>
+	<section class="slide" id="summary_methodology"><div>
+	    <h2>Summary</h2>
+	    <ul>
+	      <li>What a substorm is, and why you should care</li>
+	      <li>More about our MHD model</li>
+	      <li>Overview of model performance</li>
+	      <li><b>Substorm identification methodology</b></li>
+	      <li>Substorm validation results</li>
+	    </ul>
+	    <style>
+	      #methodology li{font-size:1.25em;}
+	      #methodology ol{padding-top:2em;}
 	    </style>
 	</div></section>
 	<section class="slide" id="substorm_id_challenges"><div>
@@ -328,6 +350,20 @@
 	    <style>
 	      img#substorm_occurrences{width:80%}
 
+	    </style>
+	</div></section>
+	<section class="slide" id="summary_results"><div>
+	    <h2>Summary</h2>
+	    <ul>
+	      <li>What a substorm is, and why you should care</li>
+	      <li>More about our MHD model</li>
+	      <li>Overview of model performance</li>
+	      <li>Substorm identification methodology</li>
+	      <li><b>Substorm validation results</b></li>
+	    </ul>
+	    <style>
+	      #methodology li{font-size:1.25em;}
+	      #methodology ol{padding-top:2em;}
 	    </style>
 	</div></section>
 	<section class="slide" id="predictive_skill"><div>
@@ -435,13 +471,71 @@
 	      <li>This means that we get some of the system dynamics right</li>
 	      <li>MHD does well with storms, less well with substorms
 		<ul>
-		  <li>Presumably the model allows energy to dissipate at the correct rate on average, but does so on a more steady basis than the real system</li>
+		  <li>Possibly the model allows energy to dissipate at the correct rate on average, but does so on a more steady basis than the real system</li>
 		</ul>
 	      </li>
+	      <li>What is needed to improve predictive skill?
+		<ul>
+		  <li>Improve model physics</li>
+		  <li>Better solar wind inputs</li>
+		  <li>Data assimilation</li>
+		</ul>
 	    </ul>
 	    <style>
 	      #next_steps li{line-height:150%;}
 	    </style>
+	</div></section>
+
+	<section class="slide" id="month_stats"><div>
+	    <h2>Overview of the month</h2>
+	    <table>
+	      <thead>
+		<tr>
+		  <td/>
+		  <td>Min</td>
+		  <td>Median</td>
+		  <td>Max</td>
+		</tr>
+	      </thead>
+	      <tbody>
+		<tr>
+		  <td>IMF Bz (nT)</td>
+		  <td>-27.97</td>
+		  <td>0.28</td>
+		  <td>30.92</td>
+		</tr>
+		<tr>
+		  <td>Solar wind Ux (km/s)</td>
+		  <td>318</td>
+		  <td>570</td>
+		  <td>1055</td>
+		</tr>
+		<tr>
+		  <td>Solar wind dynamic pressure (nPa)</td>
+		  <td>0.09</td>
+		  <td>2.07</td>
+		  <td>80.62</td>
+		</tr>
+		<tr>
+		  <td>Kp</td>
+		  <td>0</td>
+		  <td>3</td>
+		  <td>8</td>
+		</tr>
+		<tr>
+		  <td>Sym-H (nT)</td>
+		  <td>-112</td>
+		  <td>-17</td>
+		  <td>57</td>
+		</tr>
+		<tr>
+		  <td>AL (nT)</td>
+		  <td>-4418</td>
+		  <td>-123</td>
+		  <td>10</td>
+		</tr>
+	      </tbody>
+	    </table>
 	</div></section>
 
 	<!--
