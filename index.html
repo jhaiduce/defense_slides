@@ -23,8 +23,8 @@
 	</header>
 	<section class="slide cover" id="titleslide"><div>
 	    <h2>Can global MHD be used to predict substorms?</h2>
-	    <h3>John Haiducek, Dan Welling, Natasha Ganjushkina, Steve Morley, Doga Ozturk</h3>
-	    <h3>Jan 24, 2018</h3>
+	    <h3>John Haiducek, Dan Welling, Natasha Ganjushkina, Steve Morley</h3>
+	    <h3>Mar 2, 2018</h3>
 	    <img src="pictures/titleslide.png" alt="">
 	    <style>
 	      #titleslide h2,#titleslide h3{color:#e8d4ca;}
@@ -46,10 +46,9 @@
 	<section class="slide" id="summary"><div>
 	    <h2>Summary</h2>
 	    <ul>
-	      <li>What a substorm is, and why you should care</li>
-	      <li>More about our MHD model</li>
-	      <li>Overview of model performance</li>
-	      <li>Substorm identification methodology</li>
+	      <li>About me</li>
+	      <li>Model and project overview</li>
+	      <li>What a substorm is, and how to identify one</li>
 	      <li>Substorm validation results</li>
 	    </ul>
 	    <style>
@@ -57,55 +56,48 @@
 	      #methodology ol{padding-top:2em;}
 	    </style>
 	</div></section>
-	<section class="slide"><div>
-	    <h2>Auroral observations of a substorm</h2>
-	    <video id="asi_movie" controls loop>
-	      <source src="movies/ASInew-hires_1280x720.mp4"/>
+	<section class="slide" id="aboutme"><div>
+	    <h2>Space to lasers and back again</h2>
+	    <figure id="falconsat-3">
+	      <img src="pictures/Falconsat-3-on-ESPA_rot90.jpg">
+	      <figcaption>FalconSat-3</figcaption>
+	    </figure>
+	    <figure id="pbmod" class="next">
+	      <img src="pictures/pbmod_cropped.png">
+	      <figcaption>PBMOD (John Retterer)</figcaption>
+	    </figure>
+	    <figure id="dpal" class="next">
+	      <img src="pictures/dpal_head_cropped.jpg">
+	      <figcaption>DPAL laser (Pitz et al., 2016)</figcaption>
+	    </figure>
+	    <figure id="mhd" class="next">
+	      <img src="pictures/plasmoid_blines_cropped.png">
+	      <figcaption>MHD modeling</figcaption>
+	    </figure>
+	    <style>
+	      #aboutme h2{position:relative; top:-40px;}
+	      #falconsat-3, #falconsat-3 img{width:250px}
+	      #falconsat-3{position:absolute; top:70px; left:10px}
+	      #pbmod{position:absolute; top:70px; left:280px;}
+	      #pbmod, #pbmod img{width:220px}
+	      #mhd{position:absolute; top:70px; left:760px;}
+	      #mhd, #mhd img{width:230px;}
+	      #dpal{position:absolute; top:70px; left:550px;}
+	      #dpal,#dpal img{width:150px;}
+	    </style>
+	</div></section>
+	<section class="slide" id="movie_demo"><div>
+	    <h2>Solar wind drives coupled model</h2>
+	    <video controls loop>
+	      <source src="movies/demo_zoom.mp4" controls="true"/>
 	    </video>
-	    <div id="asi_movie_credit">Tom Bridgman, NASA SVS, 2009</div>
+	    <img id="operational" src="pictures/swmf_operational_adjusted.svg">
 	    <style>
-	      #asi_movie{height:85%; position:relative; top:-25px; left:-50px}
-	      #asi_movie_credit{position:absolute; top:100px; left:80%;}
+	      #movie_demo video{height:85%; position:relative; top:8%; z-index:0;}
+	      #movie_demo h2{position:absolute; top:20px; z-index:1;}
+	      #operational{height:85%; float:left; position:relative; left:600px; top:-80%; z-index:0;}
 	    </style>
-	    </div>
 	</div></section>
-	<section class="slide"><div>
-	    <h2>Solar wind provides energy to the magnetosphere</h2>
-	    <video id="overview_movie" controls loop>
-	      <source src="movies/10623_Recon_Bounce_H264_1280x720_29.97.m4v"/>
-	    </video>
-	    <div id="overview_movie_credit">Walt Feimer, <br/> NASA SVS, 2010</div>
-	    <style>
-		#overview_movie{height:85%; position:relative; top:-25px; left:-50px;}
-		#overview_movie_credit{position:absolute; top:100px; left:80%;}
-	    </style>
-	    </div>
-	</div></section>
-	<section class="slide"><div>
-	    <h2>Reconnection drives plasma flow</h2>
-	    <img class="plasmoid_blines_sampled" src="pictures/plasmoid_blines_sampled_build0.svg"/>
-	    <img class="next plasmoid_blines_sampled" src="pictures/plasmoid_blines_sampled_build1.svg"/>
-	    <img class="next plasmoid_blines_sampled" src="pictures/plasmoid_blines_sampled_build2.svg"/>
-	    <img class="next plasmoid_blines_sampled" src="pictures/plasmoid_blines_sampled_build3.svg"/>
-	    <div>
-	    <style>
-	      img.plasmoid_blines_sampled{height:400px; position:absolute; left:100px; top:150px;}
-	    </style>
-	    </div>
-	</div></section>
-        <section class="slide" id="surface_signatures"><div>
-            <h2>Substorm currents affect magnetic fields at the surface</h2>
-            <div id="mag_grid_sphere">
-              <img src="pictures/mag_grid_sphere_crosstailonly.svg"/>
-              <img class="next" src="pictures/mag_grid_sphere_nocurrentfield.svg"/>
-            </div>
-            <style>
-              #mag_grid_sphere{width:116%; position:relative; top:-18%; left:-8%; z-index:0;}
-              #mag_grid_sphere img{width:100%; position:absolute; top:0px; left:0px;}
-              #surface_signatures h2{position:relative; z-index:1;}
-              #surface_signatures>div{background-color:black;}
-            </style>
-        </div></section>
 	<section class="slide" id="objectives"><div>
 	    <img src="pictures/applications.png" id="applications">
 	    <div>
@@ -132,51 +124,6 @@
 	      }
 	    </style>
 	</div></section>
-	<section class="slide" id="summary_mhd"><div>
-	    <h2>Summary</h2>
-	    <ul>
-	      <li>What a substorm is, and why you should care</li>
-	      <li><b>More about our MHD model</b></li>
-	      <li>Overview of model performance</li>
-	      <li>Substorm identification methodology</li>
-	      <li>Substorm validation results</li>
-	    </ul>
-	    <style>
-	      #methodology li{font-size:1.25em;}
-	      #methodology ol{padding-top:2em;}
-	    </style>
-	</div></section>
-	<section class="slide" id="swmf"><div>
-	    <h2>The Space Weather Modeling Framework</h2>
-	    <ul>
-	      <li>Developed at the University of Michigan</li>
-	      <li>Provides an MHD code and the ability to couple to other codes</li>
-	      <li>Currently being used operationally at NOAA Space Weather Prediction Center (SWPC)</li>
-	    </ul>
-	    <style>
-	      #methodology li{font-size:1.25em;}
-	      #methodology ol{padding-top:2em;}
-	    </style>
-	</div></section>
-	<section class="slide" id="movie_demo"><div>
-	    <h2>Solar wind drives coupled model</h2>
-	    <video controls loop>
-	      <source src="movies/demo_zoom.mp4" controls="true"/>
-	    </video>
-	    <img id="operational" src="pictures/swmf_operational_adjusted.svg">
-	    <style>
-	      #movie_demo video{height:85%; position:relative; top:8%; z-index:0;}
-	      #movie_demo h2{position:absolute; top:20px; z-index:1;}
-	      #operational{height:85%; float:left; position:relative; left:600px; top:-80%; z-index:0;}
-	    </style>
-	</div></section>
-	<section class="slide" id="grids"><div>
-	    <h2>Adaptive mesh grid</h2>
-	    <img id="grid" src="pictures/grid.svg">
-	    <style>
-	      #grid{height:80%; float:left; }
-	    </style>
-	</div></section>
 	<section class="slide" id="methodology"><div>
 	    <h2>Substorm validation effort</h2>
 	    <ol>
@@ -189,70 +136,85 @@
 	      #methodology ol{padding-top:2em;}
 	    </style>
 	</div></section>
-	<section class="slide" id="summary_month"><div>
-	    <h2>Summary</h2>
-	    <ul>
-	      <li>What a substorm is, and why you should care</li>
-	      <li>More about our MHD model</li>
-	      <li><b>Overview of model performance</b></li>
-	      <li>Substorm identification methodology</li>
-	      <li>Substorm validation results</li>
-	    </ul>
-	    <style>
-	      #methodology li{font-size:1.25em;}
-	      #methodology ol{padding-top:2em;}
-	    </style>
-	</div></section>
-	<section class="slide" id="symh_storms"><div>
-	    <h2>Model does great at predicting Sym-H</h2>
-	    <img class="symh_storms_timeseries" src="pictures/symh_storms_timeseries_build0.svg"/>
-	    <img class="next symh_storms_timeseries" src="pictures/symh_storms_timeseries_build2.svg"/>
-	    <div id="symh_bullets">
-	    <ul>
-	      <li>Sym-H
-		<ul>
-		  <li>Computed from low-latitude magnetometers</li>
-		  <li>Sensitive to ring current</li>
-		  </ul>
-	      </li>
-	      <li>Good Sym-H predictions
-		<ul>
-		  <li>Indicate model has realistic ring currents</li>
-		  <li>Important for storm-time accuracy</li>
-		</ul>
-	    </ul>
-	    </div>
-	    <style>
-	      img.symh_storms_timeseries{width:42%; position:absolute; top:105px; left:-0px;}
-	      div#symh_bullets{width:50%; position:absolute; left:50%; top:150px;}
-	    </style>
-	</div></section>
-	<section class="slide" id="symh_dist"><div>
-	    <h2>Model does great at predicting Sym-H</h2>
-	    <img id="symh_error_interpolated" src="pictures/Sym_H_interpolated_error.svg"/>
-	    <style>
-	      #symh_error_interpolated{width:100%; position:relative; top:-30px;}
-	    </style>
-	</div></section>
-	<section class="slide" id="al_overview"><div>
-	    <h2>AL...not quite so good</h2>
-	    <img id="al_dist" src="pictures/AL_error_interpolated_log_nonorcm.svg"/>
-	    <style>
-	      #al_dist{width:100%; position:relative; top:-30px;}
-	    </style>
-	</div></section>
 	<section class="slide" id="summary_methodology"><div>
 	    <h2>Summary</h2>
 	    <ul>
-	      <li>What a substorm is, and why you should care</li>
-	      <li>More about our MHD model</li>
-	      <li>Overview of model performance</li>
-	      <li><b>Substorm identification methodology</b></li>
+	      <li>About me</li>
+	      <li>Model and project overview</li>
+	      <li><b>What a substorm is, and how to identify one</b></li>
 	      <li>Substorm validation results</li>
 	    </ul>
 	    <style>
 	      #methodology li{font-size:1.25em;}
 	      #methodology ol{padding-top:2em;}
+	    </style>
+	</div></section>
+	<section class="slide"><div>
+	    <h2>Solar wind provides energy to the magnetosphere</h2>
+	    <video id="overview_movie" controls loop>
+	      <source src="movies/10623_Recon_Bounce_H264_1280x720_29.97.m4v"/>
+	    </video>
+	    <div id="overview_movie_credit">Walt Feimer, <br/> NASA SVS, 2010</div>
+	    <style>
+		#overview_movie{height:85%; position:relative; top:-25px; left:-50px;}
+		#overview_movie_credit{position:absolute; top:100px; left:80%;}
+	    </style>
+	    </div>
+	</div></section>
+	<section class="slide" id="id_example"><div>
+	    <h2>Plasmoids move tailward</h2>
+	    <img class="example_plasmoid" src="pictures/example_plasmoid_1.png"/>
+	    <img class="next example_plasmoid" src="pictures/example_plasmoid_2.png"/>
+	    <img class="next example_plasmoid" src="pictures/example_plasmoid.png"/>
+	    <img class="next" id="dipolarization" src="pictures/example_magdata_in_situ.svg"/>
+	    <style>
+	      img.example_plasmoid{width:70%; position:absolute; top:100px; left:150px;}
+	      #dipolarization{position:absolute; top:250px; left:450px; width:250px; border:2px solid black}
+	    </style>
+	</div></section>
+        <section class="slide" id="surface_signatures"><div>
+            <h2>Substorm currents affect magnetic fields</h2>
+            <div id="mag_grid_sphere">
+              <img src="pictures/mag_grid_sphere_crosstailonly.svg"/>
+              <img class="next" src="pictures/mag_grid_sphere_nocurrentfield.svg"/>
+            </div>
+	    <img id="aual" class="next" src="pictures/aual.svg"/>
+	    <img id="mpb" class="next" src="pictures/mpb.svg"/>
+            <style>
+              #mag_grid_sphere{width:116%; position:relative; top:-18%; left:-8%; z-index:0;}
+              #mag_grid_sphere img{width:100%; position:absolute; top:0px; left:0px;}
+              #surface_signatures h2{position:relative; z-index:1;}
+              #surface_signatures>div{background-color:black;}
+	      #aual{position:absolute; top:50px; left:790px; width:225px;}
+	      #mpb{position:absolute; top:250px; left:460px; width:225px; border:2px solid black}
+            </style>
+        </div></section>
+	<section class="slide" id="id_example_epdata"><div>
+	    <h2>Energetic particles <br/>detected by spacecraft</h2>
+	    <img id="lanl_epdata" src="pictures/Fig-4-Energetic-proton-data-from-the-Los-Alamos-National-Laboratory-LANL-Synchronous.png"/>
+	    <div id="lanl_epdata_credit">Henderson, 2009</div>
+	    <ul>
+	      <li>LANL SOPA instrument detects particle fluxes in geosynchronous orbit</li>
+	      <li>Visually inspected particle data for dispersionless injections</li>
+	    </ul>
+	    <style>
+	      img#lanl_epdata{width:42%; position:absolute; left:50%; top:5px;}
+	      #lanl_epdata_credit{position:absolute; top:520px; z-index:100; width:42%; text-align:right}
+	      #id_example_epdata ul{width:50%}
+	    </style>
+	</div></section>
+	<section class="slide" id="id_example_image_fuv"><div>
+	    <h2>Auroral brightening</h2>
+	    <img id="image-fuv-example" src="pictures/Fig-11-Maps-of-Northern-Hemisphere-FUV-emission-converted-to-electron-energy-flux-mWm.png"/>
+	    <div id="image-fuv-example-credit">Kavanagh et al., 2007</div>
+	    <ul id="image-fuv-bullets">
+	      <li>Substorm onsets observed WIC camera on the IMAGE spacecraft</li>
+	      <li>Use list from Frey et al., 2004 (since updated to include 2005)</li>
+	    </ul>
+	    <style>
+	      img#image-fuv-example{width:45%; position:absolute; left:50%; top:20px;}
+	      #image-fuv-example-credit{position:absolute; top:520px; z-index:100; width:44%; text-align:right}
+	      #image-fuv-bullets{position:relative; left:0px; width:50%}
 	    </style>
 	</div></section>
 	<section class="slide" id="substorm_id_challenges"><div>
@@ -275,11 +237,11 @@
 	    <ul>
 	      <li>Identify substorm signatures: As many different kinds as possible
 		<ul>
-		  <li>Plasmoid releases (model)</li>
-		  <li>Ground magnetometers (model+observations)</li>
-		  <li>Satellite magnetic fields (model+observations)</li>
-		  <li>Energetic particle injections (observations)</li>
-		  <li>Auroral brightening (observations)</li>
+		  <li>Plasmoid releases (model)<img id="plasmoid_cropped" src="pictures/example_plasmoid_cropped.png"/></li>
+		  <li>Satellite magnetic fields (model+observations)<img id="satmags" src="pictures/example_magdata_in_situ.svg"/></li>
+		  <li>Ground magnetometers (model+observations)<img id="groundmags" src="pictures/mags_ground.svg"/></li>
+		  <li>Energetic particle injections (observations)<img id="epdata_small" src="pictures/Fig-4-Energetic-proton-data-from-the-Los-Alamos-National-Laboratory-LANL-Synchronous.png"/></li>
+		  <li>Auroral brightening (observations)<img id="imagefuv_small" src="pictures/Fig-11-Maps-of-Northern-Hemisphere-FUV-emission-converted-to-electron-energy-flux-mWm.png"/></li>
 		</ul>
 	      </li>
 	      <li>Divide month into 30 minute time intervals</li>
@@ -287,55 +249,11 @@
 	    </ul>
 	    <style>
 	      #challenges div div{width:45%;float:left; padding:2%;}
-	      /*div#logistical_challenges{width:50%;float:left}
-	      div#analysis_challenges{width:50%;float:left}*/
-	    </style>
-	</div></section>
-	<section class="slide" id="id_example"><div>
-	    <h2>Plasmoids must be identified manually</h2>
-	    <img class="example_plasmoid" src="pictures/example_plasmoid_1.png"/>
-	    <img class="next example_plasmoid" src="pictures/example_plasmoid_2.png"/>
-	    <img class="next example_plasmoid" src="pictures/example_plasmoid.png"/>
-	    <style>
-	      img.example_plasmoid{width:70%; position:absolute; top:100px; left:150px;}
-	    </style>
-	</div></section>
-	<section class="slide" id="id_example_magdata"><div>
-	    <h2>Magnetometer signatures can be identified automatically</h2>
-	    <img class="example_magdata_horizontal" src="pictures/example_magdata_horizontal_1.svg"/>
-	    <img class="next example_magdata_horizontal" src="pictures/example_magdata_horizontal_2.svg"/>
-	    <img class="next example_magdata_horizontal" src="pictures/example_magdata_horizontal_3.svg"/>
-	    <p style="margin-top:300px";>Spurious detections are avoided by using multiple signatures.</p>
-	    <style>
-	      img.example_magdata_horizontal{width:90%; position:absolute; top:200px;}
-	    </style>
-	</div></section>
-	<section class="slide" id="id_example_epdata"><div>
-	    <h2>Energetic particles</h2>
-	    <img id="lanl_epdata" src="pictures/Fig-4-Energetic-proton-data-from-the-Los-Alamos-National-Laboratory-LANL-Synchronous.png"/>
-	    <div id="lanl_epdata_credit">Henderson, 2009</div>
-	    <ul>
-	      <li>LANL SOPA instrument detects particle fluxes in geosynchronous orbit</li>
-	      <li>Visually inspected particle data for dispersionless injections</li>
-	    </ul>
-	    <style>
-	      img#lanl_epdata{width:42%; position:absolute; left:50%; top:5px;}
-	      #lanl_epdata_credit{position:absolute; top:520px; z-index:100; width:42%; text-align:right}
-	      #id_example_epdata ul{width:50%}
-	    </style>
-	</div></section>
-	<section class="slide" id="id_example_image_fuv"><div>
-	    <h2>IMAGE-FUV signatures</h2>
-	    <img id="image-fuv-example" src="pictures/Fig-11-Maps-of-Northern-Hemisphere-FUV-emission-converted-to-electron-energy-flux-mWm.png"/>
-	    <div id="image-fuv-example-credit">Kavanagh et al., 2007</div>
-	    <ul id="image-fuv-bullets">
-	      <li>Substorm onsets observed WIC camera on the IMAGE spacecraft</li>
-	      <li>Use list from Frey et al., 2004 (since updated to include 2005)</li>
-	    </ul>
-	    <style>
-	      img#image-fuv-example{width:45%; position:absolute; left:50%; top:20px;}
-	      #image-fuv-example-credit{position:absolute; top:520px; z-index:100; width:44%; text-align:right}
-	      #image-fuv-bullets{position:relative; left:0px; width:50%}
+	      #plasmoid_cropped{width:250px; position:absolute;}
+	      #satmags{width:60px; position:absolute;}
+	      #groundmags{width:120px; position:absolute;}
+	      #epdata_small{width:60px; position:absolute;}
+	      #imagefuv_small{width:60px; position:absolute;}
 	    </style>
 	</div></section>
 	<section class="slide" id="combining_signatures"><div>
@@ -355,10 +273,9 @@
 	<section class="slide" id="summary_results"><div>
 	    <h2>Summary</h2>
 	    <ul>
-	      <li>What a substorm is, and why you should care</li>
-	      <li>More about our MHD model</li>
-	      <li>Overview of model performance</li>
-	      <li>Substorm identification methodology</li>
+	      <li>About me</li>
+	      <li>Model and project overview</li>
+	      <li>What a substorm is, and how to identify one</li>
 	      <li><b>Substorm validation results</b></li>
 	    </ul>
 	    <style>
@@ -465,77 +382,37 @@
 	    </style>
 	</div></section>
 	<section class="slide" id="next_steps"><div>
-	    <h2>Conclusions</h2>
+	    <h2>What's next?</h2>
 	    <ul>
-	      <li>MHD has some skill in predicting substorms</li>
-	      <li>This means that we get some of the system dynamics right</li>
-	      <li>MHD does well with storms, less well with substorms
+	      <li>Better model of reconnection region
 		<ul>
-		  <li>Possibly the model allows energy to dissipate at the correct rate on average, but does so on a more steady basis than the real system</li>
+		  <li>Reduce dependence on grid resolution</li>
+		  <li>Account for kinetic processes</li>
 		</ul>
 	      </li>
-	      <li>What is needed to improve predictive skill?
+	      <li>Data assimilation
 		<ul>
-		  <li>Improve model physics</li>
-		  <li>Better solar wind inputs</li>
-		  <li>Data assimilation</li>
+		  <li>Not widely used for magnetosphere</li>
+		  <li>Demonstrated by Godinez et al. (2016)</li>
 		</ul>
+	      </li>
 	    </ul>
 	    <style>
 	      #next_steps li{line-height:150%;}
 	    </style>
 	</div></section>
-
-	<section class="slide" id="month_stats"><div>
-	    <h2>Overview of the month</h2>
-	    <table>
-	      <thead>
-		<tr>
-		  <td/>
-		  <td>Min</td>
-		  <td>Median</td>
-		  <td>Max</td>
-		</tr>
-	      </thead>
-	      <tbody>
-		<tr>
-		  <td>IMF Bz (nT)</td>
-		  <td>-27.97</td>
-		  <td>0.28</td>
-		  <td>30.92</td>
-		</tr>
-		<tr>
-		  <td>Solar wind Ux (km/s)</td>
-		  <td>318</td>
-		  <td>570</td>
-		  <td>1055</td>
-		</tr>
-		<tr>
-		  <td>Solar wind dynamic pressure (nPa)</td>
-		  <td>0.09</td>
-		  <td>2.07</td>
-		  <td>80.62</td>
-		</tr>
-		<tr>
-		  <td>Kp</td>
-		  <td>0</td>
-		  <td>3</td>
-		  <td>8</td>
-		</tr>
-		<tr>
-		  <td>Sym-H (nT)</td>
-		  <td>-112</td>
-		  <td>-17</td>
-		  <td>57</td>
-		</tr>
-		<tr>
-		  <td>AL (nT)</td>
-		  <td>-4418</td>
-		  <td>-123</td>
-		  <td>10</td>
-		</tr>
-	      </tbody>
-	    </table>
+	
+	<section class="slide"><div>
+	    <h2>Reconnection drives plasma flow</h2>
+	    <img class="plasmoid_blines_sampled" src="pictures/plasmoid_blines_sampled_build0.svg"/>
+	    <img class="next plasmoid_blines_sampled" src="pictures/plasmoid_blines_sampled_build1.svg"/>
+	    <img class="next plasmoid_blines_sampled" src="pictures/plasmoid_blines_sampled_build2.svg"/>
+	    <img class="next plasmoid_blines_sampled" src="pictures/plasmoid_blines_sampled_build3.svg"/>
+	    <div>
+	    <style>
+	      img.plasmoid_blines_sampled{height:400px; position:absolute; left:100px; top:150px;}
+	    </style>
+	    </div>
 	</div></section>
 
 	<!--
