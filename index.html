@@ -1,210 +1,436 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>Shower Presentation Engine</title>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="node_modules/shower-ribbon/styles/styles.css">
-    <style>
-        .shower {
-            --slide-ratio: calc(16 / 9);
-        }
-    </style>
+	<title>Substorms in MHD</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=1024, user-scalable=no">
+	<meta http-equiv="x-ua-compatible" content="ie=edge">
+	<link rel="stylesheet" href="styles/screen.css">
+	<link rel="stylesheet" href="styles/fonts.css">
+	<style>
+	  h3{font-weight:bold};
+	</style>
 </head>
-<body class="shower list">
+<body class="list">
+	<!--
+		Debug class on <body> enables
+		cyan grid on slides
+		-->
+	<header class="caption">
+		<h1>Substorms and plasmoid dynamics in MHD</h1>
+		<p>John Haiducek</p>
+		
+	</header>
+	<section class="slide cover" id="titleslide"><div>
+	    <h2>Can global MHD be used to predict substorms?</h2>
+	    <h3>John Haiducek, Dan Welling, Natasha Ganjushkina, Steve Morley</h3>
+	    <h3>Mar 2, 2018</h3>
+	    <img src="pictures/titleslide.png" alt="">
+	    <style>
+	      #titleslide h2,#titleslide h3{color:#e8d4ca;}
+	      #titleslide img{width:100%;position:absolute;top:0px; left:0px;}
+	    </style>
+	</div></section>
+	<section class="slide cover" id="title_backgroundonly"><div>
+	    <h2>Output from a magnetohydrodynamic (MHD) model</h2>
+	    <img src="pictures/titleslide.png" alt="">
+	    <img class="next" src="pictures/titleslide_annotated_earth.svg" alt="">
+	    <img class="next" src="pictures/titleslide_annotated_solarwind.svg" alt="">
+	    <img class="next" src="pictures/titleslide_annotated_magnetotail.svg" alt="">
+	    <img class="next" src="pictures/titleslide_annotated_plasmoid.svg" alt="">
+	    <style>
+	      #title_backgroundonly h2,#title_backgroundonly h3{color:#e8d4ca;}
+	      #title_backgroundonly img{width:100%;position:absolute;top:0px; left:0px;}
+	    </style>
+	</div></section>
+	<section class="slide" id="summary"><div>
+	    <h2>Summary</h2>
+	    <ul>
+	      <li>About me</li>
+	      <li>Model and project overview</li>
+	      <li>Substorm identification</li>
+	      <li>Substorm validation results</li>
+	    </ul>
+	    <style>
+	      #methodology li{font-size:1.25em;}
+	      #methodology ol{padding-top:2em;}
+	    </style>
+	</div></section>
+	<section class="slide" id="aboutme"><div>
+	    <h2>Space to lasers and back again</h2>
+	    <figure id="falconsat-3">
+	      <img src="pictures/Falconsat-3-on-ESPA_rot90.jpg">
+	      <figcaption>FalconSat-3</figcaption>
+	    </figure>
+	    <figure id="pbmod" class="next">
+	      <img src="pictures/pbmod_cropped.png">
+	      <figcaption>PBMOD (John Retterer)</figcaption>
+	    </figure>
+	    <figure id="dpal" class="next">
+	      <img src="pictures/dpal_head_cropped.jpg">
+	      <figcaption>DPAL laser (Pitz et al., 2016)</figcaption>
+	    </figure>
+	    <figure id="mhd" class="next">
+	      <img src="pictures/plasmoid_blines_cropped.png">
+	      <figcaption>MHD modeling</figcaption>
+	    </figure>
+	    <style>
+	      #aboutme h2{position:relative; top:-40px;}
+	      #falconsat-3, #falconsat-3 img{width:250px}
+	      #falconsat-3{position:absolute; top:70px; left:10px}
+	      #pbmod{position:absolute; top:70px; left:280px;}
+	      #pbmod, #pbmod img{width:220px}
+	      #mhd{position:absolute; top:70px; left:760px;}
+	      #mhd, #mhd img{width:230px;}
+	      #dpal{position:absolute; top:70px; left:550px;}
+	      #dpal,#dpal img{width:150px;}
+	    </style>
+	</div></section>
+	<section class="slide" id="movie_demo"><div>
+	    <h2>Space Weather Modeling Framework</h2>
+	    <img id="operational" src="pictures/swmf_operational_adjusted.svg">
+	    <video controls loop>
+	      <source src="movies/demo_zoom.mp4" controls="true"/>
+	    </video>
+	    <style>
+	      #movie_demo video{width:630px; position:absolute; top:70px; left:390px; z-index:0;}
+	      #movie_demo h2{position:absolute; top:20px; z-index:1;}
+	      #operational{height:85%; float:left; position:absolute; left:10px; top:70px; z-index:0;}
+	    </style>
+	</div></section>
+	<section class="slide"><div>
+	    <h2>Solar wind provides energy to the magnetosphere</h2>
+	    <video id="overview_movie" controls loop>
+	      <source src="movies/10623_Recon_Bounce_H264_1280x720_29.97.m4v"/>
+	    </video>
+	    <div id="overview_movie_credit">Walt Feimer, <br/> NASA SVS, 2010</div>
+	    <style>
+		#overview_movie{height:85%; position:relative; top:-25px; left:-50px;}
+		#overview_movie_credit{position:absolute; top:100px; left:80%;}
+	    </style>
+	    </div>
+	</div></section>
+	<section class="slide" id="objectives"><div>
+	    <img src="pictures/applications.png" id="applications">
+	    <div>
+	    <h2>Why study substorms with MHD?</h2>
+	    <ul>
+	      <li>Key source for geogmagnetically induced currents</li>
+	      <li>Contribute to spacecraft charging</li>
+	      <li>Substorms are near the limit of what we can model</li>
+	      <li>Majority of existing MHD-substorm work is case studies</li>
+	      <li>No MHD model has been validated for substorm prediction</li>
+	      <li>MHD can predict substorm effects if the substorm itself is accurately represented</li>
+	    </ul>
+	  </div>
+	    <style>
+	      #applications{
+	      position:absolute;
+	      top:0;
+	      left:610px;
+	      height:100%;
+	      z-index:0;
+	      }
+	      #objectives>div>div{
+	      width:700px;
+	      }
+	    </style>
+	</div></section>
+	<section class="slide" id="methodology"><div>
+	    <h2>Substorm validation effort</h2>
+	    <ol>
+	      <li>Use a &ldquo;vanilla&rdquo; SWMF global magnetosphere set-up</li>
+	      <li>Feed a month (January, 2005) of observed solar wind data into it</li>
+	      <li>Look for substorms</li>
+	    </ol>
+	    <style>
+	      #methodology li{font-size:1.25em;}
+	      #methodology ol{padding-top:2em;}
+	    </style>
+	</div></section>
+	<section class="slide" id="summary_methodology"><div>
+	    <h2>Summary</h2>
+	    <ul>
+	      <li>About me</li>
+	      <li>Model and project overview</li>
+	      <li><b>Substorm identification</b></li>
+	      <li>Substorm validation results</li>
+	    </ul>
+	    <style>
+	      #methodology li{font-size:1.25em;}
+	      #methodology ol{padding-top:2em;}
+	    </style>
+	</div></section>
+	<section class="slide" id="id_example"><div>
+	    <h2>Plasmoids move tailward</h2>
+	    <img class="example_plasmoid" src="pictures/example_plasmoid_1.png"/>
+	    <img class="next example_plasmoid" src="pictures/example_plasmoid_2.png"/>
+	    <img class="next example_plasmoid" src="pictures/example_plasmoid.png"/>
+	    <img class="next" id="dipolarization" src="pictures/example_magdata_in_situ.svg"/>
+	    <style>
+	      img.example_plasmoid{width:70%; position:absolute; top:100px; left:150px;}
+	      #dipolarization{position:absolute; top:250px; left:450px; width:250px; border:2px solid black}
+	    </style>
+	</div></section>
+        <section class="slide" id="surface_signatures"><div>
+            <h2>Substorm currents affect magnetic fields</h2>
+            <div id="mag_grid_sphere">
+              <img src="pictures/mag_grid_sphere_crosstailonly.svg"/>
+              <img class="next" src="pictures/mag_grid_sphere_nocurrentfield.svg"/>
+            </div>
+	    <img id="aual" class="next" src="pictures/aual.svg"/>
+	    <img id="mpb" class="next" src="pictures/mpb.svg"/>
+            <style>
+              #mag_grid_sphere{width:116%; position:relative; top:-18%; left:-8%; z-index:0;}
+              #mag_grid_sphere img{width:100%; position:absolute; top:0px; left:0px;}
+              #surface_signatures h2{position:relative; z-index:1;}
+              #surface_signatures>div{background-color:black;}
+	      #aual{position:absolute; top:50px; left:790px; width:225px;}
+	      #mpb{position:absolute; top:250px; left:460px; width:225px; border:2px solid black}
+            </style>
+        </div></section>
+	<section class="slide" id="id_example_epdata"><div>
+	    <h2>Energetic particles <br/>detected by spacecraft</h2>
+	    <img id="lanl_epdata" src="pictures/Fig-4-Energetic-proton-data-from-the-Los-Alamos-National-Laboratory-LANL-Synchronous.png"/>
+	    <div id="lanl_epdata_credit">Henderson, 2009</div>
+	    <ul>
+	      <li>LANL SOPA instrument detects particle fluxes in geosynchronous orbit</li>
+	      <li>Visually inspected particle data for dispersionless injections</li>
+	    </ul>
+	    <style>
+	      img#lanl_epdata{width:42%; position:absolute; left:50%; top:5px;}
+	      #lanl_epdata_credit{position:absolute; top:520px; z-index:100; width:42%; text-align:right}
+	      #id_example_epdata ul{width:50%}
+	    </style>
+	</div></section>
+	<section class="slide" id="id_example_image_fuv"><div>
+	    <h2>Auroral brightening</h2>
+	    <img id="image-fuv-example" src="pictures/Fig-11-Maps-of-Northern-Hemisphere-FUV-emission-converted-to-electron-energy-flux-mWm.png"/>
+	    <div id="image-fuv-example-credit">Kavanagh et al., 2007</div>
+	    <ul id="image-fuv-bullets">
+	      <li>Substorm onsets observed WIC camera on the IMAGE spacecraft</li>
+	      <li>Use list from Frey et al., 2004 (since updated to include 2005)</li>
+	    </ul>
+	    <style>
+	      img#image-fuv-example{width:45%; position:absolute; left:50%; top:20px;}
+	      #image-fuv-example-credit{position:absolute; top:520px; z-index:100; width:44%; text-align:right}
+	      #image-fuv-bullets{position:relative; left:0px; width:50%}
+	    </style>
+	</div></section>
+	<section class="slide" id="substorm_id_challenges"><div>
+	    <h2>Substorm identification challenges</h2>
+	    <ul>
+	      <li>Substorm identification is contentious</li>
+	      <li>Observational analyses of substorms use widely varying methodology</li>
+	      <li>Events may be missed due to location</li>
+	      <li>Other processes can sometimes be mistaken for substorms</li>
+	    </ul>
+	    <p>Our approach: Identify substorms using multiple methods, and combine the results from each into a single list</p>
+	    <style>
+	      #challenges div div{width:45%;float:left; padding:2%;}
+	      /*div#logistical_challenges{width:50%;float:left}
+	      div#analysis_challenges{width:50%;float:left}*/
+	    </style>
+	</div></section>
+	<section class="slide" id="substorm_id_overview"><div>
+	    <h2>Substorm identification process</h2>
+	    <ul>
+	      <li id="substorm-signatures">Identify substorm signatures: As many different kinds as possible
+	      <figure id="plasmoid_cropped"><img src="pictures/example_plasmoid_cropped.png"/><figcaption>Plasmoid releases (model)</figcaption></figure>
+	      <figure id="satmags"><img src="pictures/example_magdata_in_situ.svg"/><figcaption>Satellite fields (model+obs.)</figcaption></figure>
+	      <figure id="groundmags"><img src="pictures/mags_ground.svg"/><figcaption>Ground-based fields (model+obs.)</figcaption></figure>
+	      <figure id="epdata_small"><img src="pictures/Fig-4-Energetic-proton-data-from-the-Los-Alamos-National-Laboratory-LANL-Synchronous.png"/><figcaption>Energetic particles (obs.)</figcaption></figure>
+	      <figure id="imagefuv_small"><img src="pictures/Fig-11-Maps-of-Northern-Hemisphere-FUV-emission-converted-to-electron-energy-flux-mWm.png"/><figcaption>Auroral brightening (obs.)</figcaption></figure>
+	      </li>
+	      <li>Divide month into 30 minute time intervals</li>
+	      <li>Identify intervals in which multiple signatures occurred</li>
+	    </ul>
+	    <style>
+	      #substorm_id_overview figcaption, #substorm_id_overview figure{font-size:20px;line-height:25px; text-indent:0;}
+	      #challenges div div{width:45%;float:left; padding:2%;}
+	      #plasmoid_cropped, #plasmoid_cropped img{width:300px;}
+	      #plasmoid_cropped{position:absolute; top:200px;left:80px;}
+	      #satmags, #satmags img{width:170px;}
+	      #satmags{position:absolute; top:200px; left:400px;}
+	      #groundmags, #groundmags img{width:190px;}
+	      #groundmags{position:absolute;top:320px;left:80px;}
+	      #epdata_small, #epdata_small img{width:100px;}
+	      #epdata_small{ position:absolute; top:200px; left:600px}
+	      #imagefuv_small, #imagefuv_small img{width:110px; }
+	      #imagefuv_small{position:absolute; top:200px; left:760px}
+	      #substorm-signatures{padding-bottom:270px;}
+	    </style>
+	</div></section>
+	<section class="slide" id="combining_signatures"><div>
+	    <h2>Combining signatures</h2>
+	    <ul>
+	      <li>Count number of distict signatures in each 30-minute bin</li>
+	      <li>If more than <i>n</i> signatures is present in a bin, count it as a substorm</li>
+	      <li>Use the time of the first signature as the substorm onset time</li>
+	    </ul>
+	    <img id="substorm_occurrences" src="pictures/substorm_occurrences_nomsm_fadetowhite.svg"/>
+	    <p>For the model <i>n</i>=3. For observations, <i>n</i>=2 (to account for data gaps in observations)</p>
+	    <style>
+	      img#substorm_occurrences{width:80%}
 
-    <header class="caption">
-        <h1>Shower Presentation Engine</h1>
-        <p>Yours Truly, Famous Inc.</p>
-    </header>
+	    </style>
+	</div></section>
+	<section class="slide" id="summary_results"><div>
+	    <h2>Summary</h2>
+	    <ul>
+	      <li>About me</li>
+	      <li>Model and project overview</li>
+	      <li>Substorm identification</li>
+	      <li><b>Substorm validation results</b></li>
+	    </ul>
+	    <style>
+	      #methodology li{font-size:1.25em;}
+	      #methodology ol{padding-top:2em;}
+	    </style>
+	</div></section>
+	<section class="slide" id="predictive_skill"><div>
+	    <h2>Skill scores measure the model's accuracy</h2>
+	    <div id="stats">
+	    <ul>
+	      <li>Total model substorms: 118</li>
+	      <li>Total observed substorms: 163</li>
+	      <li>Heidke skill score: 0.126</li>
+	    </ul>
+	    </div>
+	    
+	    <table id="contingency_table_large">
+	      <tr>
+		<td rowspan="2" colspan="2"></td>
+		<td colspan="2">Observations</td>
+	      </tr>
+	      <tr>
+		<td>Y</td><td>N</td>
+	      </tr>
+	      <tr>
+		<td rowspan="2"><span class="rotate-outer"><span class="rotate-inner">Model</span></span></td>
+		<td>Y</td>
+		<td class="cont-inner hits">29</td>
+		<td class="cont-inner false-positives">89</td>
+	      </tr>
+	      <tr>
+		<td>N</td>
+		<td class="cont-inner misses">134</td>
+		<td class="cont-inner true-negatives">1,236</td>
+	      </tr>
+	    </table>
 
-    <section class="slide" id="cover">
-        <h2>Shower Presentation Engine</h2>
-        <p>Brought to you by <a href="http://pepelsbey.net">Vadim Makeev</a></p>
-        <figure>
-            <img class="cover" src="pictures/cover.jpg" alt="Hands on the orange typewriter in a park">
-            <figcaption class="copyright right white">
-                <a href="http://fiftyfootshadows.net/">© John Carey</a>
-            </figcaption>
-        </figure>
-        <style>
-            #cover h2 {
-                margin: 30px 0 0;
-                color: white;
-                text-align: center;
-                font-size: 70px;
-            }
+	    <style>
+		div#stats{float:right; width:50%; position:relative; top:10%; font-size:1.25em;}
+	      div#boxplots_container{width:60%; position:absolute; left:40%; top:100px;}
+	      div#boxplots_container img{width:100%;}
+	      /*img#epsilon_boxplots{width:70%; position:relative; top:-100px;}
+		img#al_strength_boxplots{width:29%; position:relative; top:-70px;}*/
+		table#contingency_table_large tr{border:none; background:white;}
+		table#contingency_table_large td{border:none; background:white; width:100px;}
+		table#contingency_table_large{width:30%; font-size:1.25em;}
+	      
+	table#contingency_table_large td{background-color:solid white; text-align:center;}
+	      table#contingency_table_large td.cont-inner{border:1px solid black;}
+		table#contingency_table tr{border:none; background:white;}
+		table#contingency_table td{border:none; background:white; width:80px;}
+	      .rotate-outer {
+    display: inline-block;
+    overflow: hidden;
+    width: 1.5em;
+    line-height: 1.5;
+}
+.rotate-inner {
+    display: inline-block;
+    white-space: nowrap;
+    -webkit-transform: translate(0,100%) rotate(-90deg);
+       -moz-transform: translate(0,100%) rotate(-90deg);
+        -ms-transform: translate(0,100%) rotate(-90deg);
+         -o-transform: translate(0,100%) rotate(-90deg);
+            transform: translate(0,100%) rotate(-90deg);
+    -webkit-transform-origin: 0 0;
+       -moz-transform-origin: 0 0;
+        -ms-transform-origin: 0 0;
+         -o-transform-origin: 0 0;
+            transform-origin: 0 0;
+}
+/* This element stretches the parent to be square
+   by using the mechanics of vertical margins  */
+.rotate-inner:before {
+    content: "";
+	      float: left;
+	      margin-top: 100%;
+}
+	    </style>
+	</div></section>
+	<section class="slide" id="al_strength_hits"><div>
+	    <h2>Model event strength is weaker than observed</h2>
+	    <img class="al_strength_boxplots" src="pictures/al_strength_boxplots_hits.svg"/>
+	    <style>
+	      img.al_strength_boxplots{height:85%;position:relative;left:15%;}
+	    </style>
+	</div></section>
+	<section class="slide" id="al_strength_obs"><div>
+	    <h2>Model is best at predicting stronger events</h2>
+	    <img class="al_strength_boxplots" src="pictures/al_strength_boxplots_obs.svg"/>
+	</div></section>
+	<section class="slide" id="skill_driving"><div>
+	    <h2>Skill improves with driving</h2>
+	    <div id="driving_plots">
+	    <img id="epsilon_boxplots" src="pictures/epsilon_boxplots.svg"/>
+	    <img class="next" id="epsilon_lineplot" src="pictures/skill_v_epsilon_tall.svg"/>
+	    </div>
+	    <style>
+	      img#epsilon_boxplots{width:50%;float:left}
+	      img#epsilon_lineplot{width:50%;float:right}
+	      img#driving_arrows{width:28%;position:absolute;top:30%;left:19%;}
+	      #driving_plots{position:relative;top:-5%;}
+	    </style>
+	</div></section>
+	<section class="slide" id="next_steps"><div>
+	    <h2>What's next?</h2>
+	    <ul>
+	      <li>Better physics in reconnection region
+		<ul>
+		  <li>Reduce dependence on grid resolution</li>
+		  <li>Account for kinetic processes</li>
+		</ul>
+	      </li>
+	      <li>Uncertainty quantification
+		<ul>
+		  <li>Supports interpetation of model output</li>
+		</ul>
+	      </li>
+	      <li>Data assimilation
+		<ul>
+		  <li>Not widely used for magnetosphere</li>
+		  <li>Demonstrated by Godinez et al. (2016)</li>
+		</ul>
+	      </li>
+	    </ul>
+	    <style>
+	      #next_steps li{line-height:150%;}
+	    </style>
+	</div></section>
+	
+	<section class="slide"><div>
+	    <h2>Reconnection drives plasma flow</h2>
+	    <img class="plasmoid_blines_sampled" src="pictures/plasmoid_blines_sampled_build0.svg"/>
+	    <img class="next plasmoid_blines_sampled" src="pictures/plasmoid_blines_sampled_build1.svg"/>
+	    <img class="next plasmoid_blines_sampled" src="pictures/plasmoid_blines_sampled_build2.svg"/>
+	    <img class="next plasmoid_blines_sampled" src="pictures/plasmoid_blines_sampled_build3.svg"/>
+	    <div>
+	    <style>
+	      img.plasmoid_blines_sampled{height:400px; position:absolute; left:100px; top:150px;}
+	    </style>
+	    </div>
+	</div></section>
 
-            #cover p {
-                margin: 10px 0 0;
-                text-align: center;
-                color: white;
-                font-style: italic;
-                font-size: 20px;
-            }
-
-            #cover p a {
-                color: white;
-            }
-        </style>
-    </section>
-
-    <section class="slide">
-        <h2>Shower key features</h2>
-        <ol>
-            <li>Built on HTML, CSS and JavaScript</li>
-            <li>Works in all modern browsers</li>
-            <li>Themes are separated from engine</li>
-            <li>Fully keyboard accessible</li>
-            <li>Printable to PDF</li>
-        </ol>
-        <p class="note">Shower ['ʃəuə] noun. A person or thing that shows.</p>
-    </section>
-
-    <section class="slide">
-        <h2>Plain text on your slides</h2>
-        <p>Lorem ipsum dolor sit amet, consectetur <a href="#4">adipisicing</a> elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, <em>quis nostrud</em> exercitation ullamco laboris <strong>nisi ut aliquip</strong> ex ea commodo consequat. Duis aute irure <i>dolor</i> in reprehenderit in voluptate velit esse cillum <b>dolore</b> eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in <code>&lt;culpa&gt;</code> qui officia deserunt mollit anim id est laborum.</p>
-    </section>
-
-    <section class="slide">
-        <h2>Two columns if you like</h2>
-        <div class="columns two">
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation.</p>
-            <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia.</p>
-        </div>
-    </section>
-
-    <section class="slide">
-        <h2>All kind of lists</h2>
-        <ol>
-            <li>Simple lists are marked with bullets</li>
-            <li>Ordered lists begin with a number</li>
-            <li>You can even nest lists one inside another
-                <ul>
-                    <li>Or mix their types</li>
-                    <li>But do not go too far</li>
-                    <li>Otherwise audience will be bored</li>
-                </ul>
-            </li>
-            <li>Look, seven rows exactly!</li>
-        </ol>
-    </section>
-
-    <section class="slide">
-        <h2>Serious citations</h2>
-        <figure>
-            <blockquote>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia.</p>
-            </blockquote>
-            <figcaption>Marcus Tullius Cicero</figcaption>
-        </figure>
-    </section>
-
-    <section class="slide">
-        <h2>Code samples</h2>
-        <pre>
-            <code>&lt;!DOCTYPE html&gt;</code>
-            <code class="mark">&lt;html lang="en"&gt;</code>
-            <code><mark>&lt;head&gt;</mark> <span class="comment">&lt;!--Comment--&gt;</span></code>
-            <code>    &lt;title&gt;Shower&lt;/title&gt;</code>
-            <code>    &lt;meta charset="<mark class="important">UTF-8</mark>"&gt;</code>
-            <code>    &lt;link rel="stylesheet" href="screen.css"&gt;</code>
-            <code><mark>&lt;/head&gt;</mark></code>
-        </pre>
-    </section>
-
-    <section class="slide">
-        <h2>Even tables</h2>
-        <table>
-        <tr>
-            <th scope="col">Locavore</th>
-            <th>Umami</th>
-            <th>Helvetica</th>
-            <th>Vegan</th>
-        </tr>
-        <tr>
-            <th scope="row">Fingerstache</th>
-            <td>Kale</td>
-            <td>Chips</td>
-            <td>Keytar</td>
-        </tr>
-        <tr>
-            <th scope="row">Sriracha</th>
-            <td>Gluten-free</td>
-            <td>Ennui</td>
-            <td>Keffiyeh</td>
-        </tr>
-        <tr>
-            <th scope="row">Thundercats</th>
-            <td>Jean</td>
-            <td>Shorts</td>
-            <td>Biodiesel</td>
-        </tr>
-        <tr>
-            <th scope="row">Terry</th>
-            <td>Richardson</td>
-            <td>Swag</td>
-            <td>Blog</td>
-        </tr>
-        </table>
-        <p>It’s good to have information organized.</p>
-    </section>
-
-    <section class="slide" id="picture">
-        <h2>Pictures</h2>
-        <figure>
-            <img class="cover" src="pictures/picture.jpg" alt="Orange typewriter on a wooden table close-up">
-            <figcaption class="copyright right white">
-                <a href="http://fiftyfootshadows.net/">© John Carey</a>
-            </figcaption>
-        </figure>
-        <style>
-            #picture h2 {
-                color: white;
-            }
-        </style>
-    </section>
-
-    <section class="slide">
-        <h2 class="shout shrink">You can even shout this way</h2>
-    </section>
-
-    <section class="slide">
-        <h2>Inner navigation</h2>
-        <ol>
-            <li>Lets you reveal list items one by one</li>
-            <li class="next">To keep some key points</li>
-            <li class="next">In secret from audience</li>
-            <li class="next">But it will work only once</li>
-            <li class="next">Nobody wants to see the same joke twice</li>
-        </ol>
-    </section>
-
-    <section class="slide" id="see-more">
-        <h2 class="shout">
-            <img src="pictures/logo.svg" alt="Shower logo">
-            <a href="https://github.com/shower/shower">See more on GitHub</a>
-        </h2>
-        <style>
-            #see-more h2 {
-                font-size: 100px
-            }
-
-            #see-more img {
-                width: 0.72em;
-                height: 0.72em;
-            }
-        </style>
-    </section>
-
-    <footer class="badge">
-        <a href="https://github.com/shower/shower">Fork me on GitHub</a>
-    </footer>
-
-    <div class="progress"></div>
-
-    <script src="node_modules/shower-core/shower.min.js"></script>
-    <!-- Copyright © 2018 Yours Truly, Famous Inc. -->
-
+	<!--
+		To hide progress bar from entire presentation
+		just remove “progress” element.
+		-->
+	<div class="progress"><div></div></div>
+	<script src="node_modules/shower-core/shower.min.js"></script>
+	<!-- Copyright © 2015 John Haiducek -->
 </body>
 </html>
