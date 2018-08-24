@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<title>Substorms in MHD</title>
+	<title>Exploring Magnetotail Structure and Dynamics
+with Magnetohydrodynamic Simulations</title>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="node_modules/shower-material-jhaiduce/styles/styles.css">
@@ -18,14 +19,16 @@
 		cyan grid on slides
 		-->
 	<header class="caption">
-		<h1>Substorms and plasmoid dynamics in MHD</h1>
+		<h1>Exploring Magnetotail Structure and Dynamics
+with Magnetohydrodynamic Simulations</h1>
 		<p>John Haiducek</p>
 		
 	</header>
 	<section class="slide" id="titleslide"><div>
-	    <h2>Can global MHD be used to predict substorms?</h2>
-	    <h3>John Haiducek, Dan Welling, Natasha Ganjushkina, Steve Morley</h3>
-	    <h3>Mar 2, 2018</h3>
+	    <h2>Exploring Magnetotail Structure and Dynamics
+with Magnetohydrodynamic Simulations</h2>
+	    <h3>John Haiducek</h3>
+	    <h3>Sep 6, 2018</h3>
 	    <img class="cover" src="pictures/titleslide.png" alt="">
 	    <style>
 	      #titleslide h2,#titleslide h3{color:#e8d4ca;}
@@ -47,44 +50,40 @@
 	<section class="slide" id="summary"><div>
 	    <h2>Summary</h2>
 	    <ul>
-	      <li>About me</li>
-	      <li>Model and project overview</li>
+	      <li>The space environment</li>
+	      <li>Model overview</li>
+	      <li>Isotropic boundaries</li>
 	      <li>Substorm identification</li>
-	      <li>Substorm validation results</li>
+	      <li>Conclusions</li>
 	    </ul>
 	    <style>
 	      #methodology li{font-size:1.25em;}
 	      #methodology ol{padding-top:2em;}
 	    </style>
 	</div></section>
-	<section class="slide" id="aboutme"><div>
-	    <h2>Space to lasers and back again</h2>
-	    <figure id="falconsat-3">
-	      <img src="pictures/Falconsat-3-on-ESPA_rot90.jpg">
-	      <figcaption>FalconSat-3</figcaption>
-	    </figure>
-	    <figure id="pbmod" class="next">
-	      <img src="pictures/pbmod_cropped.png">
-	      <figcaption>PBMOD (John Retterer)</figcaption>
-	    </figure>
-	    <figure id="dpal" class="next">
-	      <img src="pictures/dpal_head_cropped.jpg">
-	      <figcaption>DPAL laser (Pitz et al., 2016)</figcaption>
-	    </figure>
-	    <figure id="mhd" class="next">
-	      <img src="pictures/plasmoid_blines_cropped.png">
-	      <figcaption>MHD modeling</figcaption>
-	    </figure>
+	<section class="slide" id="objectives"><div>
+	    <img src="pictures/applications.png" id="applications">
+	    <div>
+	    <h2>Space weather hazards</h2>
+	    <ul>
+	      <li>Geomagnetically induced currents</li>
+	      <li>Spacecraft charging</li>
+	      <li>Spacecraft anomalies</li>
+	      <li>Communication outages</li>
+	      <li>GPS signal degradation</li>
+	    </ul>
+	  </div>
 	    <style>
-	      #aboutme h2{position:relative; top:-40px;}
-	      #falconsat-3, #falconsat-3 img{width:250px}
-	      #falconsat-3{position:absolute; top:70px; left:10px}
-	      #pbmod{position:absolute; top:70px; left:280px;}
-	      #pbmod, #pbmod img{width:220px}
-	      #mhd{position:absolute; top:70px; left:760px;}
-	      #mhd, #mhd img{width:230px;}
-	      #dpal{position:absolute; top:70px; left:550px;}
-	      #dpal,#dpal img{width:150px;}
+	      #applications{
+	      position:absolute;
+	      top:0;
+	      left:610px;
+	      height:100%;
+	      z-index:0;
+	      }
+	      #objectives>div>div{
+	      width:700px;
+	      }
 	    </style>
 	</div></section>
 	<section class="slide" id="movie_demo"><div>
@@ -111,32 +110,6 @@
 	    </style>
 	    </div>
 	</div></section>
-	<section class="slide" id="objectives"><div>
-	    <img src="pictures/applications.png" id="applications">
-	    <div>
-	    <h2>Why study substorms with MHD?</h2>
-	    <ul>
-	      <li>Key source for geogmagnetically induced currents</li>
-	      <li>Contribute to spacecraft charging</li>
-	      <li>Substorms are near the limit of what we can model</li>
-	      <li>Majority of existing MHD-substorm work is case studies</li>
-	      <li>No MHD model has been validated for substorm prediction</li>
-	      <li>MHD can predict substorm effects if the substorm itself is accurately represented</li>
-	    </ul>
-	  </div>
-	    <style>
-	      #applications{
-	      position:absolute;
-	      top:0;
-	      left:610px;
-	      height:100%;
-	      z-index:0;
-	      }
-	      #objectives>div>div{
-	      width:700px;
-	      }
-	    </style>
-	</div></section>
 	<section class="slide" id="methodology"><div>
 	    <h2>Substorm validation effort</h2>
 	    <ol>
@@ -144,19 +117,6 @@
 	      <li>Feed a month (January, 2005) of observed solar wind data into it</li>
 	      <li>Look for substorms</li>
 	    </ol>
-	    <style>
-	      #methodology li{font-size:1.25em;}
-	      #methodology ol{padding-top:2em;}
-	    </style>
-	</div></section>
-	<section class="slide" id="summary_methodology"><div>
-	    <h2>Summary</h2>
-	    <ul>
-	      <li>About me</li>
-	      <li>Model and project overview</li>
-	      <li><b>Substorm identification</b></li>
-	      <li>Substorm validation results</li>
-	    </ul>
 	    <style>
 	      #methodology li{font-size:1.25em;}
 	      #methodology ol{padding-top:2em;}
