@@ -48,7 +48,7 @@
 	    <ul>
 	      <li>About me</li>
 	      <li>Model and project overview</li>
-	      <li>What a substorm is, and how to identify one</li>
+	      <li>Substorm identification</li>
 	      <li>Substorm validation results</li>
 	    </ul>
 	    <style>
@@ -87,16 +87,28 @@
 	    </style>
 	</div></section>
 	<section class="slide" id="movie_demo"><div>
-	    <h2>Solar wind drives coupled model</h2>
+	    <h2>Space Weather Modeling Framework</h2>
+	    <img id="operational" src="pictures/swmf_operational_adjusted.svg">
 	    <video controls loop>
 	      <source src="movies/demo_zoom.mp4" controls="true"/>
 	    </video>
-	    <img id="operational" src="pictures/swmf_operational_adjusted.svg">
 	    <style>
-	      #movie_demo video{height:85%; position:relative; top:8%; z-index:0;}
+	      #movie_demo video{width:630px; position:absolute; top:70px; left:390px; z-index:0;}
 	      #movie_demo h2{position:absolute; top:20px; z-index:1;}
-	      #operational{height:85%; float:left; position:relative; left:600px; top:-80%; z-index:0;}
+	      #operational{height:85%; float:left; position:absolute; left:10px; top:70px; z-index:0;}
 	    </style>
+	</div></section>
+	<section class="slide"><div>
+	    <h2>Solar wind provides energy to the magnetosphere</h2>
+	    <video id="overview_movie" controls loop>
+	      <source src="movies/10623_Recon_Bounce_H264_1280x720_29.97.m4v"/>
+	    </video>
+	    <div id="overview_movie_credit">Walt Feimer, <br/> NASA SVS, 2010</div>
+	    <style>
+		#overview_movie{height:85%; position:relative; top:-25px; left:-50px;}
+		#overview_movie_credit{position:absolute; top:100px; left:80%;}
+	    </style>
+	    </div>
 	</div></section>
 	<section class="slide" id="objectives"><div>
 	    <img src="pictures/applications.png" id="applications">
@@ -141,25 +153,13 @@
 	    <ul>
 	      <li>About me</li>
 	      <li>Model and project overview</li>
-	      <li><b>What a substorm is, and how to identify one</b></li>
+	      <li><b>Substorm identification</b></li>
 	      <li>Substorm validation results</li>
 	    </ul>
 	    <style>
 	      #methodology li{font-size:1.25em;}
 	      #methodology ol{padding-top:2em;}
 	    </style>
-	</div></section>
-	<section class="slide"><div>
-	    <h2>Solar wind provides energy to the magnetosphere</h2>
-	    <video id="overview_movie" controls loop>
-	      <source src="movies/10623_Recon_Bounce_H264_1280x720_29.97.m4v"/>
-	    </video>
-	    <div id="overview_movie_credit">Walt Feimer, <br/> NASA SVS, 2010</div>
-	    <style>
-		#overview_movie{height:85%; position:relative; top:-25px; left:-50px;}
-		#overview_movie_credit{position:absolute; top:100px; left:80%;}
-	    </style>
-	    </div>
 	</div></section>
 	<section class="slide" id="id_example"><div>
 	    <h2>Plasmoids move tailward</h2>
@@ -235,25 +235,30 @@
 	<section class="slide" id="substorm_id_overview"><div>
 	    <h2>Substorm identification process</h2>
 	    <ul>
-	      <li>Identify substorm signatures: As many different kinds as possible
-		<ul>
-		  <li>Plasmoid releases (model)<img id="plasmoid_cropped" src="pictures/example_plasmoid_cropped.png"/></li>
-		  <li>Satellite magnetic fields (model+observations)<img id="satmags" src="pictures/example_magdata_in_situ.svg"/></li>
-		  <li>Ground magnetometers (model+observations)<img id="groundmags" src="pictures/mags_ground.svg"/></li>
-		  <li>Energetic particle injections (observations)<img id="epdata_small" src="pictures/Fig-4-Energetic-proton-data-from-the-Los-Alamos-National-Laboratory-LANL-Synchronous.png"/></li>
-		  <li>Auroral brightening (observations)<img id="imagefuv_small" src="pictures/Fig-11-Maps-of-Northern-Hemisphere-FUV-emission-converted-to-electron-energy-flux-mWm.png"/></li>
-		</ul>
+	      <li id="substorm-signatures">Identify substorm signatures: As many different kinds as possible
+	      <figure id="plasmoid_cropped"><img src="pictures/example_plasmoid_cropped.png"/><figcaption>Plasmoid releases (model)</figcaption></figure>
+	      <figure id="satmags"><img src="pictures/example_magdata_in_situ.svg"/><figcaption>Satellite fields (model+obs.)</figcaption></figure>
+	      <figure id="groundmags"><img src="pictures/mags_ground.svg"/><figcaption>Ground-based fields (model+obs.)</figcaption></figure>
+	      <figure id="epdata_small"><img src="pictures/Fig-4-Energetic-proton-data-from-the-Los-Alamos-National-Laboratory-LANL-Synchronous.png"/><figcaption>Energetic particles (obs.)</figcaption></figure>
+	      <figure id="imagefuv_small"><img src="pictures/Fig-11-Maps-of-Northern-Hemisphere-FUV-emission-converted-to-electron-energy-flux-mWm.png"/><figcaption>Auroral brightening (obs.)</figcaption></figure>
 	      </li>
 	      <li>Divide month into 30 minute time intervals</li>
 	      <li>Identify intervals in which multiple signatures occurred</li>
 	    </ul>
 	    <style>
+	      #substorm_id_overview figcaption, #substorm_id_overview figure{font-size:20px;line-height:25px; text-indent:0;}
 	      #challenges div div{width:45%;float:left; padding:2%;}
-	      #plasmoid_cropped{width:250px; position:absolute;}
-	      #satmags{width:60px; position:absolute;}
-	      #groundmags{width:120px; position:absolute;}
-	      #epdata_small{width:60px; position:absolute;}
-	      #imagefuv_small{width:60px; position:absolute;}
+	      #plasmoid_cropped, #plasmoid_cropped img{width:300px;}
+	      #plasmoid_cropped{position:absolute; top:200px;left:80px;}
+	      #satmags, #satmags img{width:170px;}
+	      #satmags{position:absolute; top:200px; left:400px;}
+	      #groundmags, #groundmags img{width:190px;}
+	      #groundmags{position:absolute;top:320px;left:80px;}
+	      #epdata_small, #epdata_small img{width:100px;}
+	      #epdata_small{ position:absolute; top:200px; left:600px}
+	      #imagefuv_small, #imagefuv_small img{width:110px; }
+	      #imagefuv_small{position:absolute; top:200px; left:760px}
+	      #substorm-signatures{padding-bottom:270px;}
 	    </style>
 	</div></section>
 	<section class="slide" id="combining_signatures"><div>
@@ -275,7 +280,7 @@
 	    <ul>
 	      <li>About me</li>
 	      <li>Model and project overview</li>
-	      <li>What a substorm is, and how to identify one</li>
+	      <li>Substorm identification</li>
 	      <li><b>Substorm validation results</b></li>
 	    </ul>
 	    <style>
@@ -287,9 +292,9 @@
 	    <h2>Skill scores measure the model's accuracy</h2>
 	    <div id="stats">
 	    <ul>
-	      <li>Heidke skill score: 0.126</li>
 	      <li>Total model substorms: 118</li>
 	      <li>Total observed substorms: 163</li>
+	      <li>Heidke skill score: 0.126</li>
 	    </ul>
 	    </div>
 	    
@@ -384,10 +389,15 @@
 	<section class="slide" id="next_steps"><div>
 	    <h2>What's next?</h2>
 	    <ul>
-	      <li>Better model of reconnection region
+	      <li>Better physics in reconnection region
 		<ul>
 		  <li>Reduce dependence on grid resolution</li>
 		  <li>Account for kinetic processes</li>
+		</ul>
+	      </li>
+	      <li>Uncertainty quantification
+		<ul>
+		  <li>Supports interpetation of model output</li>
 		</ul>
 	      </li>
 	      <li>Data assimilation
