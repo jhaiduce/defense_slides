@@ -29,8 +29,9 @@
   "dependencies": {
     "shower-core": "^2.1.0",
     "shower-material": "^2.1.2",
-    "shower-ribbon": "^3.1.2",
-    "shower-material-jhaiduce": "https://github.com/jhaiduce/material.git"
+    "shower-material-jhaiduce": "https://github.com/jhaiduce/material.git",
+    "shower-noribbon": "git://github.com/jhaiduce/noribbon.git",
+    "shower-ribbon": "^3.1.2"
   },
   "devDependencies": {
     "browser-sync": "^2.24.5",
