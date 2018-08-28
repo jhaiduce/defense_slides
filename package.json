@@ -27,11 +27,15 @@
     "README.md"
   ],
   "dependencies": {
+    "child-process": "^1.0.2",
+    "gulp-changed": "^3.2.0",
     "shower-core": "^2.1.0",
     "shower-material": "^2.1.2",
     "shower-material-jhaiduce": "https://github.com/jhaiduce/material.git",
     "shower-noribbon": "git://github.com/jhaiduce/noribbon.git",
-    "shower-ribbon": "^3.1.2"
+    "shower-ribbon": "^3.1.2",
+    "through2": "^2.0.3",
+    "vinyl-file": "^3.0.0"
   },
   "devDependencies": {
     "browser-sync": "^2.24.5",
