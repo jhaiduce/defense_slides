@@ -47,20 +47,16 @@ with Magnetohydrodynamic Simulations</h2>
 	      #title_backgroundonly img{width:100%;position:absolute;top:0px; left:0px;}
 	    </style>
 	</div></section>
-	<section class="slide" id="summary"><div>
-	    <h2>Summary</h2>
-	    <ul>
-	      <li>The space environment</li>
-	      <li>Model overview</li>
-	      <li>Isotropic boundaries</li>
-	      <li>Substorm identification</li>
-	      <li>Conclusions</li>
-	    </ul>
-	    <style>
-	      #methodology li{font-size:1.25em;}
-	      #methodology ol{padding-top:2em;}
-	    </style>
-	</div></section>
+	<div class="slide" id="TableOfContents">
+	  <div>
+            <section>
+              <header>
+                <h2>Summary</h2>
+              </header>
+              <nav class="shower toc"></nav>
+            </section>
+	  </div>
+	</div>
 	<section class="slide" id="objectives"><div>
 	    <img src="pictures/applications.png" id="applications">
 	    <div>
@@ -86,6 +82,10 @@ with Magnetohydrodynamic Simulations</h2>
 	      }
 	    </style>
 	</div></section>
+	<section class="slide" id="model_overview"><div>
+	    <h2>Summary</h2>
+	    <nav class="toc"/>
+	</div></section>
 	<section class="slide" id="movie_demo"><div>
 	    <h2>Space Weather Modeling Framework</h2>
 	    <img id="operational" src="pictures/swmf_operational_adjusted.svg">
@@ -97,6 +97,10 @@ with Magnetohydrodynamic Simulations</h2>
 	      #movie_demo h2{position:absolute; top:20px; z-index:1;}
 	      #operational{height:85%; float:left; position:absolute; left:10px; top:70px; z-index:0;}
 	    </style>
+	</div></section>
+	<section class="slide" id="model_validation"><div>
+	    <h2>Summary</h2>
+	    <nav class="toc"/>
 	</div></section>
 	<section class="slide"><div>
 	    <h2>Geomagnetic indices</h2>
@@ -145,6 +149,10 @@ with Magnetohydrodynamic Simulations</h2>
 	      #al_dist{width:100%; position:relative; top:-30px;}
 	    </style>
 	</div></section>
+	<section class="slide" id="isotropic_boundaries"><div>
+	    <h2>Summary</h2>
+	    <nav class="toc"/>
+	</div></section>
 	<section class="slide"><div>
 	    <h2>Isotropic boundary is the result of pitch-angle scattering</h2>
 	</div></section>
@@ -165,6 +173,10 @@ with Magnetohydrodynamic Simulations</h2>
 	</div></section>
 	<section class="slide"><div>
 	    <h2>Correction reduces <i>K</i></h2>
+	</div></section>
+	<section class="slide" id="substorm_identification"><div>
+	    <h2>Summary</h2>
+	    <nav class="toc"/>
 	</div></section>
 	<section class="slide"><div>
 	    <h2>Storm solar wind driving</h2>
@@ -310,19 +322,6 @@ with Magnetohydrodynamic Simulations</h2>
 
 	    </style>
 	</div></section>
-	<section class="slide" id="summary_results"><div>
-	    <h2>Summary</h2>
-	    <ul>
-	      <li>About me</li>
-	      <li>Model and project overview</li>
-	      <li>Substorm identification</li>
-	      <li><b>Substorm validation results</b></li>
-	    </ul>
-	    <style>
-	      #methodology li{font-size:1.25em;}
-	      #methodology ol{padding-top:2em;}
-	    </style>
-	</div></section>
 	<section class="slide" id="predictive_skill"><div>
 	    <h2>Skill scores measure the model's accuracy</h2>
 	    <div id="stats">
@@ -457,6 +456,71 @@ with Magnetohydrodynamic Simulations</h2>
 		-->
 	<div class="progress"><div></div></div>
 	<script src="node_modules/shower-core/shower.min.js"></script>
+	<script>
+
+	  // Table of contents entries
+	  var tocEntries = [
+	      {"index": "the_space_environment", "title": "The space environment"},
+	      {"index": "model_overview", "title": "Model overview"},
+	      {"index": "model_validation", "title": "Model validation"},
+	      {"index": "isotropic_boundaries", "title": "Isotropic boundaries"},
+	      {"index": "substorm_identification", "title": "Substorm identification"},
+	      {"index": "conclusions", "title": "Conclusions"},
+	  ];
+
+	  function makeToc(tocEntries)
+	  {
+	      // Create UL element
+	      var ul=document.createElement('ul');
+	      
+	      tocEntries.forEach(function(entry,index){
+
+		  // Make the LI element
+		  li=document.createElement('li')
+		  text=document.createTextNode(entry['title'])
+		  li.appendChild(text)
+
+		  // Set the class so we can find elements later
+		  li.classList.add(entry['index'])
+
+		  // Add to list
+		  ul.appendChild(li)
+	      });
+	      return ul;
+	  };
+
+
+	  // Create a new style element
+	  var style = (function() {
+	      // Create the <style> tag
+	      var style = document.createElement("style");
+	      
+	      // WebKit hack
+	      style.appendChild(document.createTextNode(""));
+
+	      // Add the <style> element to the page
+	      document.head.appendChild(style);
+  
+	      console.log(style.sheet.cssRules); // length is 0, and no rules
+
+	      return style;
+	  })();
+	  
+	  window.onload=function(){
+
+	      // Insert TOC's into document
+	      var pendingElements = document.getElementsByClassName('toc');
+	      Array.prototype.filter.call(pendingElements,function(element){
+		  element.appendChild(makeToc(tocEntries));
+	      });
+
+	      // CSS rules to bolden active elements of TOC
+	      tocEntries.forEach(function(entry,index){
+		  id=entry['index']
+		  style.sheet.insertRule('#'+id+' li.'+id+'{font-weight:bold}');
+	      });
+	  }
+	</script>
 	<!-- Copyright © 2015 John Haiducek -->
 </body>
 </html>
