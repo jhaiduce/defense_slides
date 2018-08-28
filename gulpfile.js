@@ -63,6 +63,15 @@ gulp.task('prepare', () => {
             path.dirname = 'shower/themes/ribbon/' + path.dirname;
         }));
 
+    const noribbon = gulp.src([
+            '**', '!package.json'
+        ], {
+            cwd: 'node_modules/shower-noribbon'
+        })
+        .pipe(rename( (path) => {
+            path.dirname = 'shower/themes/noribbon/' + path.dirname;
+        }));
+
     const pictures = gulp.src([
 	'pictures/**'
     ])
@@ -73,7 +82,7 @@ gulp.task('prepare', () => {
 	path.dirname = 'pictures' + path.dirname
     }));
 
-    const themes = merge(material, ribbon)
+    const themes = merge(material, ribbon, noribbon)
         .pipe(replace(
             /(<script src=")(\/shower-core\/)(shower.min.js"><\/script>)/,
             '$1../../$3', { skipBinary: true }
