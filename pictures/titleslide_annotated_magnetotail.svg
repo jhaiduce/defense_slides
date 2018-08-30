@@ -15,21 +15,7 @@
    height="1080"
    viewBox="0 0 1920 1080"
    sodipodi:docname="titleslide_annotated_magnetotail.svg"
-   inkscape:version="0.92.2 (5c3e80d, 2017-08-06)">
-  <metadata
-     id="metadata8">
-    <rdf:RDF>
-      <cc:Work
-         rdf:about="">
-        <dc:format>image/svg+xml</dc:format>
-        <dc:type
-           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title></dc:title>
-      </cc:Work>
-    </rdf:RDF>
-  </metadata>
-  <defs
-     id="defs6" />
+   inkscape:version="0.91 r13725">
   <sodipodi:namedview
      pagecolor="#ffffff"
      bordercolor="#666666"
@@ -50,20 +36,34 @@
      inkscape:window-y="27"
      inkscape:window-maximized="0"
      inkscape:current-layer="svg2" />
+  <metadata
+     id="metadata8">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title />
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <defs
+     id="defs6" />
   <path
-     style="fill:none;fill-rule:evenodd;stroke:#f5f5f5;stroke-width:4;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;stroke-miterlimit:4;stroke-dasharray:none"
-     d="m 1534.8503,295.32934 -22.994,-20.11976 -968.62277,451.25749 31.61677,20.11976"
+     inkscape:connector-curvature="0"
      id="path4567"
-     inkscape:connector-curvature="0" />
+     d="m 1534.8503,295.32934 -22.994,-20.11976 -968.62277,451.25749 31.61677,20.11976"
+     style="fill:none;fill-rule:evenodd;stroke:#f5f5f5;stroke-width:4;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;stroke-miterlimit:4;stroke-dasharray:none" />
   <text
-     xml:space="preserve"
-     style="font-style:normal;font-weight:normal;font-size:40px;line-height:25px;font-family:Sans;letter-spacing:0px;word-spacing:0px;fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
-     x="515.38562"
-     y="882.67548"
+     transform="rotate(-26.683027)"
      id="text4571"
-     transform="rotate(-26.683027)"><tspan
-       sodipodi:role="line"
-       id="tspan4569"
+     y="882.67548"
+     x="515.38562"
+     style="stroke-width:1px;stroke-linejoin:miter;letter-spacing:0px;font-family:DejaVu Sans;stroke-opacity:1;fill-opacity:1;font-size:40px;line-height:25px;word-spacing:0px;stroke:none;stroke-linecap:butt;font-weight:normal;font-style:normal;fill:#ffffff"
+     xml:space="preserve"><tspan
+       y="882.67548"
        x="515.38562"
-       y="882.67548">Magnetotail</tspan></text>
+       id="tspan4569"
+       sodipodi:role="line">Magnetotail</tspan></text>
 </svg>
