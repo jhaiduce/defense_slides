@@ -76,7 +76,8 @@ gulp.task('prepare', () => {
 	'pictures/**'
     ]).pipe(
 	changed('prepared/pictures')
-    ).pipe(makePictures()
+    ).pipe(makePictures('python',/^plot_(.+)\.py$/,'$1.svg')
+	  ).pipe(makePictures('python',/^write_(.+)\.py$/,'$1.html')
     ).pipe(rename( (path) => {
 	path.dirname = 'pictures' + path.dirname
     }));
@@ -132,7 +133,7 @@ gulp.task('serve', () => {
     });
 });
 
-var makePictures = function () {
+var makePictures = function (executable,matchRule,replaceRule) {
     return through.obj(function (vinylFileIn, encoding, callback) {
 
 	// 1. clone new vinyl file for manipulation
@@ -145,13 +146,13 @@ var makePictures = function () {
 	// * contents can only be a Buffer, Stream, or null
 	// * This allows us to modify the vinyl file in memory and prevents the need to write back to the file system.
 
-	if(/^plot_(.+)\.py$/.test(vinylFileIn.basename))
+	if(matchRule.test(vinylFileIn.basename))
 	{
 	    console.log(vinylFileIn.basename)
 	    scriptname=String(vinylFileIn.basename)
 	    var cwd=String(vinylFileIn.dirname)
 	    console.log(cwd)
-	    var process=cp.spawn('python',[scriptname],options={'cwd':cwd})
+	    var process=cp.spawn(executable,[scriptname],options={'cwd':cwd})
 	    
 	    var lineReader = readline.createInterface(process.stdout, process.stdin);
 	    lineReader.on('line', function(line) {
@@ -159,7 +160,7 @@ var makePictures = function () {
 	    });
 
 	    process.on('close', function(code,signal){
-		newfilename=vinylFileIn.basename.replace(/^plot_(.+).py$/,'$1.svg');
+		newfilename=vinylFileIn.basename.replace(matchRule,replaceRule);
 		console.log(newfilename)
 		transformedFile = vinylFile.readSync(newfilename,
 						     options={'cwd':cwd});
