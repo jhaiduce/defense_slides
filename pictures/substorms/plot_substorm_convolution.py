@@ -50,9 +50,9 @@ datadir=config('DATADIR')
 signature_type_labels={
     'All':'All',
     'AL':'AL',
-    'image':'IMAGE/FUV',
+    'image':'IMAGE/\nFUV',
     'plasmoids':'Plasmoids',
-    'dipolarizations':'Dipolarizations',
+    'dipolarizations':'Dipolar-\nizations',
     'epdata':'LANL',
     'MPB':'MPB'
 }
@@ -70,10 +70,10 @@ def plot_convolution_score(signatures,ax,tmin,tmax,convolution_resolution=timede
 def make_convolution_figure(signatures,threshold,tstart,tend,bandwidth=timedelta(minutes=10)):
     onsets_all=find_convolution_onsets(signatures,threshold,bandwidth=bandwidth)
     onsets_all=[datetime(2005,1,1)+timedelta(0,s) for s in onsets_all]
-    fig=plt.figure(figsize=[5.5,5.5])
+    fig=plt.figure(figsize=[4.5,3.5])
     from matplotlib.gridspec import GridSpec
 
-    gs=GridSpec(len(signatures)+1,1,hspace=0,right=0.95,top=0.98,left=0.08,bottom=0.08)
+    gs=GridSpec(len(signatures)+1,1,hspace=0,right=0.95,top=0.98,left=0.1,bottom=0.1)
     axes=[]
 
     for i,key in enumerate(signatures.keys()):

@@ -194,9 +194,9 @@ def plot_sea_onset_comparison(run_name,var,ax):
 
 def plot_all_all_tiled_sea():
     from matplotlib.gridspec import GridSpec
-    fig=plt.figure(figsize=[5.5,6.5])
-    varlist=['bz','epsilon','al','MPB']
-    gs=GridSpec(len(varlist),len(run_properties)+1,hspace=0,right=0.98,top=0.95,wspace=0,left=0.12,bottom=0.09)
+    fig=plt.figure(figsize=[5.5,3.9])
+    varlist=['bz','al','MPB']
+    gs=GridSpec(len(varlist),len(run_properties)+1,hspace=0,right=0.98,top=0.95,wspace=0,left=0.12,bottom=0.12)
     axes=[]
     run_names=['obs']+[runprops['name'] for runprops in run_properties]
 
@@ -257,7 +257,7 @@ def plot_all_all_tiled_sea():
             remove_overhanging_labels(ax,fig,'x')
             remove_overhanging_labels(ax,fig,'y')
             
-    axes[3][0].legend(artists,labels,loc='best')
+    axes[2][0].legend(artists,labels,loc='best')
     fig.savefig('all_all_tiled_onsetcomp_sea.svg')
 
 if __name__=='__main__':

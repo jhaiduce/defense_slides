@@ -61,7 +61,7 @@ def plot_skill_score_v_count_ratio(runprops):
     skillscore_err_upper=skillscore_ci_upper-skillscores
     skillscore_err_lower=-(skillscore_ci_lower-skillscores)
 
-    fig=plt.figure()
+    fig=plt.figure(figsize=[4.5,3.5])
     lines=[]
     for i in range(total_obs_substorms.shape[0]):
         if obs_thresholds[i]==2.5:

@@ -94,7 +94,7 @@ with Magnetohydrodynamic Simulations</h2>
 	    </video>
 	    <style>
 	      #movie_demo video{width:630px; position:absolute; top:70px; left:390px; z-index:0;}
-	      #movie_demo h2{position:absolute; top:20px; z-index:1;}
+	      #movie_demo h2{position:absolute; top:15px; z-index:1;}
 	      #operational{height:85%; float:left; position:absolute; left:10px; top:70px; z-index:0;}
 	    </style>
 	</div></section>
@@ -305,7 +305,10 @@ with Magnetohydrodynamic Simulations</h2>
 	</div></section>
 	<section class="slide" id="combining_signatures"><div>
 	    <h2>Combining signatures</h2>
-	    <img src="pictures/substorms/substorm_convolution.svg"/>
+	    <img id="convolution" src="pictures/substorms/substorm_convolution.svg"/>
+	    <style>
+	      #convolution{width:65%; position:relative; top:-32px;}
+	    </style>
 	</div></section>
 	<section class="slide" id="predictive_skill"><div>
 	    <h2>Skill scores measure the model's accuracy</h2>
@@ -383,17 +386,28 @@ with Magnetohydrodynamic Simulations</h2>
 	<section class="slide"><div>
 	    <h2>Model has significant predictive skill</h2>
 	    <img id="score_v_count_ratio" src="pictures/substorms/score_v_count_ratio.svg"/>
-	</div></section>
+	  </div>
+	  <style>
+	    #score_v_count_ratio{width:65%; position:relative; top:-40px;}
+	  </style>
+	</section>
 	<section class="slide"><div>
 	    <h2>Combining signatures reduces false positives and data gaps</h2>
 	</div></section>
-	<section class="slide"><div>
+	<section class="slide" id="slide_sea"><div>
 	    <h2>Selected events look like substorms</h2>
 	    <img id="sea_plots" src="pictures/substorms/all_all_tiled_onsetcomp_sea.svg"/>
+	    <style>
+	      #slide_sea h2{position:relative; top:-50px;}
+	      #sea_plots{width:80%; position:relative; top:-80px;}
+	    </style>
 	</div></section>
 	<section class="slide"><div>
 	    <h2>Model produces realistic waiting times</h2>
-	    <img id="sea_plots" src="pictures/substorms/isi.svg"/>
+	    <img id="isi_plots" src="pictures/substorms/isi.svg"/>
+	    <style>
+	      #isi_plots{width:80%; position:relative; top:0px;}
+	    </style>
 	</div></section>
 	<section class="slide"><div>
 	    <h2>Conclusions</h2>
