@@ -282,18 +282,21 @@ with Magnetohydrodynamic Simulations</h2>
 	    <div id="convolution_text">
 	    <ol>
 	      <li>Convolve each onset list with a Gaussian kernel</li>
+	      \[\small f(t)=\sum_{i=1}^{n_{sigs}}\sum_{j=1}^{n_{onset}} \exp\left(-\frac{(t-\tau_{ij})^2}{2\sigma^2}\right)\]
+
 	      <li>Add convolved scores together</li>
 	      <li>Identify local maxima that exceed a threshold</li>
 	    </ol>
-	    Tuning parameters:
+
+	    <b>Tuning parameters:</b>
 	    <ul>
 	      <li>Kernel width</li>
 	      <li>Threshold</li>
 	    </ul>
 	    </div>
 	    <style>
-	      #convolution{width:65%; position:relative; top:-32px;}
-	      #convolution_text{position:absolute; top:100px; left:65%;}
+	      #convolution{width:65%; position:relative; top:-32px; left:-35px;}
+	      #convolution_text{position:absolute; top:100px; left:62%; line-height:1.5}
 	    </style>
 	</div></section>
 	<section class="slide" id="predictive_skill"><div>
@@ -488,6 +491,19 @@ with Magnetohydrodynamic Simulations</h2>
 		-->
 	<div class="progress"><div></div></div>
 	<script src="node_modules/shower-core/shower.min.js"></script>
+	<script async src="node_modules/html-import/src/html-import.js"></script>
+	<script type="text/x-mathjax-config">
+	  MathJax.Hub.Config({
+	      extensions: ["tex2jax.js"],
+	      jax: ["input/TeX", "output/HTML-CSS"],
+	      "HTML-CSS": {
+		  fonts: ["TeX"]
+	      },
+              MMLorHTML: {prefer: "HTML"},
+	      tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}
+	  });
+	</script>
+	<script type="text/javascript" src="node_modules/mathjax/MathJax.js" async></script>
 	<script>
 
 	  // Table of contents entries
