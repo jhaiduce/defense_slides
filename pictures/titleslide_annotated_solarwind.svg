@@ -15,7 +15,7 @@
    height="1080"
    viewBox="0 0 1920 1080"
    sodipodi:docname="titleslide_annotated_solarwind.svg"
-   inkscape:version="0.92.2 (5c3e80d, 2017-08-06)">
+   inkscape:version="0.92.3 (2405546, 2018-03-11)">
   <metadata
      id="metadata8">
     <rdf:RDF>
@@ -24,7 +24,7 @@
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title></dc:title>
+        <dc:title />
       </cc:Work>
     </rdf:RDF>
   </metadata>
@@ -39,13 +39,13 @@
      guidetolerance="10"
      inkscape:pageopacity="0"
      inkscape:pageshadow="2"
-     inkscape:window-width="1303"
+     inkscape:window-width="1280"
      inkscape:window-height="679"
      id="namedview4"
      showgrid="false"
      inkscape:zoom="0.34791667"
-     inkscape:cx="1014.4283"
-     inkscape:cy="540.8461"
+     inkscape:cx="1109.2786"
+     inkscape:cy="762.16346"
      inkscape:window-x="0"
      inkscape:window-y="27"
      inkscape:window-maximized="0"
@@ -65,7 +65,8 @@
        sodipodi:role="line"
        x="1790.6587"
        y="126.46707"
-       id="tspan850">Solar</tspan></text>
+       id="tspan850"
+       style="-inkscape-font-specification:'DejaVu Sans';font-family:'DejaVu Sans';font-weight:normal;font-style:normal;font-stretch:normal;font-variant:normal">Solar</tspan></text>
   <text
      xml:space="preserve"
      style="font-style:normal;font-weight:normal;font-size:40px;line-height:25px;font-family:Sans;letter-spacing:0px;word-spacing:0px;fill:#f9f9f9;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
@@ -75,5 +76,6 @@
        sodipodi:role="line"
        id="tspan854"
        x="1792.0957"
-       y="170.29939">Wind</tspan></text>
+       y="170.29939"
+       style="-inkscape-font-specification:'DejaVu Sans';font-family:'DejaVu Sans';font-weight:normal;font-style:normal;font-stretch:normal;font-variant:normal">Wind</tspan></text>
 </svg>

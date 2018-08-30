@@ -15,7 +15,7 @@
    height="1080"
    viewBox="0 0 1920 1080"
    sodipodi:docname="titleslide_annotated_earth.svg"
-   inkscape:version="0.92.2 (5c3e80d, 2017-08-06)">
+   inkscape:version="0.92.3 (2405546, 2018-03-11)">
   <metadata
      id="metadata8">
     <rdf:RDF>
@@ -24,7 +24,7 @@
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title></dc:title>
+        <dc:title />
       </cc:Work>
     </rdf:RDF>
   </metadata>
@@ -39,13 +39,13 @@
      guidetolerance="10"
      inkscape:pageopacity="0"
      inkscape:pageshadow="2"
-     inkscape:window-width="1303"
+     inkscape:window-width="1280"
      inkscape:window-height="679"
      id="namedview4"
      showgrid="false"
-     inkscape:zoom="0.24601423"
-     inkscape:cx="987.84145"
-     inkscape:cy="378.25388"
+     inkscape:zoom="0.98405692"
+     inkscape:cx="1621.8789"
+     inkscape:cy="639.02811"
      inkscape:window-x="0"
      inkscape:window-y="27"
      inkscape:window-maximized="0"
@@ -65,5 +65,6 @@
        sodipodi:role="line"
        x="1715.9149"
        y="353.08511"
-       id="tspan850-6">Earth</tspan></text>
+       id="tspan850-6"
+       style="-inkscape-font-specification:'DejaVu Sans';font-family:'DejaVu Sans';font-weight:normal;font-style:normal;font-stretch:normal;font-variant:normal">Earth</tspan></text>
 </svg>
