@@ -74,10 +74,9 @@ gulp.task('prepare', () => {
 
     const pictures = gulp.src([
 	'pictures/**'
-    ])
-	  /*.pipe(
+    ]).pipe(
 	changed('prepared/pictures')
-    )*/.pipe(makePictures()
+    ).pipe(makePictures()
     ).pipe(rename( (path) => {
 	path.dirname = 'pictures' + path.dirname
     }));
