@@ -283,8 +283,21 @@ with Magnetohydrodynamic Simulations</h2>
 	<section class="slide" id="combining_signatures"><div>
 	    <h2>Combining signatures</h2>
 	    <img id="convolution" src="pictures/substorms/substorm_convolution.svg"/>
+	    <div id="convolution_text">
+	    <ol>
+	      <li>Convolve each onset list with a Gaussian kernel</li>
+	      <li>Add convolved scores together</li>
+	      <li>Identify local maxima that exceed a threshold</li>
+	    </ol>
+	    Tuning parameters:
+	    <ul>
+	      <li>Kernel width</li>
+	      <li>Threshold</li>
+	    </ul>
+	    </div>
 	    <style>
 	      #convolution{width:65%; position:relative; top:-32px;}
+	      #convolution_text{position:absolute; top:100px; left:65%;}
 	    </style>
 	</div></section>
 	<section class="slide" id="predictive_skill"><div>
