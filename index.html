@@ -82,6 +82,18 @@ with Magnetohydrodynamic Simulations</h2>
 	      }
 	    </style>
 	</div></section>
+	<section class="slide"><div>
+	    <h2>Solar wind provides energy to the magnetosphere</h2>
+	    <video id="overview_movie" controls loop>
+	      <source src="movies/10623_Recon_Bounce_H264_1280x720_29.97.m4v"/>
+	    </video>
+	    <div id="overview_movie_credit">Walt Feimer, <br/> NASA SVS, 2010</div>
+	    <style>
+		#overview_movie{width:90%; position:relative; top:-25px; left:-50px;}
+		#overview_movie_credit{position:absolute; top:100px; left:82%;}
+	    </style>
+	    </div>
+	</div></section>
 	<section class="slide" id="model_overview"><div>
 	    <h2>Summary</h2>
 	    <nav class="toc"/>
@@ -103,25 +115,39 @@ with Magnetohydrodynamic Simulations</h2>
 	    <nav class="toc"/>
 	</div></section>
 	<section class="slide"><div>
-	    <h2>Geomagnetic indices</h2>
+	    <h2>Sym-H index estimates azimuthal current strength</h2>
+	    <img id="currents" src="pictures/Currents.jpg"/>
+	    <div id="currents_credit">From Stern (1994)</div>
+	    <div id="symh_currents_text">
+	      <b>Sym-H</b>
+	    <ul>
+	      <li>Computed from low-latitude magnetometers</li>
+	      <li>Sensitive to ring current</li>
+	    </ul>
+	    <style>
+	      #currents{width:60%; position:relative; top:-30px;}
+	      #currents_credit{position:absolute; top:91%; left:37%}
+	      #symh_currents_text{position:absolute; top:200px; left:63%}
+	    </style>
 	</div></section>
 	<section class="slide" id="symh_storms"><div>
 	    <h2>Model does great at predicting Sym-H</h2>
 	    <img class="symh_storms_timeseries" src="pictures/symh_storms_timeseries_build0.svg"/>
 	    <img class="next symh_storms_timeseries" src="pictures/symh_storms_timeseries_build2.svg"/>
 	    <div id="symh_bullets">
-	    <ul>
-	      <li>Sym-H
-		<ul>
-		  <li>Computed from low-latitude magnetometers</li>
-		  <li>Sensitive to ring current</li>
+	      <ul>
+		<li>Storm-time behavior
+		  <ul>
+		    <li>Ring current strengthens</li>
+		    <li>Sym-H turns negative</li>
 		  </ul>
-	      </li>
-	      <li>Good Sym-H predictions
-		<ul>
-		  <li>Indicate model has realistic ring currents</li>
-		  <li>Important for storm-time accuracy</li>
-		</ul>
+		</li>
+		<li>Good Sym-H predictions
+		  <ul>
+		    <li>Indicate model has realistic ring currents</li>
+		    <li>Important for storm-time accuracy</li>
+		  </ul>
+		</li>
 	    </ul>
 	    </div>
 	    <style>
@@ -136,6 +162,21 @@ with Magnetohydrodynamic Simulations</h2>
 	      #symh_error_interpolated{width:100%; position:relative; top:-30px;}
 	    </style>
 	</div></section>
+        <section class="slide" id="al_behavior"><div>
+            <h2>AL index responds to substorm electrojet current</h2>
+            <div id="mag_grid_sphere">
+              <img src="pictures/mag_grid_sphere_crosstailonly.svg"/>
+              <img class="next" src="pictures/mag_grid_sphere_nocurrentfield.svg"/>
+            </div>
+	    <img id="al_behavior_aual" class="next" src="pictures/aual.svg"/>
+            <style>
+              #mag_grid_sphere{width:116%; position:relative; top:-60px; left:-8%; z-index:0;}
+              #mag_grid_sphere img{width:100%; position:absolute; top:0px; left:0px;}
+              #al_behavior h2{position:relative; z-index:1;}
+              #al_behavior{background-color:black;}
+	      #al_behavior_aual{position:absolute; top:220px; left:770px; width:225px;}
+            </style>
+        </div></section>
 	<section class="slide" id="al_overview"><div>
 	    <h2>Strongly negative AL is missed</h2>
 	    <img id="al_dist" src="pictures/AL_interpolated_error_log_norcm.svg"/>
@@ -147,20 +188,9 @@ with Magnetohydrodynamic Simulations</h2>
 	    <h2>Summary</h2>
 	    <nav class="toc"/>
 	</div></section>
-	<section class="slide"><div>
-	    <h2>Solar wind provides energy to the magnetosphere</h2>
-	    <video id="overview_movie" controls loop>
-	      <source src="movies/10623_Recon_Bounce_H264_1280x720_29.97.m4v"/>
-	    </video>
-	    <div id="overview_movie_credit">Walt Feimer, <br/> NASA SVS, 2010</div>
-	    <style>
-		#overview_movie{width:90%; position:relative; top:-25px; left:-50px;}
-		#overview_movie_credit{position:absolute; top:100px; left:82%;}
-	    </style>
-	    </div>
-	</div></section>
 	<section class="slide" id="methodology"><div>
 	    <h2>Substorm validation effort</h2>
+	    <h3>Can SWMF predict substorms?</h3>
 	    <ol>
 	      <li>Use a &ldquo;vanilla&rdquo; SWMF global magnetosphere set-up</li>
 	      <li>Feed a month (January, 2005) of observed solar wind data into it</li>
@@ -168,7 +198,7 @@ with Magnetohydrodynamic Simulations</h2>
 	    </ol>
 	    <style>
 	      #methodology li{font-size:1.25em;}
-	      #methodology ol{padding-top:2em;}
+	      #methodology h3{padding-top:1em;}
 	    </style>
 	</div></section>
 	<section class="slide" id="id_example"><div>
@@ -186,9 +216,9 @@ with Magnetohydrodynamic Simulations</h2>
             <h2>Substorm currents affect magnetic fields</h2>
             <div id="mag_grid_sphere">
               <img src="pictures/mag_grid_sphere_crosstailonly.svg"/>
-              <img class="next" src="pictures/mag_grid_sphere_nocurrentfield.svg"/>
+              <img src="pictures/mag_grid_sphere_nocurrentfield.svg"/>
             </div>
-	    <img id="aual" class="next" src="pictures/aual.svg"/>
+	    <img id="aual" src="pictures/aual.svg"/>
 	    <img id="mpb" class="next" src="pictures/mpb.svg"/>
             <style>
               #mag_grid_sphere{width:116%; position:relative; top:-60px; left:-8%; z-index:0;}
@@ -205,7 +235,7 @@ with Magnetohydrodynamic Simulations</h2>
 	    <div id="lanl_epdata_credit">Henderson, 2009</div>
 	    <ul>
 	      <li>LANL SOPA instrument detects particle fluxes in geosynchronous orbit</li>
-	      <li>Visually inspected particle data for dispersionless injections</li>
+	      <li>Use list from Borovsky (2017)</li>
 	    </ul>
 	    <style>
 	      img#lanl_epdata{width:42%; position:absolute; left:50%; top:5px;}
@@ -293,6 +323,10 @@ with Magnetohydrodynamic Simulations</h2>
 	      #convolution_text{position:absolute; top:100px; left:62%; line-height:1.5}
 	    </style>
 	</div></section>
+	<section class="slide" id="substorm_results"><div>
+	    <h2>Summary</h2>
+	    <nav class="toc"/>
+	</div></section>
 	<section class="slide" id="predictive_skill"><div>
 	    <h2>Skill scores measure the model's accuracy</h2>
 	    <div id="stats">
@@ -371,7 +405,7 @@ with Magnetohydrodynamic Simulations</h2>
 	    <img id="score_v_count_ratio" src="pictures/substorms/score_v_count_ratio.svg"/>
 	  </div>
 	  <style>
-	    #score_v_count_ratio{width:65%; position:relative; top:-40px;}
+	    #score_v_count_ratio{width:65%; position:relative; top:-30px; left:20%}
 	  </style>
 	</section>
 	<section class="slide"><div>
@@ -380,15 +414,21 @@ with Magnetohydrodynamic Simulations</h2>
 	      <link rel="html-import" href="pictures/substorms/signature_comparison_table.html"/>
 	    </div>
 	    <style>
+	      #substorm_results_table{position:relative; left:20%; top:20px}
 	      #substorm_results_table td, #substorm_results_table th{text-align:center; line-height:1.5;}
 	    </style>
 	</div></section>
 	<section class="slide" id="slide_sea"><div>
-	    <h2>Selected events look like substorms</h2>
+	    <h2>Events have characteristic substorm response</h2>
 	    <img id="sea_plots" src="pictures/substorms/all_all_tiled_onsetcomp_sea.svg"/>
+	    <ul>
+	      <li>Lines show median of onsets</li>
+	      <li>Model under-predicts AL strength, over-predicts MPB strength</li>
+	    </ul>
 	    <style>
 	      #slide_sea h2{position:relative; top:-50px;}
-	      #sea_plots{width:80%; position:relative; top:-80px;}
+	      #sea_plots{width:80%; position:relative; top:-80px; left:-50px;}
+	      #slide_sea ul{position:absolute; left:75%; top:100px;}
 	    </style>
 	</div></section>
 	<section class="slide"><div>
@@ -518,10 +558,11 @@ with Magnetohydrodynamic Simulations</h2>
 
 	  // Table of contents entries
 	  var tocEntries = [
-	      {"index": "the_space_environment", "title": "The space environment"},
+	      {"index": "the_space_environment", "title": "What is a substorm"},
 	      {"index": "model_overview", "title": "Model overview"},
 	      {"index": "model_validation", "title": "Model validation"},
 	      {"index": "substorm_identification", "title": "Substorm identification"},
+	      {"index": "substorm_results", "title": "Identification results"},
 	      {"index": "conclusions", "title": "Conclusions"},
 	  ];
 
@@ -578,6 +619,6 @@ with Magnetohydrodynamic Simulations</h2>
 	      });
 	  }
 	</script>
-	<!-- Copyright © 2015 John Haiducek -->
+<!-- Copyright © 2015 John Haiducek -->
 </body>
 </html>
