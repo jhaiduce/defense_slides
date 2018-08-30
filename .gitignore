@@ -1,3 +1,12 @@
 node_modules
 prepared
 archive.zip
+*~
+*.pyc
+*.pkl
+pictures/substorms/all_all_tiled_onsetcomp_sea.svg
+pictures/substorms/isi.svg
+pictures/substorms/roc_curves.svg
+pictures/substorms/score_v_count_ratio.svg
+pictures/substorms/signature_comparison_table.html
+pictures/substorms/substorm_convolution.svg
