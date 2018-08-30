@@ -282,7 +282,7 @@ with Magnetohydrodynamic Simulations</h2>
 	    <div id="convolution_text">
 	    <ol>
 	      <li>Convolve each onset list with a Gaussian kernel</li>
-	      \[\small f(t)=\sum_{i=1}^{n_{sigs}}\sum_{j=1}^{n_{onset}} \exp\left(-\frac{(t-\tau_{ij})^2}{2\sigma^2}\right)\]
+	      \[\small f(t)=\sum_{i=1}^{n_{onset}} \exp\left(-\frac{(t-\tau_{i})^2}{2\sigma^2}\right)\]
 
 	      <li>Add convolved scores together</li>
 	      <li>Identify local maxima that exceed a threshold</li>
