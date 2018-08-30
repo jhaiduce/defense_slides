@@ -199,10 +199,6 @@ def plot_all_all_tiled_sea():
     gs=GridSpec(len(varlist),len(run_properties)+1,hspace=0,right=0.98,top=0.95,wspace=0,left=0.12,bottom=0.12)
     axes=[]
     run_names=['obs']+[runprops['name'] for runprops in run_properties]
-
-    labelpos=(0.94,0.94)
-    from string import ascii_lowercase
-    subplot_labels=[ascii_lowercase[i] for i in range(len(varlist)*len(run_names))]
     
     for i in range(len(varlist)):
         axes.append([])
@@ -213,10 +209,6 @@ def plot_all_all_tiled_sea():
                 ax_kwargs={}
             ax=fig.add_subplot(gs[i,j],**ax_kwargs)
             axes[i].append(ax)
-
-            # Add a label to the axis
-            label=subplot_labels[i+j*len(varlist)]
-            text=ax.text(labelpos[0],labelpos[1],label,transform=ax.transAxes,weight='bold',fontsize=11,verticalalignment='top',color='k',horizontalalignment='right')
 
             var=varlist[i]
             run_name=run_names[j]
