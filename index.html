@@ -274,25 +274,31 @@ with Magnetohydrodynamic Simulations</h2>
 	</div></section>
 	<section class="slide" id="combining_signatures"><div>
 	    <h2>Combining signatures</h2>
-	    <img id="convolution" src="pictures/substorms/substorm_convolution.svg"/>
 	    <div id="convolution_text">
 	    <ol>
-	      <li>Convolve each onset list with a Gaussian kernel</li>
-	      \[\small f(t)=\sum_{i=1}^{n_{onset}} \exp\left(-\frac{(t-\tau_{i})^2}{2\sigma^2}\right)\]
-
-	      <li>Add convolved scores together</li>
-	      <li>Identify local maxima that exceed a threshold</li>
+	      <li>Convolve each onset list with a Gaussian kernel
+	      	<img class="convolution" src="pictures/substorms/substorm_convolution_build0.svg"/>
+	      </li>
+	      <li class="next">Add convolved scores together
+	      	<img class="convolution" src="pictures/substorms/substorm_convolution_build1.svg"/>
+	      </li>
+	      <li class="next">Identify local maxima that exceed a threshold
+	      	<img class="convolution" src="pictures/substorms/substorm_convolution.svg"/>
+	      </li>
 	    </ol>
 
+	    <div class="next">
 	    <b>Tuning parameters:</b>
 	    <ul>
-	      <li>Kernel width</li>
-	      <li>Threshold</li>
+	      <li>Kernel width = 10 min</li>
+	      <li>Threshold = 2.5</li>
+	      <li>Could be different for model and observations</li>
 	    </ul>
 	    </div>
+	    </div>
 	    <style>
-	      #convolution{width:65%; position:relative; top:-32px; left:-35px;}
-	      #convolution_text{position:absolute; top:100px; left:62%; line-height:1.5}
+	      img.convolution{width:550px; position:fixed; top:110px; left:20px;}
+	      #convolution_text{position:absolute; top:100px; left:60%; line-height:1.5}
 	    </style>
 	</div></section>
 	<section class="slide" id="substorm_results"><div>
@@ -372,12 +378,20 @@ with Magnetohydrodynamic Simulations</h2>
 }
 	    </style>
 	</div></section>
-	<section class="slide"><div>
+	<section class="slide" id="hss_v_count_ratio"><div>
 	    <h2>Model has significant predictive skill</h2>
-	    <img id="score_v_count_ratio" src="pictures/substorms/score_v_count_ratio.svg"/>
+	    <ul>
+	      <li>95% confidence interval shows skill is significant
+		<img id="score_v_count_ratio_build0" class="score_v_count_ratio" src="pictures/substorms/score_v_count_ratio_build0.svg"/>
+	      </li>
+	      <li class="next">Significance persists when thresholds are varied
+		<img id="score_v_count_ratio_build1" class="score_v_count_ratio" src="pictures/substorms/score_v_count_ratio_build1.svg"/>
+	      </li>
+	      <img id="score_v_count_ratio" class="score_v_count_ratio next" src="pictures/substorms/score_v_count_ratio.svg"/>
 	  </div>
 	  <style>
-	    #score_v_count_ratio{width:65%; position:relative; top:-30px; left:20%}
+	    img.score_v_count_ratio{width:700px; position:fixed; top:105px; left:30px}
+	    #hss_v_count_ratio ul{position:relative; left:700px; width:250px}
 	  </style>
 	</section>
 	<section class="slide"><div>

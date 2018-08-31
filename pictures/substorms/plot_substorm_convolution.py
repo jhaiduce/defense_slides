@@ -67,7 +67,7 @@ def plot_convolution_score(signatures,ax,tmin,tmax,convolution_resolution=timede
     ax.plot(times,scores)
     return scores,times
 
-def make_convolution_figure(signatures,threshold,tstart,tend,bandwidth=timedelta(minutes=10)):
+def make_convolution_figure(signatures,threshold,tstart,tend,bandwidth=timedelta(minutes=10),show_onsets=True,show_all=True,show_threshold=True):
     onsets_all=find_convolution_onsets(signatures,threshold,bandwidth=bandwidth)
     onsets_all=[datetime(2005,1,1)+timedelta(0,s) for s in onsets_all]
     fig=plt.figure(figsize=[4.5,3.5])
@@ -83,34 +83,30 @@ def make_convolution_figure(signatures,threshold,tstart,tend,bandwidth=timedelta
         ax.set_ylabel(signature_type_labels[key])
         ax.set_xlim(tstart,tend)
 
-    ax=fig.add_subplot(gs[-1,0])
-    axes.append(ax)
-    ax.set_ylabel('All')
-    scores,times=plot_convolution_score(signatures,ax,tstart,tend,bandwidth=bandwidth)
-    ax.axhline(threshold,color='r',alpha=0.5,linewidth=1)
-    ax.set_xlim(tstart,tend)
+    if show_all:
+        ax=fig.add_subplot(gs[-1,0])
+        axes.append(ax)
+        ax.set_ylabel('All')
+        scores,times=plot_convolution_score(signatures,ax,tstart,tend,bandwidth=bandwidth)
+        ax.set_xlim(tstart,tend)
+        if show_threshold:
+            ax.text(tstart+timedelta(seconds=(tend-tstart).total_seconds()*0.3),threshold+0.1,'threshold',fontsize=6)
+            ax.axhline(threshold,color='r',alpha=0.5,linewidth=1)
     
-    labelpos=(0.98,0.94)
-    from string import ascii_lowercase
-    subplot_labels=[ascii_lowercase[i] for i in range(len(signatures)+1)]
-
     from matplotlib.dates import DateFormatter
     for i,ax in enumerate(axes):
-        if i==len(signatures):
+        if i==len(axes)-1:
             ax.xaxis.set_major_formatter(DateFormatter('%H:%M'))
             ax.set_xlabel(tstart.strftime('Universal time, %d %b %Y'))
         else:
             plt.setp(ax.get_xticklabels(),visible=False)
 
-        # Add a label to the axis
-        label=subplot_labels[i]
-        text=ax.text(labelpos[0],labelpos[1],label,transform=ax.transAxes,weight='bold',fontsize=11,verticalalignment='top',color='k',horizontalalignment='right')
-
         ax.tick_params('x',which='both',direction='inout',top=True)
         ax.yaxis.set_major_locator(plt.MaxNLocator(3,integer=True))
 
-        for onset in onsets_all:
-            ax.axvline(onset,linewidth=0.5,color='k',linestyle='--')
+        if show_onsets:
+            for onset in onsets_all:
+                ax.axvline(onset,linewidth=0.5,color='k',linestyle='--')
 
         ymin,ymax=ax.get_ylim()
         min_ymax=1.2
@@ -127,7 +123,7 @@ def make_convolution_figure(signatures,threshold,tstart,tend,bandwidth=timedelta
 
 if __name__=='__main__':
     obs_signatures=get_obs_signature_lists(datadir=datadir)
-    threshold=1.5
+    threshold=2.5
     tstart=datetime(2005,1,22)
     tend=datetime(2005,1,23)
     fig=make_convolution_figure(obs_signatures,threshold,tstart,tend,bandwidth=timedelta(minutes=10))

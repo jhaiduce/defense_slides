@@ -45,12 +45,16 @@ tstep=timedelta(0,1800)
 
 obs_signatures=get_obs_signature_lists(datadir=datadir)
 
-def get_sweep_substorm_bins(obs_signatures,run_signatures,convolution_resolution=timedelta(0,60),bandwidth=timedelta(0,10*60)):
+def get_sweep_substorm_bins(obs_signatures,run_signatures,convolution_resolution=timedelta(0,60),bandwidth=timedelta(0,10*60),obs_thresholds=None,model_thresholds=None):
 
     obs_scores,obs_tnums=convolved_substorm_scores(obs_signatures,resolution=convolution_resolution,bandwidth=bandwidth)
     substorms=[]
-    obs_thresholds=np.array([1,2.0,2.5,3])
-    model_thresholds=np.linspace(0,7,15)
+    
+    if obs_thresholds is None:
+        obs_thresholds=np.array([1,2.0,2.5,3])
+        
+    if model_thresholds is None:
+        model_thresholds=np.linspace(0,7,15)
 
     for obs_threshold in obs_thresholds:
         substorms.append([])
