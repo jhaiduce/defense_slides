@@ -158,6 +158,11 @@ var makePictures = function (executable,matchRule,replaceRule) {
 	    lineReader.on('line', function(line) {
 		console.log('Line: ' + line);
 	    });
+	    
+	    var lineReaderErr = readline.createInterface(process.stderr, process.stdin);
+	    lineReaderErr.on('line',  function(line) {
+		console.error('Line: ' + line);
+	    });
 
 	    process.on('close', function(code,signal){
 		newfilename=vinylFileIn.basename.replace(matchRule,replaceRule);
