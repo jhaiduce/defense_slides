@@ -99,9 +99,8 @@ table_data=get_table_data(table_signatures)
 run_names=[runprops['name'] for runprops in run_properties]
 
 texstr='<table>\n'
-texstr+='<thead><tr>\n'
-texstr+='<td/><td/><td/><th colspan="2" scope="colgroup">Heidke skill</td></tr>\n'
-texstr+='<tr><td/><th>SWMF events</th><th>Obs. events</th><th>Same signature</th><th>All signatures</th>\n'
+texstr+='<thead>\n'
+texstr+='<tr><td/><th>SWMF events</th><th>Obs. events</th>\n'
 texstr+='</tr></thead>\n'
 
 def ci_to_err(value,ci):
@@ -130,7 +129,7 @@ for i,(run_name,run_data) in enumerate(zip(run_names,table_data)):
         signature_hit_rate_err=ci_to_err(signature_hit_rate,signature_false_alarm_rate_ci)
         signature_false_alarm_rate_err=ci_to_err(signature_false_alarm_rate,signature_false_alarm_rate_ci)
         
-        line='<tr><th scope="row">{signature}</th><td>{run_total}</td><td>{obs_total}</td><td>{sig_skill}</td><td>{all_skill}</td></tr>'.format(
+        line='<tr><th scope="row">{signature}</th><td>{run_total}</td><td>{obs_total}</td></tr>'.format(
             signature=signature,
             run_total=latex_format_int(run_total),
             obs_total=latex_format_int(obs_total),
