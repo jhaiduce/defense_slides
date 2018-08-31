@@ -76,53 +76,6 @@ seadata={
     'MPB':['MPB ($nT^4$)',obs_mpb_v,obs_mpb_t]
 }
 
-def plot_sea(ax,onsets,data,times,color,**kwargs):
-    x,median,bound_low,bound_high=get_sea_curves(data,times,onsets)
-    show_iqr=False
-    if show_iqr:
-        polies=ax.fill_between(x,bound_low,bound_high,facecolor=iqr_color,alpha=0.5,edgecolor=iqr_color)
-    else:
-        iqr_color='none'
-        hatch=None
-        polies=ax.fill_between(x,median,median,facecolor=iqr_color,alpha=0.5,edgecolor=iqr_color)
-    #polies=ax.plot(mysea.x,mysea.bound_low.ravel(),linestyle='--',color=color,alpha=0.5)
-    #polies=ax.plot(mysea.x,mysea.bound_high.ravel(),linestyle='--',color=color,alpha=0.5)
-    line,=ax.plot(x,median,color=color,**kwargs)
-    return line,polies
-
-def plot_onset_sea(signatures,threshold,data,times,ylabel,ax):
-    onsets=find_convolution_onsets(signatures,threshold)
-    onsets=[datetime(2005,1,1)+timedelta(0,s) for s in onsets]
-    
-    line,polies=plot_sea(ax,onsets,data,times,color=run_colors['All'],
-                         linestyle=run_linestyles['All'],linewidth=2)
-    lines=[line]
-    polycols=[polies]
-    
-    for key in signature_types:
-        if key=='All': continue
-        if key in signatures:
-            onsets=signatures[key]
-            onsets=[datetime(2005,1,1)+timedelta(0,s) for s in onsets]
-            if len(onsets)==0: continue
-            line,polies=plot_sea(ax,onsets,data,times,color=run_colors[key],
-                                 linestyle=run_linestyles[key])
-            lines.append(line)
-            polycols.append(polies)
-        else:
-            from matplotlib.lines import Line2D
-            from matplotlib.patches import Patch
-            lines.append(Line2D([],[],color=run_colors[key],
-                                 linestyle=run_linestyles[key]))
-            polycols.append(Patch(color='none',edgecolor='none'))
-    
-    ax.autoscale(False)
-    ax.axhline(0,color='k',linestyle=':')
-    ax.axvline(0,color='k',linestyle=':')
-    ax.set_ylabel(ylabel)
-    ax.set_xlabel('Time since onset (h)')
-    return zip(polycols,lines),[signature_type_labels[key] for key in signature_types]
-
 obs_substorms,obs_onsets=find_substorms_convolution(obs_signatures,obs_threshold,tstep=tstep,return_times=True)
 
 run_onsets={}
@@ -153,7 +106,61 @@ run_linestyles={run:linestyle for run,linestyle in zip(
 )}
 
 
-def plot_sea_onset_comparison(run_name,var,ax):
+def plot_sea(ax,onsets,data,times,color,show_iqr=False,**kwargs):
+    x,median,bound_low,bound_high=get_sea_curves(data,times,onsets)
+    iqr_color=color
+    if show_iqr:
+        polies=ax.fill_between(x,bound_low,bound_high,facecolor=iqr_color,alpha=0.5,edgecolor=iqr_color)
+    else:
+        iqr_color='none'
+        hatch=None
+        polies=ax.fill_between(x,median,median,facecolor=iqr_color,alpha=0.5,edgecolor=iqr_color)
+    #polies=ax.plot(mysea.x,mysea.bound_low.ravel(),linestyle='--',color=color,alpha=0.5)
+    #polies=ax.plot(mysea.x,mysea.bound_high.ravel(),linestyle='--',color=color,alpha=0.5)
+    line,=ax.plot(x,median,color=color,**kwargs)
+    return line,polies
+
+def plot_onset_sea(signatures,threshold,data,times,ylabel,ax,signature_types=signature_types):
+    onsets=find_convolution_onsets(signatures,threshold)
+    onsets=[datetime(2005,1,1)+timedelta(0,s) for s in onsets]
+    
+    if len(signature_types)==1:
+        show_iqr=True
+    else:
+        show_iqr=False
+    
+    line,polies=plot_sea(ax,onsets,data,times,color=run_colors['All'],
+                         linestyle=run_linestyles['All'],linewidth=2,
+                         show_iqr=show_iqr)
+    lines=[line]
+    polycols=[polies]
+
+    for key in signature_types:
+        if key=='All': continue
+        if key in signatures:
+            onsets=signatures[key]
+            onsets=[datetime(2005,1,1)+timedelta(0,s) for s in onsets]
+            if len(onsets)==0: continue
+            line,polies=plot_sea(ax,onsets,data,times,color=run_colors[key],
+                                 linestyle=run_linestyles[key],
+                                 show_iqr=show_iqr)
+            lines.append(line)
+            polycols.append(polies)
+        else:
+            from matplotlib.lines import Line2D
+            from matplotlib.patches import Patch
+            lines.append(Line2D([],[],color=run_colors[key],
+                                 linestyle=run_linestyles[key]))
+            polycols.append(Patch(color='none',edgecolor='none'))
+    
+    ax.autoscale(False)
+    ax.axhline(0,color='k',linestyle=':')
+    ax.axvline(0,color='k',linestyle=':')
+    ax.set_ylabel(ylabel)
+    ax.set_xlabel('Time since onset (h)')
+    return zip(polycols,lines),[signature_type_labels[key] for key in signature_types]
+
+def plot_sea_onset_comparison(run_name,var,ax,signature_types=signature_types):
 
     if run_name=='obs':
 
@@ -162,7 +169,7 @@ def plot_sea_onset_comparison(run_name,var,ax):
 
         ylabel,data,times=seadata[var]
 
-        artists,labels=plot_onset_sea(obs_signatures,obs_threshold,data,times,ylabel,ax)
+        artists,labels=plot_onset_sea(obs_signatures,obs_threshold,data,times,ylabel,ax,signature_types=signature_types)
 
     else:
 
@@ -189,10 +196,10 @@ def plot_sea_onset_comparison(run_name,var,ax):
         seadata['al']=['AL (nT)',auroral_inds['AL'],al_time]
 
         ylabel,data,times=seadata[var]
-        artists,labels=plot_onset_sea(run_signatures,model_threshold,data,times,ylabel,ax)
+        artists,labels=plot_onset_sea(run_signatures,model_threshold,data,times,ylabel,ax,signature_types=signature_types)
     return artists,labels
 
-def plot_all_all_tiled_sea():
+def plot_all_all_tiled_sea(signature_types=signature_types):
     from matplotlib.gridspec import GridSpec
     fig=plt.figure(figsize=[5.5,3.9])
     varlist=['bz','al','MPB']
@@ -212,7 +219,7 @@ def plot_all_all_tiled_sea():
 
             var=varlist[i]
             run_name=run_names[j]
-            artists,labels=plot_sea_onset_comparison(run_name,var,ax)
+            artists,labels=plot_sea_onset_comparison(run_name,var,ax,signature_types=signature_types)
             ylabel,data,times=seadata[var]
             if j==0:
                 ax.set_ylabel(ylabel)
@@ -224,6 +231,8 @@ def plot_all_all_tiled_sea():
             else:
                 plt.setp(ax.get_xticklabels(),visible=False)
 
+            ax.yaxis.set_major_locator(plt.MaxNLocator(4))
+                
             ax.tick_params('x',which='both',direction='inout',top=True)
             ax.tick_params('y',which='both',direction='inout',top=True)
 
@@ -248,9 +257,11 @@ def plot_all_all_tiled_sea():
             ax=axes[i][j]
             remove_overhanging_labels(ax,fig,'x')
             remove_overhanging_labels(ax,fig,'y')
-            
-    axes[2][0].legend(artists,labels,loc='best')
-    fig.savefig('all_all_tiled_onsetcomp_sea.svg')
+
+    if len(signature_types)>1:
+        axes[2][0].legend(artists,labels,loc='best')
+    return fig
 
 if __name__=='__main__':
-    plot_all_all_tiled_sea()
+    fig=plot_all_all_tiled_sea()
+    fig.savefig('all_all_tiled_onsetcomp_sea.svg')
