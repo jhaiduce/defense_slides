@@ -362,10 +362,10 @@ with Magnetohydrodynamic Simulations</h2>
 	    <ul>
 	      <li>Total model substorms: 97</li>
 	      <li>Total observed substorms: 102</li>
-	      <li>Heidke skill score: 0.11</li>
+	      <li>Heidke skill score (HSS): 0.11</li>
 	    </ul>
 	    </div>
-	    
+
 	    <table id="contingency_table_large">
 	      <tr>
 		<td rowspan="2" colspan="2"></td>
@@ -387,8 +387,14 @@ with Magnetohydrodynamic Simulations</h2>
 	      </tr>
 	    </table>
 
+	    <div id="skillscore_note">
+	      <p class="next">HSS > 0 (good)...but is it significantly greater than zero?</p>
+	      <p class="next">Also, this was obtained using a particular threshold (2.5) for identifying a substorm in both the model and the observations...do we get positive skill scores for other thresholds?</p>
+	    </div>
+	    
 	    <style>
-		div#stats{float:right; width:50%; position:relative; top:50px; font-size:1.25em;}
+	      #skillscore_note{position:relative; top:20px;}
+		div#stats{float:right; width:50%; position:relative; top:15px; font-size:1.25em;}
 	      div#boxplots_container{width:60%; position:absolute; left:40%; top:100px;}
 	      div#boxplots_container img{width:100%;}
 	      /*img#epsilon_boxplots{width:70%; position:relative; top:-100px;}
