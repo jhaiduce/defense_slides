@@ -7,12 +7,33 @@ const zip = require('gulp-zip');
 const pages = require('gh-pages');
 const sync = require('browser-sync').create();
 const cp=require('child_process')
-const changed = require('gulp-changed');
+const newer = require('gulp-newer');
 const through = require('through2');
 const vinylFile = require('vinyl-file')
 var readline = require('readline');
 
-gulp.task('prepare', () => {
+const make_cp_pipeline=function(process,srcPattern,destPattern,script_props){
+    const pipelines=[]
+    
+    script_props.forEach(function(element){
+	const plot_scripts = gulp.src(
+	    [element.script]
+	).pipe(
+	    newer(
+		element.dest
+	    )
+	).pipe(makePictures(
+	    process,srcPattern,destPattern
+	)).pipe(rename( (path) => {
+	path.dirname = 'pictures'
+	}));
+	pipelines.push(plot_scripts)
+    })
+
+    return merge(pipelines)
+}
+
+gulp.task('prepare', (done) => {
 
     const shower = gulp.src([
             '**',
@@ -72,14 +93,38 @@ gulp.task('prepare', () => {
             path.dirname = 'shower/themes/noribbon/' + path.dirname;
         }));
 
+    let plot_scripts=[
+	{
+	    script:'pictures/substorms/plot_substorm_convolution*.py',
+	    dest:'prepared/pictures/substorms',
+	    depends:'pictures/substorms/plot_substorm_convolution.py'
+	},
+	{
+	    script:'pictures/substorms/plot_all*_tiled_onsetcomp_sea.py',
+	    dest:'prepared/pictures/substorms',
+	    depends:'pictures/substorms/plot_all_all_tiled_onsetcomp_sea.py'
+	},
+	{
+	    script:'pictures/substorms/plot_*.py',
+	    dest:'prepared/pictures/substorms',
+	}]
+
+    const plots=make_cp_pipeline('python',/^plot_(.+)\.py$/,'$1.svg',plot_scripts)
+
+    let generator_scripts=[
+	{
+	    script:'pictures/**/write_*.py',
+	    dest:'prepared/pictures',
+	}]
+
+    const generators=make_cp_pipeline('python',/^write_(.+)\.py$/,'$1.html',generator_scripts)
+
     const pictures = gulp.src([
-	'pictures/**'
-    ]).pipe(
-	changed('prepared/pictures')
-    ).pipe(makePictures('python',/^plot_(.+)\.py$/,'$1.svg')
-	  ).pipe(makePictures('python',/^write_(.+)\.py$/,'$1.html')
-    ).pipe(rename( (path) => {
-	path.dirname = 'pictures' + path.dirname
+	'pictures/**.svg',
+	'pictures/**.png',
+	'pictures/**.jpg'
+    ]).pipe(rename( (path) => {
+	path.dirname = 'pictures'
     }));
 
     const themes = merge(material, ribbon, noribbon)
@@ -88,7 +133,7 @@ gulp.task('prepare', () => {
             '$1../../$3', { skipBinary: true }
         ));
 
-    return merge(shower, core, themes, pictures)
+    return merge(shower, core, themes, plots, generators, pictures)
         .pipe(gulp.dest('prepared'));
 
 });

@@ -28,7 +28,7 @@
   ],
   "dependencies": {
     "child-process": "^1.0.2",
-    "gulp-changed": "^3.2.0",
+    "gulp-newer": "^1.4.0",
     "html-import": "^1.0.0",
     "mathjax": "^2.7.5",
     "shower-core": "^2.1.0",
