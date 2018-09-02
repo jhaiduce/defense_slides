@@ -33,7 +33,7 @@ signature_type_labels={
     'image':'IMAGE/FUV',
     'plasmoids':'Plasmoids',
     'dipolarizations':'Dipolarizations',
-    'epdata':'LANL',
+    'epdata':'LANL EP data',
     'MPB':'MPB'
 }
 table_signatures=['All','AL','MPB','dipolarizations','image','epdata','plasmoids']
