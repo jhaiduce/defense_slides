@@ -137,7 +137,7 @@ for i,(run_name,run_data) in enumerate(zip(run_names,table_data)):
         signature_false_alarm_rate_err=ci_to_err(signature_false_alarm_rate,signature_false_alarm_rate_ci)
         
         line='<tr><th scope="row">{signature}</th><td>{run_total}</td><td>{obs_total}</td></tr>'.format(
-            signature=signature,
+            signature=signature_type_labels[signature],
             run_total=latex_format_int(run_total),
             obs_total=latex_format_int(obs_total),
             sig_skill=latex_format_number(skill,skill_err,show_uncert=False,overline=True,extra_digits=1),
