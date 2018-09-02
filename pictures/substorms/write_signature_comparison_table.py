@@ -36,7 +36,7 @@ signature_type_labels={
     'epdata':'LANL',
     'MPB':'MPB'
 }
-table_signatures=['All','AL','MPB','dipolarizations','plasmoids']
+table_signatures=['All','AL','MPB','dipolarizations','image','epdata','plasmoids']
 
 @cache_result(clear=False)
 def get_table_data(table_signatures,nsamples=32000):
@@ -55,13 +55,14 @@ def get_table_data(table_signatures,nsamples=32000):
                 signature_run_substorms=find_substorms_convolution(run_signatures,model_threshold)
                 signature_obs_substorms=obs_substorms
             else:
-                signature_run_substorms,keys=make_grid({signature:run_signatures[signature]})
-                signature_run_substorms=signature_run_substorms.flatten()
+                if signature in run_signatures:
+                    signature_run_substorms,keys=make_grid({signature:run_signatures[signature]})
+                    signature_run_substorms=signature_run_substorms.flatten()
                 if signature in obs_signatures:
                     signature_obs_substorms,keys=make_grid({signature:obs_signatures[signature]})
                     signature_obs_substorms=signature_obs_substorms.flatten()
 
-            if signature in obs_signatures or signature=='All':
+            if signature in obs_signatures and signature in run_signatures or signature=='All':
                 counts=get_counts(signature_run_substorms,signature_obs_substorms)
                 true_positive,false_positive,false_negative,true_negative=counts
                 obs_total=true_positive+false_negative
@@ -73,8 +74,14 @@ def get_table_data(table_signatures,nsamples=32000):
                 signature_false_alarm_rate=false_alarm_rate(*counts)
                 signature_false_alarm_rate_ci=metric_ci(signature_run_substorms,signature_obs_substorms,false_alarm_rate,nsamples)
             else:
-                run_total=np.sum(signature_run_substorms)
-                obs_total=None
+                if signature in run_signatures:
+                    run_total=np.sum(signature_run_substorms)
+                else:
+                    run_total=None
+                if signature in obs_signatures:
+                    obs_total=np.sum(signature_obs_substorms)
+                else:
+                    obs_total=None
                 skill=None
                 skill_ci=(None,None)
                 signature_hit_rate=None
