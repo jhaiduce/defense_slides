@@ -242,6 +242,35 @@ with Magnetohydrodynamic Simulations</h2>
 	      #methodology_note{}
 	    </style>
 	</div></section>
+	<section class="slide" id="substorm_id_overview"><div>
+	    <h2>Substorm identification</h2>
+	    <ul>
+	      <li id="substorm-signatures">Substorms can be identified in many ways
+	      <figure id="plasmoid_cropped"><img src="pictures/example_plasmoid_cropped.png"/><figcaption>Plasmoid releases (model)</figcaption></figure>
+	      <figure id="satmags"><img src="pictures/example_magdata_in_situ.svg"/><figcaption>Satellite fields (model+obs.)</figcaption></figure>
+	      <figure id="groundmags"><img src="pictures/mags_ground.svg"/><figcaption>Ground-based fields (model+obs.)</figcaption></figure>
+	      <figure id="epdata_small"><img src="pictures/Fig-4-Energetic-proton-data-from-the-Los-Alamos-National-Laboratory-LANL-Synchronous.png"/><figcaption>Energetic particles (obs.)</figcaption></figure>
+	      <figure id="imagefuv_small"><img src="pictures/Fig-11-Maps-of-Northern-Hemisphere-FUV-emission-converted-to-electron-energy-flux-mWm.png"/><figcaption>Auroral brightening (obs.)</figcaption></figure>
+	      </li>
+	      <li class="next">Each method produces false positives and misses</li>
+	      <li class="next">Using all datasets together can improve accuracy<span class="next">...but there is no existing procedure to do this</span></li>
+	    </ul>
+	    <style>
+	      #substorm_id_overview ul{position:relative;top:-20px}
+	      #substorm_id_overview figcaption, #substorm_id_overview figure{font-size:20px;line-height:25px; text-indent:0;}
+	      #plasmoid_cropped, #plasmoid_cropped img{width:300px;}
+	      #plasmoid_cropped{position:absolute; top:40px;left:80px;}
+	      #satmags, #satmags img{width:170px;}
+	      #satmags{position:absolute; top:40px; left:400px;}
+	      #groundmags, #groundmags img{width:190px;}
+	      #groundmags{position:absolute;top:160px;left:80px;}
+	      #epdata_small, #epdata_small img{width:100px;}
+	      #epdata_small{ position:absolute; top:40px; left:600px}
+	      #imagefuv_small, #imagefuv_small img{width:110px; }
+	      #imagefuv_small{position:absolute; top:40px; left:760px}
+	      #substorm-signatures{padding-bottom:270px;}
+	    </style>
+	</div></section>
 	<section class="slide" id="id_example"><div>
 	    <h2>Plasmoids move tailward</h2>
 	    <img class="example_plasmoid" src="pictures/example_plasmoid_1.png"/>
@@ -296,49 +325,6 @@ with Magnetohydrodynamic Simulations</h2>
 	      img#image-fuv-example{width:45%; position:absolute; left:50%; top:20px;}
 	      #image-fuv-example-credit{position:absolute; top:520px; z-index:100; width:44%; text-align:right}
 	      #image-fuv-bullets{position:relative; left:0px; width:50%}
-	    </style>
-	</div></section>
-	<section class="slide" id="substorm_id_challenges"><div>
-	    <h2>Substorm identification challenges</h2>
-	    <ul>
-	      <li>Substorm identification is contentious</li>
-	      <li>Observational analyses of substorms use widely varying methodology</li>
-	      <li>Events may be missed due to location</li>
-	      <li>Other processes can sometimes be mistaken for substorms</li>
-	    </ul>
-	    <p>Our approach: Identify substorms using multiple methods, and combine the results from each into a single list</p>
-	    <style>
-	      #challenges div div{width:45%;float:left; padding:2%;}
-	      /*div#logistical_challenges{width:50%;float:left}
-	      div#analysis_challenges{width:50%;float:left}*/
-	    </style>
-	</div></section>
-	<section class="slide" id="substorm_id_overview"><div>
-	    <h2>Substorm identification process</h2>
-	    <ul>
-	      <li id="substorm-signatures">Identify substorm signatures: As many different kinds as possible
-	      <figure id="plasmoid_cropped"><img src="pictures/example_plasmoid_cropped.png"/><figcaption>Plasmoid releases (model)</figcaption></figure>
-	      <figure id="satmags"><img src="pictures/example_magdata_in_situ.svg"/><figcaption>Satellite fields (model+obs.)</figcaption></figure>
-	      <figure id="groundmags"><img src="pictures/mags_ground.svg"/><figcaption>Ground-based fields (model+obs.)</figcaption></figure>
-	      <figure id="epdata_small"><img src="pictures/Fig-4-Energetic-proton-data-from-the-Los-Alamos-National-Laboratory-LANL-Synchronous.png"/><figcaption>Energetic particles (obs.)</figcaption></figure>
-	      <figure id="imagefuv_small"><img src="pictures/Fig-11-Maps-of-Northern-Hemisphere-FUV-emission-converted-to-electron-energy-flux-mWm.png"/><figcaption>Auroral brightening (obs.)</figcaption></figure>
-	      </li>
-	      <li>Combine individual onset lists into a single one</li>
-	    </ul>
-	    <style>
-	      #substorm_id_overview figcaption, #substorm_id_overview figure{font-size:20px;line-height:25px; text-indent:0;}
-	      #challenges div div{width:45%;float:left; padding:2%;}
-	      #plasmoid_cropped, #plasmoid_cropped img{width:300px;}
-	      #plasmoid_cropped{position:absolute; top:200px;left:80px;}
-	      #satmags, #satmags img{width:170px;}
-	      #satmags{position:absolute; top:200px; left:400px;}
-	      #groundmags, #groundmags img{width:190px;}
-	      #groundmags{position:absolute;top:320px;left:80px;}
-	      #epdata_small, #epdata_small img{width:100px;}
-	      #epdata_small{ position:absolute; top:200px; left:600px}
-	      #imagefuv_small, #imagefuv_small img{width:110px; }
-	      #imagefuv_small{position:absolute; top:200px; left:760px}
-	      #substorm-signatures{padding-bottom:270px;}
 	    </style>
 	</div></section>
 	<section class="slide" id="combining_signatures"><div>
