@@ -64,10 +64,10 @@ def plot_convolution_score(signatures,ax,tmin,tmax,convolution_resolution=timede
     in_range=(times>=tmin) & (times<=tmax)
     times=times[in_range]
     scores=scores[in_range]
-    ax.plot(times,scores)
+    ax.plot(times,scores,**kwargs)
     return scores,times
 
-def make_convolution_figure(signatures,threshold,tstart,tend,bandwidth=timedelta(minutes=10),show_onsets=True,show_all=True,show_threshold=True):
+def make_convolution_figure(signatures,threshold,tstart,tend,bandwidth=timedelta(minutes=10),show_onsets=True,show_all=True,show_threshold=True,show_scores=True,show_individual_onsets=False):
     onsets_all=find_convolution_onsets(signatures,threshold,bandwidth=bandwidth)
     onsets_all=[datetime(2005,1,1)+timedelta(0,s) for s in onsets_all]
     fig=plt.figure(figsize=[4.5,3.5])
@@ -79,7 +79,13 @@ def make_convolution_figure(signatures,threshold,tstart,tend,bandwidth=timedelta
     for i,key in enumerate(signatures.keys()):
         ax=fig.add_subplot(gs[i,0])
         axes.append(ax)
-        plot_convolution_score({key:signatures[key]},ax,tstart,tend,bandwidth=bandwidth)
+        if show_scores:
+            plot_convolution_score({key:signatures[key]},ax,tstart,tend,bandwidth=bandwidth)
+        else:
+            ax.set_ylim(0,1)
+        onsets=[datetime(2005,1,1)+timedelta(0,s) for s in signatures[key]]
+        if show_individual_onsets:
+            ax.plot(onsets,np.ones(len(onsets))*0.5,linestyle='',marker='d')
         ax.set_ylabel(signature_type_labels[key])
         ax.set_xlim(tstart,tend)
 
@@ -87,7 +93,7 @@ def make_convolution_figure(signatures,threshold,tstart,tend,bandwidth=timedelta
         ax=fig.add_subplot(gs[-1,0])
         axes.append(ax)
         ax.set_ylabel('All')
-        scores,times=plot_convolution_score(signatures,ax,tstart,tend,bandwidth=bandwidth)
+        plot_convolution_score(signatures,ax,tstart,tend,bandwidth=bandwidth)
         ax.set_xlim(tstart,tend)
         if show_threshold:
             ax.text(tstart+timedelta(seconds=(tend-tstart).total_seconds()*0.3),threshold+0.1,'threshold',fontsize=6)
@@ -102,7 +108,10 @@ def make_convolution_figure(signatures,threshold,tstart,tend,bandwidth=timedelta
             plt.setp(ax.get_xticklabels(),visible=False)
 
         ax.tick_params('x',which='both',direction='inout',top=True)
-        ax.yaxis.set_major_locator(plt.MaxNLocator(3,integer=True))
+        if show_scores:
+            ax.yaxis.set_major_locator(plt.MaxNLocator(3,integer=True))
+        else:
+            ax.yaxis.set_major_locator(plt.NullLocator())
 
         if show_onsets:
             for onset in onsets_all:
