@@ -373,11 +373,12 @@ with Magnetohydrodynamic Simulations</h2>
 	<section class="slide" id="predictive_skill"><div>
 	    <h2>Skill score measure the model's accuracy</h2>
 	    <div id="stats">
-	    <ul>
-	      <li>Total model substorms: 97</li>
-	      <li>Total observed substorms: 102</li>
-	      <li>Heidke skill score (HSS): 0.11</li>
-	    </ul>
+	      <b>Heidke skill score (HSS)</b>
+	      <ul>
+		<li>0=random chance (no skill)</li>
+		<li>1=perfect forecast</li>
+		<li>My HSS: 0.11</li>
+	      </ul>
 	    </div>
 
 	    <table id="contingency_table_large">
@@ -408,7 +409,9 @@ with Magnetohydrodynamic Simulations</h2>
 	    
 	    <style>
 	      #skillscore_note{position:relative; top:20px;}
-		div#stats{float:right; width:50%; position:relative; top:15px; font-size:1.25em;}
+	      div#stats{float:right; width:50%; position:relative; top:0px; font-size:1.25em;}
+	      div#stats li{margin-top:0.25em; margin-bottom:0.25em}
+	      div#stats ul{margin-bottom:0.25em}
 	      div#boxplots_container{width:60%; position:absolute; left:40%; top:100px;}
 	      div#boxplots_container img{width:100%;}
 	      /*img#epsilon_boxplots{width:70%; position:relative; top:-100px;}
