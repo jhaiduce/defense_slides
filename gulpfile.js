@@ -11,6 +11,7 @@ const newer = require('gulp-newer');
 const through = require('through2');
 const vinylFile = require('vinyl-file')
 var readline = require('readline');
+const include = require('gulp-include');
 
 const make_cp_pipeline=function(process,srcPattern,destPattern,script_props){
     const pipelines=[]
@@ -55,7 +56,7 @@ gulp.task('prepare', (done) => {
         .pipe(replace(
             /(<script src=")(node_modules\/shower-core\/)(shower.min.js"><\/script>)/g,
             '$1shower/$3', { skipBinary: true }
-        ));
+        )).pipe(include());
 
     const core = gulp.src([
             'shower.min.js'

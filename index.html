@@ -365,10 +365,10 @@ with Magnetohydrodynamic Simulations</h2>
 	<section class="slide"><div>
 	    <h2>Combining signatures reduces false positives and data gaps</h2>
 	    <div id="substorm_results_table" class="substorm_results_table">
-	      <link rel="html-import" href="pictures/substorms/signature_comparison_table.html"/>
+	      <!--=include pictures/substorms/signature_comparison_table.html -->
 	    </div>
 	    <div id="substorm_results_table_2" class="substorm_results_table">
-	      <link rel="html-import" href="pictures/substorms/signature_comparison_table.html"/>
+	      <!--=include pictures/substorms/signature_comparison_table.html -->
 	    </div>
 	    <style>
 	      .substorm_results_table{position:absolute; left:20%; top:160px;background-color:white}
@@ -646,18 +646,6 @@ with Magnetohydrodynamic Simulations</h2>
 	</script>
 	<script type="text/javascript" src="node_modules/mathjax/MathJax.js" async></script>
 	<script>
-	  document.addEventListener( "html-imports-loaded", ( e ) => {
-	      Array.from(document.getElementById('substorm_results_table').getElementsByClassName('signature_All')).forEach((element) => {
-		  element.classList.add('next')
-	      });
-	      rows=Array.from(document.getElementById('substorm_results_table').getElementsByTagName('tr'))
-	      first=rows.shift()
-	      first.getElementsByTagName('th')[1].style.visibility='hidden';
-	      rows.forEach((row)=>{
-		  row.getElementsByTagName('td')[1].style.visibility='hidden';
-	      });
-	      document.getElementById('substorm_results_table_2').classList.add('next')
-	  });
 
 	  // Table of contents entries
 	  var tocEntries = [
@@ -734,6 +722,17 @@ with Magnetohydrodynamic Simulations</h2>
 		  element.style.top="0px"
 		  element.style.left="0px"
 	      }
+	      
+	      Array.from(document.getElementById('substorm_results_table').getElementsByClassName('signature_All')).forEach((element) => {
+		  element.classList.add('next')
+	      });
+	      rows=Array.from(document.getElementById('substorm_results_table').getElementsByTagName('tr'))
+	      first=rows.shift()
+	      first.getElementsByTagName('th')[1].style.visibility='hidden';
+	      rows.forEach((row)=>{
+		  row.getElementsByTagName('td')[1].style.visibility='hidden';
+	      });
+	      document.getElementById('substorm_results_table_2').classList.add('next')
 	  }
 	</script>
 <!-- Copyright © 2015 John Haiducek -->
