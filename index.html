@@ -377,7 +377,7 @@ with Magnetohydrodynamic Simulations</h2>
 	</div></section>
 	<section class="slide" id="predictive_skill"><div>
 	    <h2>Skill score measure the model's accuracy</h2>
-	    <div id="stats">
+	    <div id="stats" class="next">
 	      <b>Heidke skill score (HSS)</b>
 	      <ul>
 		<li>0=random chance (no skill)</li>
@@ -423,7 +423,7 @@ with Magnetohydrodynamic Simulations</h2>
 		img#al_strength_boxplots{width:29%; position:relative; top:-70px;}*/
 		table#contingency_table_large tr{border:none; background:white;}
 		table#contingency_table_large td{border:none; background:white; width:100px; background-color:solid white; text-align:center; padding:0px;}
-		table#contingency_table_large{width:30%; font-size:1.25em;}
+		table#contingency_table_large{width:30%; font-size:1.25em; position:relative; left:250px; top:75px; transition: all 0.2s ease;}
 	      
 		table#contingency_table_large td.cont-inner{border:1px solid black;}
 		table#contingency_table tr{border:none; background:white;}
@@ -719,6 +719,21 @@ with Magnetohydrodynamic Simulations</h2>
 		  id=entry['index']
 		  style.sheet.insertRule('#'+id+' li.'+id+'{font-weight:bold}');
 	      });
+
+	      
+
+	      observer= new window.MutationObserver(classChanged)
+	      observer.observe(document.getElementById('stats'),{
+		  attributes:true,
+		  attributeFilter:['class']
+	      })
+
+	      function classChanged(){
+		  element=document.getElementById('stats');
+		  element=document.getElementById('contingency_table_large');
+		  element.style.top="0px"
+		  element.style.left="0px"
+	      }
 	  }
 	</script>
 <!-- Copyright © 2015 John Haiducek -->
