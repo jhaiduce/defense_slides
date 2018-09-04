@@ -36,7 +36,6 @@ signature_type_labels={
     'epdata':'LANL EP data',
     'MPB':'MPB'
 }
-table_signatures=['All','AL','MPB','dipolarizations','image','epdata','plasmoids']
 
 @cache_result(clear=False)
 def get_table_data(table_signatures,nsamples=32000):
@@ -101,57 +100,65 @@ def get_table_data(table_signatures,nsamples=32000):
 
     return table_data
 
-table_data=get_table_data(table_signatures)
+def make_table_string(table_signatures):
 
-run_names=[runprops['name'] for runprops in run_properties]
+    table_data=get_table_data(table_signatures)
 
-texstr='<table>\n'
-texstr+='<thead>\n'
-texstr+='<tr><td/><th>SWMF events</th><th>Obs. events</th>\n'
-texstr+='</tr></thead>\n'
+    run_names=[runprops['name'] for runprops in run_properties]
 
-def ci_to_err(value,ci):
-    
-    if ci[0] is not None and ci[0]!=0 and ci[1]!=0:
-        return [ci[1]-value,value-ci[0]]
-    else:
-        return None
+    texstr='<table>\n'
+    texstr+='<thead>\n'
+    texstr+='<tr><td/><th>SWMF events</th><th>Obs. events</th>\n'
+    texstr+='</tr></thead>\n'
 
-def format_ci(ci):
-    if ci[0] is None or ci[0]==ci[1]:
-        return ''
-    else:
-        mid=0.5*(ci[0]+ci[1])
-        p=guess_precision(mid,ci[1]-mid)
-        return '[{0},{1}]'.format(latex_format_number(ci[0],precision=p),
-                            latex_format_number(ci[1],precision=p))
+    def ci_to_err(value,ci):
 
-for i,(run_name,run_data) in enumerate(zip(run_names,table_data)):
-    if len(run_names)>1:
-        texstr+=r'&\multicolumn{{6}}{{c}}{{\textit{{{0}}}}}\\'.format(run_name)+'\n'
-    for [signature,run_total,obs_total,skill,skill_ci,signature_hit_rate,signature_hit_rate_ci,signature_false_alarm_rate,signature_false_alarm_rate_ci,all_skill,all_skill_ci,all_hit_rate,all_hit_rate_ci,all_false_alarm_rate,all_false_alarm_rate_ci] in run_data:
+        if ci[0] is not None and ci[0]!=0 and ci[1]!=0:
+            return [ci[1]-value,value-ci[0]]
+        else:
+            return None
 
-        skill_err=ci_to_err(skill,skill_ci)
-        all_skill_err=ci_to_err(all_skill,all_skill_ci)
-        signature_hit_rate_err=ci_to_err(signature_hit_rate,signature_false_alarm_rate_ci)
-        signature_false_alarm_rate_err=ci_to_err(signature_false_alarm_rate,signature_false_alarm_rate_ci)
-        
-        line='<tr><th scope="row">{signature}</th><td>{run_total}</td><td>{obs_total}</td></tr>'.format(
-            signature=signature_type_labels[signature],
-            run_total=latex_format_int(run_total),
-            obs_total=latex_format_int(obs_total),
-            sig_skill=latex_format_number(skill,skill_err,show_uncert=False,overline=True,extra_digits=1),
-            sig_skill_ci=format_ci(skill_ci),
-            all_skill=latex_format_number(all_skill,all_skill_err,show_uncert=False,overline=True,extra_digits=1),
-            all_skill_ci=format_ci(all_skill_ci),
-            sig_hit_rate=latex_format_number(signature_hit_rate,signature_hit_rate_err,show_uncert=False,overline=True,extra_digits=1),
-            sig_false_alarm_rate=latex_format_number(signature_false_alarm_rate,signature_false_alarm_rate_err,show_uncert=False,overline=True,extra_digits=1),
-        )+'\n'
-        import re
-        line=re.sub(r'\\overline\{(\d+)\}',r'<span style="text-decoration:overline">\1</span>',line)
-        texstr+=line
-texstr+='</table>\n'
-with open('signature_comparison_table.html','w') as fh:
-    fh.write(texstr)
+    def format_ci(ci):
+        if ci[0] is None or ci[0]==ci[1]:
+            return ''
+        else:
+            mid=0.5*(ci[0]+ci[1])
+            p=guess_precision(mid,ci[1]-mid)
+            return '[{0},{1}]'.format(latex_format_number(ci[0],precision=p),
+                                latex_format_number(ci[1],precision=p))
+
+    for i,(run_name,run_data) in enumerate(zip(run_names,table_data)):
+        if len(run_names)>1:
+            texstr+=r'&\multicolumn{{6}}{{c}}{{\textit{{{0}}}}}\\'.format(run_name)+'\n'
+        for [signature,run_total,obs_total,skill,skill_ci,signature_hit_rate,signature_hit_rate_ci,signature_false_alarm_rate,signature_false_alarm_rate_ci,all_skill,all_skill_ci,all_hit_rate,all_hit_rate_ci,all_false_alarm_rate,all_false_alarm_rate_ci] in run_data:
+
+            skill_err=ci_to_err(skill,skill_ci)
+            all_skill_err=ci_to_err(all_skill,all_skill_ci)
+            signature_hit_rate_err=ci_to_err(signature_hit_rate,signature_false_alarm_rate_ci)
+            signature_false_alarm_rate_err=ci_to_err(signature_false_alarm_rate,signature_false_alarm_rate_ci)
+
+            line='<tr class="signature_{signature_id}"><th scope="row">{signature}</th><td>{run_total}</td><td>{obs_total}</td></tr>'.format(
+                signature_id=signature,
+                signature=signature_type_labels[signature],
+                run_total=latex_format_int(run_total),
+                obs_total=latex_format_int(obs_total),
+                sig_skill=latex_format_number(skill,skill_err,show_uncert=False,overline=True,extra_digits=1),
+                sig_skill_ci=format_ci(skill_ci),
+                all_skill=latex_format_number(all_skill,all_skill_err,show_uncert=False,overline=True,extra_digits=1),
+                all_skill_ci=format_ci(all_skill_ci),
+                sig_hit_rate=latex_format_number(signature_hit_rate,signature_hit_rate_err,show_uncert=False,overline=True,extra_digits=1),
+                sig_false_alarm_rate=latex_format_number(signature_false_alarm_rate,signature_false_alarm_rate_err,show_uncert=False,overline=True,extra_digits=1),
+            )+'\n'
+            import re
+            line=re.sub(r'\\overline\{(\d+)\}',r'<span style="text-decoration:overline">\1</span>',line)
+            texstr+=line
+    texstr+='</table>\n'
+    return texstr
+
+if __name__=='__main__':
+    table_signatures=['AL','MPB','dipolarizations','image','epdata','plasmoids','All']
+    texstr=make_table_string(table_signatures)
+    with open('signature_comparison_table.html','w') as fh:
+        fh.write(texstr)
     
 

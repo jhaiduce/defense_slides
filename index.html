@@ -367,12 +367,15 @@ with Magnetohydrodynamic Simulations</h2>
 	</div></section>
 	<section class="slide"><div>
 	    <h2>Combining signatures reduces false positives and data gaps</h2>
-	    <div id="substorm_results_table">
+	    <div id="substorm_results_table" class="substorm_results_table">
+	      <link rel="html-import" href="pictures/substorms/signature_comparison_table.html"/>
+	    </div>
+	    <div id="substorm_results_table_2" class="substorm_results_table">
 	      <link rel="html-import" href="pictures/substorms/signature_comparison_table.html"/>
 	    </div>
 	    <style>
-	      #substorm_results_table{position:relative; left:20%; top:20px}
-	      #substorm_results_table td, #substorm_results_table th{text-align:center; line-height:1.5;}
+	      .substorm_results_table{position:absolute; left:20%; top:160px;background-color:white}
+	      .substorm_results_table td, .substorm_results_table th{text-align:center; line-height:1.5;}
 	    </style>
 	</div></section>
 	<section class="slide" id="predictive_skill"><div>
@@ -637,6 +640,18 @@ with Magnetohydrodynamic Simulations</h2>
 	</script>
 	<script type="text/javascript" src="node_modules/mathjax/MathJax.js" async></script>
 	<script>
+	  document.addEventListener( "html-imports-loaded", ( e ) => {
+	      Array.from(document.getElementById('substorm_results_table').getElementsByClassName('signature_All')).forEach((element) => {
+		  element.classList.add('next')
+	      });
+	      rows=Array.from(document.getElementById('substorm_results_table').getElementsByTagName('tr'))
+	      first=rows.shift()
+	      first.getElementsByTagName('th')[1].style.visibility='hidden';
+	      rows.forEach((row)=>{
+		  row.getElementsByTagName('td')[1].style.visibility='hidden';
+	      });
+	      document.getElementById('substorm_results_table_2').classList.add('next')
+	  });
 
 	  // Table of contents entries
 	  var tocEntries = [
