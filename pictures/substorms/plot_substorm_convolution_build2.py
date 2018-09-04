@@ -7,5 +7,5 @@ if __name__=='__main__':
     threshold=2.5
     tstart=datetime(2005,1,22)
     tend=datetime(2005,1,23)
-    fig=make_convolution_figure(obs_signatures,threshold,tstart,tend,bandwidth=timedelta(minutes=10),show_onsets=False,show_all=True)
+    fig=make_convolution_figure(obs_signatures,threshold,tstart,tend,bandwidth=timedelta(minutes=10),show_onsets=False,show_all=True, show_threshold=False)
     fig.savefig('substorm_convolution_build2.svg')
