@@ -82,7 +82,7 @@ def plot_roc(runprops):
     skillscore_err_upper=skillscore_ci_upper-skillscores
     skillscore_err_lower=-(skillscore_ci_lower-skillscores)
 
-    fig=plt.figure(figsize=(5.5,4))
+    fig=plt.figure(figsize=(4.5,3.5))
     plt.plot([0,1],color='k',marker='',alpha=0.6)
     lines=[]
     for i in range(false_alarm_rates.shape[0]):
@@ -107,6 +107,7 @@ def plot_roc(runprops):
     namestr=runprops['name'].replace('/','').replace(' ','_')
     plt.xlim(0,1)
     plt.ylim(0,1)
+    plt.tight_layout()
     plt.savefig('roc_curves.svg')
     plt.close(fig)
 
