@@ -30,6 +30,7 @@
     "child-process": "^1.0.2",
     "gulp-include": "^2.3.1",
     "gulp-newer": "^1.4.0",
+    "dejavu-fonts-ttf": "^2.37.3",
     "mathjax": "^2.7.5",
     "shower-core": "^2.1.0",
     "shower-material": "^2.1.2",
