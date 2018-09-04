@@ -38,6 +38,7 @@ gulp.task('prepare', (done) => {
 
     const shower = gulp.src([
             '**',
+            '!movies/**',
             '!docs{,/**}',
             '!node_modules{,/**}',
             '!prepared{,/**}',
@@ -128,13 +129,19 @@ gulp.task('prepare', (done) => {
 	path.dirname = 'pictures'
     }));
 
+    const movies=gulp.src([
+	'movies/**/*.{mp4,m4v}'
+    ]).pipe(rename( (path) => {
+	path.dirname = 'movies'
+    }));
+
     const themes = merge(material, ribbon, noribbon)
         .pipe(replace(
             /(<script src=")(\/shower-core\/)(shower.min.js"><\/script>)/,
             '$1../../$3', { skipBinary: true }
         ));
 
-    return merge(shower, core, themes, plots, generators, pictures)
+    return merge(shower,core,themes,plots,generators,pictures,movies)
         .pipe(gulp.dest('prepared'));
 
 });
