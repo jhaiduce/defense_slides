@@ -269,10 +269,133 @@ with Magnetohydrodynamic Simulations</h2>
 	      <li>EMIC waves are more common during active times</li>
 	    </ul>
 	  </div>
+	  <div id="objectives_bullets">
+	    <b>Objectives</b>
+	    <ul>
+	      <li>Constrain the range of \(K\) associated with CSS</li>
+	      <li>Assess the relative importance of CSS and EMIC during storms</li>
+	    </ul>
+	  </div>
 	  <div>
 	  <style>
 	    #css_bullets{position:absolute; top:140px; width:40%}
 	    #emic_bullets{position:absolute; top:140px; left:50%; width:40%}
+	    #objectives_bullets{position:absolute; top:420px}
+	  </style>
+	</section>
+	<section class="slide">
+	  <h2>Field lines traced to determine origin of IB particles</h2>
+	  <img id="tracing_example" src="pictures/ib_quiet/r_rCurve_kappa_ib_run_20090213_hires_r1_2009-02-13T02:25:23_traceonly.svg"/>
+	  <ul id="tracing_bullets">
+	    <li>Trace starts at IB observation</li>
+	    <li>\(K\) estimated where field line crosses current sheet</li>
+	    <li>THEMIS satellites provide magnetic field observations in the vicinity</li>
+	  </ul>
+	  <style>
+	    #tracing_example{
+	    width:400px;
+	    position:absolute;
+	    top:120px;
+	    left:610px;
+	    }
+	    #tracing_bullets{width:500px;}
+	  </style>
+	</section>
+	<section class="slide">
+	  <h2>\(K\) correlates with \(\Delta B_z\)</h2>
+	  <img id="kappa_fit" src="pictures/ib_quiet/kappa_dbz_fit.svg"/>
+	  <ul id="kappa_fit_bullets">
+	    <li>Model error in \(B_z\) obtained using THEMIS observations</li>
+	    <li>Correlation between \(K\) and \(\Delta B_z\) allows part of the error in \(K\) to be removed</li>
+	  </ul>
+	  <style>
+	    #kappa_fit{width:400px;}
+	    #kappa_fit_bullets{
+	    width:400px; 
+	    position:absolute;
+	    top:150px;
+	    left:500px;
+	    }
+	  </style>
+	</section>
+	<section class="slide">
+	  <h2>Corrected \(K\)'s fall in a fairly narrow range</h2>
+	  <img id="kappa_kde_quiet" src="pictures/ib_quiet/kappa_kde.svg"/>
+	  <style>
+	    #kappa_kde_quiet{
+	    width:500px;
+	    position:relative;
+	    left:100px;
+	    }
+	  </style>
+	</section>
+	<section class="slide">
+	  <h2 id="ib_time_title">IB properties vary significantly during storms</h2>
+	  <img id="ib_time" src="pictures/ib_storm/ib_time.svg"/>
+	  <style>
+	    #ib_time_title{
+	    position:absolute; top:20px;
+	    }
+	    #ib_time{
+	    width:500px;
+	    position:absolute;
+	    left:100px;
+	    top:80px;
+	    }
+	  </style>
+	</section>
+	<section class="slide" id="mlt_symh_lat_slide">
+	  <h2 id="mlt_symh_lat_title">Sym-H and MLT correlate with IB latitude but not \(K^*\)</h2>
+	  <img id="mlt_symh_lat" src="pictures/ib_storm/mlt_lat_kappastar_lineplot.svg"/>
+	  <ul id="mlt_symh_lat_bullets">
+	    <li>Indicates that CSS process is active for a significant portion of IB observations</li>
+	  </ul>
+	  <style>
+	    #mlt_symh_lat_title{
+	    position:absolute;
+	    top:20px;
+	    }
+	    #mlt_symh_lat{
+	    width:600px;
+	    position:absolute;
+	    left:400px;
+	    top:90px;
+	    }
+	    #mlt_symh_lat_bullets{
+	    width:300px;
+	    position:absolute;
+	    top:200px;
+	    left:100px;
+	    }
+	    #mlt_symh_lat_slide::after{visibility:hidden}
+	    #mlt_symh_lat_bullets{}
+	  </style>
+	</section>
+	<section class="slide" id="kappa_kde_storm_slide">
+	  <h2 id="kappa_kde_storm_title">Storm-time \(K\) is often within the range for CSS</h2>
+	  <ul id="kappa_kde_storm_bullets">
+	    <li>Between 21% to 69% of \(K^*\) values are in range for CSS, depending on threshold and latitude set used</li>
+	    <li>Indicates that both EMIC and CSS play a significant role</li>
+	  </ul>
+	  <img id="kappa_kde_storm" src="pictures/ib_storm/kappa_kde_storm.svg"/>
+	  <style>
+	    #kappa_kde_storm_title{
+	    position:absolute;
+	    top:20px;
+	    }
+	    #kappa_kde_storm{
+	    width:330px;
+	    position:absolute;
+	    left:600px;
+	    top:90px;
+	    }
+	    #kappa_kde_storm_bullets{
+	    width:450px; 
+	    position:absolute;
+	    top:120px;
+	    left:100px;
+	    }
+	    #kappa_kde_storm_slide::after{visibility:hidden}
 	  </style>
 	</section>
 	<section class="slide" id="substorm_identification"><div>
