@@ -281,62 +281,6 @@ with Magnetohydrodynamic Simulations</h2>
 	      #substorm-signatures{padding-bottom:270px;}
 	    </style>
 	</div></section>
-	<section class="slide" id="id_example"><div>
-	    <h2>Plasmoids move tailward</h2>
-	    <img class="example_plasmoid" src="pictures/example_plasmoid_1.png"/>
-	    <img class="next example_plasmoid" src="pictures/example_plasmoid_2.png"/>
-	    <img class="next example_plasmoid" src="pictures/example_plasmoid.png"/>
-	    <img class="next" id="dipolarization" src="pictures/example_magdata_in_situ.svg"/>
-	    <style>
-	      img.example_plasmoid{width:70%; position:absolute; top:100px; left:150px;}
-	      #dipolarization{position:absolute; top:250px; left:450px; width:250px; border:2px solid black}
-	    </style>
-	</div></section>
-        <section class="slide" id="surface_signatures"><div>
-            <h2>Substorm currents affect magnetic fields</h2>
-            <div id="mag_grid_sphere">
-              <img src="pictures/mag_grid_sphere_crosstailonly.svg"/>
-              <img src="pictures/mag_grid_sphere_nocurrentfield.svg"/>
-            </div>
-	    <img id="aual" src="pictures/al.svg"/>
-	    <img id="mpb" class="next" src="pictures/mpb.svg"/>
-            <style>
-              #mag_grid_sphere{width:116%; position:relative; top:-60px; left:-8%; z-index:0;}
-              #mag_grid_sphere img{width:100%; position:absolute; top:0px; left:0px;}
-              #surface_signatures h2{position:relative; z-index:1;}
-              #surface_signatures{background-color:black;}
-	      #aual{position:absolute; top:50px; left:790px; width:225px;}
-	      #mpb{position:absolute; top:250px; left:460px; width:225px; border:2px solid black}
-            </style>
-        </div></section>
-	<section class="slide" id="id_example_epdata"><div>
-	    <h2>Energetic particles <br/>detected by spacecraft</h2>
-	    <img id="lanl_epdata" src="pictures/Fig-4-Energetic-proton-data-from-the-Los-Alamos-National-Laboratory-LANL-Synchronous.png"/>
-	    <div id="lanl_epdata_credit">Henderson, 2009</div>
-	    <ul>
-	      <li>LANL SOPA instrument detects particle fluxes in geosynchronous orbit</li>
-	      <li>Use list from Borovsky (2017)</li>
-	    </ul>
-	    <style>
-	      img#lanl_epdata{width:42%; position:absolute; left:50%; top:5px;}
-	      #lanl_epdata_credit{position:absolute; top:520px; z-index:100; width:42%; text-align:right}
-	      #id_example_epdata ul{width:50%}
-	    </style>
-	</div></section>
-	<section class="slide" id="id_example_image_fuv"><div>
-	    <h2>Auroral brightening</h2>
-	    <img id="image-fuv-example" src="pictures/Fig-11-Maps-of-Northern-Hemisphere-FUV-emission-converted-to-electron-energy-flux-mWm.png"/>
-	    <div id="image-fuv-example-credit">Kavanagh et al., 2007</div>
-	    <ul id="image-fuv-bullets">
-	      <li>Substorm onsets observed WIC camera on the IMAGE spacecraft</li>
-	      <li>Use list from Frey et al., 2004 (since updated to include 2005)</li>
-	    </ul>
-	    <style>
-	      img#image-fuv-example{width:45%; position:absolute; left:50%; top:20px;}
-	      #image-fuv-example-credit{position:absolute; top:520px; z-index:100; width:44%; text-align:right}
-	      #image-fuv-bullets{position:relative; left:0px; width:50%}
-	    </style>
-	</div></section>
 	<section class="slide" id="combining_signatures"><div>
 	    <h2>Combining signatures</h2>
 	    <img class="convolution" src="pictures/substorms/substorm_convolution_build0.svg"/>
@@ -482,27 +426,6 @@ with Magnetohydrodynamic Simulations</h2>
 	    #hss_v_count_ratio ul{position:relative; left:700px; width:250px}
 	  </style>
 	</section>
-	<section class="slide" id="slide_sea"><div>
-	    <h2>Events have characteristic substorm response</h2>
-	    <img id="sea_plots" src="pictures/substorms/all_tiled_onsetcomp_sea.svg"/>
-	    <ul>
-	      <li>Lines show median of onsets</li>
-	      <li>Shading shows interquartile range</li>
-	      <li>Model under-predicts AL strength, over-predicts MPB strength</li>
-	    </ul>
-	    <style>
-	      #slide_sea h2{position:relative; top:-50px;}
-	      #sea_plots{width:80%; position:relative; top:-80px; left:-50px;}
-	      #slide_sea ul{position:absolute; left:75%; top:100px;}
-	    </style>
-	</div></section>
-	<section class="slide"><div>
-	    <h2>Model produces realistic waiting times</h2>
-	    <img id="isi_plots" src="pictures/substorms/isi.svg"/>
-	    <style>
-	      #isi_plots{width:80%; position:relative; top:0px;}
-	    </style>
-	</div></section>
 	<section class="slide"><div>
 	    <h2>Conclusions: Identification procedure</h2>
 	    <ul>
@@ -576,6 +499,28 @@ with Magnetohydrodynamic Simulations</h2>
 	    </style>
 	</div></section>
 	
+	<section class="slide" id="slide_sea"><div>
+	    <h2>Events have characteristic substorm response</h2>
+	    <img id="sea_plots" src="pictures/substorms/all_tiled_onsetcomp_sea.svg"/>
+	    <ul>
+	      <li>Lines show median of onsets</li>
+	      <li>Shading shows interquartile range</li>
+	      <li>Model under-predicts AL strength, over-predicts MPB strength</li>
+	    </ul>
+	    <style>
+	      #slide_sea h2{position:relative; top:-50px;}
+	      #sea_plots{width:80%; position:relative; top:-80px; left:-50px;}
+	      #slide_sea ul{position:absolute; left:75%; top:100px;}
+	    </style>
+	</div></section>
+	<section class="slide"><div>
+	    <h2>Model produces realistic waiting times</h2>
+	    <img id="isi_plots" src="pictures/substorms/isi.svg"/>
+	    <style>
+	      #isi_plots{width:80%; position:relative; top:0px;}
+	    </style>
+	</div></section>
+
 	<section class="slide" id="roc_curves_slide"><div>
 	    <h2>POD exceeds POFD</h2>
 	    <img id="roc_curves" src="pictures/substorms/roc_curves.svg"/>
@@ -610,6 +555,62 @@ with Magnetohydrodynamic Simulations</h2>
 	      img.plasmoid_blines_sampled{height:400px; position:absolute; left:100px; top:150px;}
 	    </style>
 	    </div>
+	</div></section>
+	<section class="slide" id="id_example"><div>
+	    <h2>Plasmoids move tailward</h2>
+	    <img class="example_plasmoid" src="pictures/example_plasmoid_1.png"/>
+	    <img class="next example_plasmoid" src="pictures/example_plasmoid_2.png"/>
+	    <img class="next example_plasmoid" src="pictures/example_plasmoid.png"/>
+	    <img class="next" id="dipolarization" src="pictures/example_magdata_in_situ.svg"/>
+	    <style>
+	      img.example_plasmoid{width:70%; position:absolute; top:100px; left:150px;}
+	      #dipolarization{position:absolute; top:250px; left:450px; width:250px; border:2px solid black}
+	    </style>
+	</div></section>
+        <section class="slide" id="surface_signatures"><div>
+            <h2>Substorm currents affect magnetic fields</h2>
+            <div id="mag_grid_sphere">
+              <img src="pictures/mag_grid_sphere_crosstailonly.svg"/>
+              <img src="pictures/mag_grid_sphere_nocurrentfield.svg"/>
+            </div>
+	    <img id="aual" src="pictures/al.svg"/>
+	    <img id="mpb" class="next" src="pictures/mpb.svg"/>
+            <style>
+              #mag_grid_sphere{width:116%; position:relative; top:-60px; left:-8%; z-index:0;}
+              #mag_grid_sphere img{width:100%; position:absolute; top:0px; left:0px;}
+              #surface_signatures h2{position:relative; z-index:1;}
+              #surface_signatures{background-color:black;}
+	      #aual{position:absolute; top:50px; left:790px; width:225px;}
+	      #mpb{position:absolute; top:250px; left:460px; width:225px; border:2px solid black}
+            </style>
+        </div></section>
+	<section class="slide" id="id_example_epdata"><div>
+	    <h2>Energetic particles <br/>detected by spacecraft</h2>
+	    <img id="lanl_epdata" src="pictures/Fig-4-Energetic-proton-data-from-the-Los-Alamos-National-Laboratory-LANL-Synchronous.png"/>
+	    <div id="lanl_epdata_credit">Henderson, 2009</div>
+	    <ul>
+	      <li>LANL SOPA instrument detects particle fluxes in geosynchronous orbit</li>
+	      <li>Use list from Borovsky (2017)</li>
+	    </ul>
+	    <style>
+	      img#lanl_epdata{width:42%; position:absolute; left:50%; top:5px;}
+	      #lanl_epdata_credit{position:absolute; top:520px; z-index:100; width:42%; text-align:right}
+	      #id_example_epdata ul{width:50%}
+	    </style>
+	</div></section>
+	<section class="slide" id="id_example_image_fuv"><div>
+	    <h2>Auroral brightening</h2>
+	    <img id="image-fuv-example" src="pictures/Fig-11-Maps-of-Northern-Hemisphere-FUV-emission-converted-to-electron-energy-flux-mWm.png"/>
+	    <div id="image-fuv-example-credit">Kavanagh et al., 2007</div>
+	    <ul id="image-fuv-bullets">
+	      <li>Substorm onsets observed WIC camera on the IMAGE spacecraft</li>
+	      <li>Use list from Frey et al., 2004 (since updated to include 2005)</li>
+	    </ul>
+	    <style>
+	      img#image-fuv-example{width:45%; position:absolute; left:50%; top:20px;}
+	      #image-fuv-example-credit{position:absolute; top:520px; z-index:100; width:44%; text-align:right}
+	      #image-fuv-bullets{position:relative; left:0px; width:50%}
+	    </style>
 	</div></section>
 
 	<!--
