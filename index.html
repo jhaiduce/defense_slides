@@ -248,6 +248,49 @@ with Magnetohydrodynamic Simulations</h2>
 	      #methodology_note{}
 	    </style>
 	</div></section>
+	<section class="slide" id="ib"><div>
+	    <h2>Summary</h2>
+	    <nav class="toc"/>
+	</div></section>
+	<section class="slide">
+	  <h2>Isotropic boundary consists of a sharp change in particle precipitation</h2>
+	  <div id="noaa_counts_container">
+	  <img id="noaa_counts" src="pictures/ib_quiet/noaa_counts.svg"/>
+	  </div>
+	  <style>
+	    #noaa_counts{width:600px}
+	    #noaa_counts_container::after{
+	    content:"\AGanushkina (2005)";
+	    clear:both;
+	    text-align:right;
+	    white-space:pre;
+	    }
+	  </style>
+	</section>
+	<section class="slide">
+	  <h2>Scattering mechanisms</h2>
+	  <div id="css_bullets">
+	  <b>Current sheet scattering (CSS)</b>
+	  <ul>
+	    <li>Explains presence of IB at all times and MLTs</li>
+	    <li>Occurs when field line curvature \(r_c\) is small and gyroradius \(r_g\) is large</li>
+	    <li>Controlled by \(K=\frac{r_c}{r_g}\)</li>
+	  </ul>
+	  </div>
+	  <div id="emic_bullets">
+	    <b>EMIC wave scattering</b>
+	    <ul>
+	      <li>Requires presence of EMIC waves</li>
+	      <li>Wave frequency must be near ion gyrofrequency</li>
+	      <li>EMIC waves are more common during active times</li>
+	    </ul>
+	  </div>
+	  <div>
+	  <style>
+	    #css_bullets{position:absolute; top:140px; width:40%}
+	    #emic_bullets{position:absolute; top:140px; left:50%; width:40%}
+	  </style>
+	</section>
 	<section class="slide" id="substorm_identification"><div>
 	    <h2>Summary</h2>
 	    <nav class="toc"/>
@@ -635,6 +678,7 @@ with Magnetohydrodynamic Simulations</h2>
 	  var tocEntries = [
 	      {"index": "the_space_environment", "title": "Objectives and motivation"},
 	      {"index": "model_overview", "title": "Model overview and validation"},
+	      {"index": "ib", "title": "Magnetosphere-ionosphere mapping"},
 	      {"index": "substorm_identification", "title": "Substorm prediction"},
 	      {"index": "conclusions", "title": "Conclusions"},
 	  ];
