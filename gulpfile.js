@@ -57,6 +57,9 @@ gulp.task('prepare', (done) => {
         .pipe(replace(
             /(<script src=")(node_modules\/shower-core\/)(shower.min.js"><\/script>)/g,
             '$1shower/$3', { skipBinary: true }
+        )).pipe(replace(
+            /(<script type="text\/javascript" src=")(node_modules\/mathjax\/)(MathJax.js" async><\/script>)/g,
+            '$1mathjax/$3', { skipBinary: true }
         )).pipe(include());
 
     const core = gulp.src([
@@ -66,6 +69,14 @@ gulp.task('prepare', (done) => {
         })
         .pipe(rename( (path) => {
             path.dirname = 'shower/' + path.dirname;
+        }));
+
+    const mathjax = gulp.src([
+            'mathjax/**'
+        ], {
+            cwd: 'node_modules'
+        }).pipe(rename( (path) => {
+            path.dirname = 'mathjax/' + path.dirname;
         }));
 
     const material = gulp.src([
@@ -141,7 +152,7 @@ gulp.task('prepare', (done) => {
             '$1../../$3', { skipBinary: true }
         ));
 
-    return merge(shower,core,themes,plots,generators,pictures,movies)
+    return merge(shower,core,themes,plots,generators,pictures,movies,mathjax)
         .pipe(gulp.dest('prepared'));
 
 });
