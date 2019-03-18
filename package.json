@@ -28,9 +28,11 @@
   ],
   "dependencies": {
     "child-process": "^1.0.2",
-    "gulp-include": "^2.3.1",
-    "gulp-newer": "^1.4.0",
+    "debug": "^4.1.1",
     "dejavu-fonts-ttf": "^2.37.3",
+    "gulp-debug": "^4.0.0",
+    "gulp-mustache": "^4.1.1",
+    "gulp-newer": "^1.4.0",
     "mathjax": "^2.7.5",
     "shower-core": "^2.1.0",
     "shower-material": "^2.1.2",

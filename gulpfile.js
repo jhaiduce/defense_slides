@@ -11,7 +11,10 @@ const newer = require('gulp-newer');
 const through = require('through2');
 const vinylFile = require('vinyl-file')
 var readline = require('readline');
-const include = require('gulp-include');
+var fs = require("fs");
+var mustache = require("gulp-mustache");
+const debug = require('gulp-debug');
+stream=require('browser-sync').stream;
 
 const make_cp_pipeline=function(process,srcPattern,destPattern,script_props){
     const pipelines=[]
@@ -48,7 +51,9 @@ gulp.task('prepare', (done) => {
             '!gulpfile.js',
             '!netlify.toml',
             '!package.json',
-            '!package-lock.json'
+            '!package-lock.json',
+	'!fonts{,/**}',
+	'!pictures/**',
         ])
         .pipe(replace(
             /(<link rel="stylesheet" href=")(node_modules\/shower-)([^\/]*)\/(.*\.css">)/g,
@@ -60,7 +65,10 @@ gulp.task('prepare', (done) => {
         )).pipe(replace(
             /(<script type="text\/javascript" src=")(node_modules\/mathjax\/)(MathJax.js" async><\/script>)/g,
             '$1mathjax/$3', { skipBinary: true }
-        )).pipe(include());
+	)).pipe(debug(
+        )).pipe(mustache({
+	    signature_comparison_table: fs.readFileSync("pictures/substorms/signature_comparison_table.html")
+	}));
 
     const core = gulp.src([
             'shower.min.js'
@@ -197,10 +205,14 @@ gulp.task('serve', () => {
         notify: false,
         port: 3000,
         server: {
-            baseDir: '.'
+            baseDir: 'prepared'
         }
     });
+
+    gulp.watch('index.html',gulp.series('prepare'));
+
     gulp.watch('index.html').on('change', () => {
+	
         sync.reload();
     });
 });
