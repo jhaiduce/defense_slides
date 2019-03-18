@@ -14,7 +14,7 @@ with Magnetohydrodynamic Simulations</title>
 @font-face {
   font-family: 'DejaVu Sans';
   src: local('DejaVu Sans'),
-    url('~dejavu-fonts-ttf/ttf/DejaVuSans.ttf') format('truetype');
+    url('fonts/DejaVuSans.ttf') format('truetype');
   font-weight: normal;
   font-style: normal;
 }
@@ -38,20 +38,22 @@ with Magnetohydrodynamic Simulations</h1>
 	    <img class="cover" src="pictures/titleslide.png" alt="">
 	    <style>
 	      #titleslide h2,#titleslide h3{color:#e8d4ca;}
-	      /*#titleslide img{width:100%;position:absolute;top:0px; left:0px;}*/
+	      #titleslide img{width:100%;position:absolute;top:50%; left:50%}
 	      #titleslide::after{visibility:hidden}
 	    </style>
 	</div></section>
 	<section class="slide" id="title_backgroundonly"><div>
 	    <h2>Output from a magnetohydrodynamic (MHD) model</h2>
 	    <img src="pictures/titleslide.png" alt="">
-	    <img class="next" src="pictures/titleslide_annotated_earth.svg" alt="">
-	    <img class="next" src="pictures/titleslide_annotated_solarwind.svg" alt="">
-	    <img class="next" src="pictures/titleslide_annotated_magnetotail.svg" alt="">
-	    <img class="next" src="pictures/titleslide_annotated_plasmoid.svg" alt="">
+	    <svg class="next" viewBox="0 0 1920 1080">
+	      <use href="pictures/titleslide_annotated_earth.svg#svg2"></use>
+	    </svg>
+	    <svg class="next" viewBox="0 0 1920 1080"><use href="pictures/titleslide_annotated_solarwind.svg#svg2"/></svg>
+	    <svg class="next" viewBox="0 0 1920 1080"><use href="pictures/titleslide_annotated_magnetotail.svg#svg2"/></svg>
+	    <svg class="next" viewBox="0 0 1920 1080"><use href="pictures/titleslide_annotated_plasmoid.svg#svg2"/></svg>
 	    <style>
 	      #title_backgroundonly h2,#title_backgroundonly h3{color:#e8d4ca;}
-	      #title_backgroundonly img{width:100%;position:absolute;top:0px; left:0px;}
+	      #title_backgroundonly img,svg{width:100%;position:absolute;top:0px; left:0px;}
 	    </style>
 	</div></section>
 	<section class="slide" id="TableOfContents">
@@ -176,8 +178,8 @@ with Magnetohydrodynamic Simulations</h1>
 	</div></section>
 	<section class="slide" id="symh_storms"><div>
 	    <h2>Model does well at predicting Sym-H</h2>
-	    <img class="symh_storms_timeseries" src="pictures/symh_storms_timeseries_build0.svg"/>
-	    <img class="next symh_storms_timeseries" src="pictures/symh_storms_timeseries_build2.svg"/>
+	    <svg class="symh_storms_timeseries" viewBox="0 0 528 288"><use href="pictures/symh_storms_timeseries_build0.svg#svg2096"/></svg>
+	    <svg class="next symh_storms_timeseries" viewBox="0 0 528 288"><use href="pictures/symh_storms_timeseries_build2.svg#svg2096"/></svg>
 	    <div id="symh_bullets">
 	      <ul>
 		<li>Storm-time behavior
@@ -195,29 +197,35 @@ with Magnetohydrodynamic Simulations</h1>
 	    </ul>
 	    </div>
 	    <style>
-	      img.symh_storms_timeseries{width:55%; position:absolute; top:180px; left:-0px;}
+	      svg.symh_storms_timeseries{width:55%; position:absolute; top:180px; left:-0px;}
 	      div#symh_bullets{width:43%; position:absolute; left:57%; top:150px;}
 	    </style>
 	</div></section>
 	<section class="slide" id="symh_dist"><div>
 	    <h2>Model does well at predicting Sym-H</h2>
-	    <img class="dist_plot" src="pictures/Sym_H_interpolated_error_norcm_build0.svg"/>
-	    <img class="dist_plot next" src="pictures/Sym_H_interpolated_error_norcm_build1.svg"/>
-	    <img class="dist_plot next" src="pictures/Sym_H_interpolated_error_norcm.svg"/>
+	    <svg class="dist_plot" viewBox="0 0 457.63779 218.94195">
+	      <use xlink:href="pictures/Sym_H_interpolated_error_norcm_build0.svg#svg3341"></use>
+	    </svg>
+	    <svg class="dist_plot next" viewBox="0 0 457.63779 218.94195">
+	      <use xlink:href="pictures/Sym_H_interpolated_error_norcm_build1.svg#svg3341"/>
+	    </svg>
+	    <svg class="dist_plot next" viewBox="0 0 457.63779 218.94195">
+	      <use xlink:href="pictures/Sym_H_interpolated_error_norcm.svg#svg3341"/>
+	    </svg>
 	    <style>
-	      img.dist_plot{width:850px; position:absolute; top:120px;}
+	      img.dist_plot,svg.dist_plot{width:850px; position:absolute; top:120px;}
 	    </style>
 	</div></section>
         <section class="slide" id="al_behavior"><div>
             <h2>AL index responds to substorm electrojet current</h2>
             <div id="mag_grid_sphere">
-              <img src="pictures/mag_grid_sphere_crosstailonly.svg"/>
-              <img class="next" src="pictures/mag_grid_sphere_nocurrentfield.svg"/>
+              <svg viewBox="0 0 1785 845.68872"><use href="pictures/mag_grid_sphere_crosstailonly.svg#svg2"/></svg>
+              <svg class="next" viewBox="0 0 1785 845.68872"><use href="pictures/mag_grid_sphere_nocurrentfield.svg#svg2"/></svg>
             </div>
 	    <img id="al_behavior_aual" class="next" src="pictures/al.svg"/>
             <style>
               #mag_grid_sphere{width:116%; position:relative; top:-60px; left:-8%; z-index:0;}
-              #mag_grid_sphere img{width:100%; position:absolute; top:0px; left:0px;}
+              #mag_grid_sphere svg{width:100%; position:absolute; top:0px; left:0px;}
               #al_behavior h2{position:relative; z-index:1;}
               #al_behavior{background-color:black;}
 	      #al_behavior_aual{position:absolute; top:220px; left:770px; width:225px;}
@@ -225,8 +233,8 @@ with Magnetohydrodynamic Simulations</h1>
         </div></section>
 	<section class="slide" id="al_overview"><div>
 	    <h2>Strongly negative AL is missed</h2>
-	    <img class="dist_plot" src="pictures/AL_interpolated_error_log_norcm_build0.svg"/>
-	    <img class="dist_plot next" src="pictures/AL_interpolated_error_log_norcm.svg"/>
+	    <svg class="dist_plot" viewBox="0 0 528 240"><use href="pictures/AL_interpolated_error_log_norcm_build0.svg#svg2"/></svg>
+	    <svg class="dist_plot next" viewBox="0 0 528 240"><use href="pictures/AL_interpolated_error_log_norcm.svg#svg2"/></svg>
 	</div></section>
 	<section class="slide" id="substorm_identification"><div>
 	    <h2>Summary</h2>

@@ -79,6 +79,14 @@ gulp.task('prepare', (done) => {
             path.dirname = 'mathjax/' + path.dirname;
         }));
 
+    const dejavu = gulp.src([
+            'ttf/**'
+        ], {
+            cwd: 'node_modules/dejavu-fonts-ttf'
+        }).pipe(rename( (path) => {
+            path.dirname = 'fonts/' + path.dirname;
+        }));
+
     const material = gulp.src([
             '**', '!package.json'
         ], {
@@ -152,7 +160,7 @@ gulp.task('prepare', (done) => {
             '$1../../$3', { skipBinary: true }
         ));
 
-    return merge(shower,core,themes,plots,generators,pictures,movies,mathjax)
+    return merge(shower,core,themes,plots,generators,pictures,movies,mathjax,dejavu)
         .pipe(gulp.dest('prepared'));
 
 });
