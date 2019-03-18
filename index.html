@@ -32,10 +32,9 @@ with Magnetohydrodynamic Simulations</h1>
 		
 	</header>
 	<section class="slide" id="titleslide"><div>
-	    <h2>Exploring Magnetotail Structure and Dynamics
-with Magnetohydrodynamic Simulations</h2>
+	    <h2>A multi-signature procedure for identifying magnetospheric substorms</h2>
 	    <h3>John Haiducek</h3>
-	    <h3>Sep 6, 2018</h3>
+	    <h3>Mar 20, 2019</h3>
 	    <img class="cover" src="pictures/titleslide.png" alt="">
 	    <style>
 	      #titleslide h2,#titleslide h3{color:#e8d4ca;}
@@ -79,15 +78,13 @@ with Magnetohydrodynamic Simulations</h2>
 	    <div>
 	    <h2>Motivation</h2>
 	    <ul>
-	      <li>Magnetotail is a very dynamic region which is <br/>poorly covered by observational data</li>
-	      <li>Magnetotail dynamics contribute to space weather hazards
+	      <li>Substorms contribute to space weather hazards
 		<ul>
 		  <li>Geomagnetically induced currents</li>
 		  <li>Spacecraft charging</li>
 		  <li>Spacecraft anomalies</li>
 		  <li>Communication outages</li>
 		</ul>
-	      <li>Magnetotail is not always considered in forecasting of space weather</li>
 	    </ul>
 	  </div>
 	    <style>
@@ -109,8 +106,8 @@ with Magnetohydrodynamic Simulations</h2>
 	    <h2>Motivation</h2>
 	    <ul>
 	      <li>MHD captures global dynamics, including <br/>connections between different regions and spatial scales</li>
-	      <li>MHD models have been used to study the magnetosphere for many years</li>
-	      <li>Few MHD validation efforts have focused on the magnetotail</li>
+	      <li>MHD models have been used to study substorms for many years (since 1980's)</li>
+	      <li>No MHD model has been validated for substorm prediction</li>
 	    </ul>
 	  </div>
 	</div></section>
@@ -119,8 +116,7 @@ with Magnetohydrodynamic Simulations</h2>
 	    <div>
 	    <h2>Objectives</h2>
 	    <ul>
-	      <li>Extend the validation of MHD into the magnetotail <br/>region</li>
-	      <li>Explore the connections between the magnetosphere and ionosphere</li>
+	      <li>Develop a procedure to identify substorms that can <br/>be applied to both observational data and model output</li>
 	      <li>Test whether MHD can consistently reproduce observed substorms</li>
 	    </ul>
 	  </div>
@@ -232,172 +228,6 @@ with Magnetohydrodynamic Simulations</h2>
 	    <img class="dist_plot" src="pictures/AL_interpolated_error_log_norcm_build0.svg"/>
 	    <img class="dist_plot next" src="pictures/AL_interpolated_error_log_norcm.svg"/>
 	</div></section>
-	<section class="slide" id="ib"><div>
-	    <h2>Summary</h2>
-	    <nav class="toc"/>
-	</div></section>
-	<section class="slide">
-	  <h2>Isotropic boundary consists of a sharp change in particle precipitation</h2>
-	  <div id="noaa_counts_container">
-	  <img id="noaa_counts" src="pictures/ib_quiet/noaa_counts.svg"/>
-	  </div>
-	  <style>
-	    #noaa_counts{width:600px}
-	    #noaa_counts_container::after{
-	    content:"\AGanushkina (2005)";
-	    clear:both;
-	    text-align:right;
-	    white-space:pre;
-	    }
-	  </style>
-	</section>
-	<section class="slide">
-	  <h2>Scattering mechanisms</h2>
-	  <div id="css_bullets">
-	  <b>Current sheet scattering (CSS)</b>
-	  <ul>
-	    <li>Explains presence of IB at all times and MLTs</li>
-	    <li>Occurs when field line curvature \(r_c\) is small and gyroradius \(r_g\) is large</li>
-	    <li>Controlled by \(K=\frac{r_c}{r_g}\)</li>
-	  </ul>
-	  </div>
-	  <div id="emic_bullets">
-	    <b>EMIC wave scattering</b>
-	    <ul>
-	      <li>Requires presence of EMIC waves</li>
-	      <li>Wave frequency must be near ion gyrofrequency</li>
-	      <li>EMIC waves are more common during active times</li>
-	    </ul>
-	  </div>
-	  <div id="objectives_bullets">
-	    <b>Objectives</b>
-	    <ul>
-	      <li>Constrain the range of \(K\) associated with CSS</li>
-	      <li>Assess the relative importance of CSS during storms</li>
-	    </ul>
-	  </div>
-	  <div>
-	  <style>
-	    #css_bullets{position:absolute; top:140px; width:40%}
-	    #emic_bullets{position:absolute; top:140px; left:50%; width:40%}
-	    #objectives_bullets{position:absolute; top:420px}
-	  </style>
-	</section>
-	<section class="slide">
-	  <h2>Field lines traced to determine origin of IB particles</h2>
-	  <img id="tracing_example" src="pictures/ib_quiet/r_rCurve_kappa_ib_run_20090213_hires_r1_2009-02-13T02:25:23_traceonly.svg"/>
-	  <ul id="tracing_bullets">
-	    <li>Trace starts at IB observation</li>
-	    <li>\(K\) estimated where field line crosses current sheet</li>
-	    <li>THEMIS satellites provide magnetic field observations in the vicinity</li>
-	  </ul>
-	  <style>
-	    #tracing_example{
-	    width:400px;
-	    position:absolute;
-	    top:120px;
-	    left:610px;
-	    }
-	    #tracing_bullets{width:500px;}
-	  </style>
-	</section>
-	<section class="slide">
-	  <h2>\(K\) correlates with \(\Delta B_z\)</h2>
-	  <img id="kappa_fit" src="pictures/ib_quiet/kappa_dbz_fit.svg"/>
-	  <ul id="kappa_fit_bullets">
-	    <li>Model error in \(B_z\) obtained using THEMIS observations</li>
-	    <li>Correlation between \(K\) and \(\Delta B_z\) allows part of the error in \(K\) to be removed</li>
-	  </ul>
-	  <style>
-	    #kappa_fit{width:400px;}
-	    #kappa_fit_bullets{
-	    width:400px; 
-	    position:absolute;
-	    top:150px;
-	    left:500px;
-	    }
-	  </style>
-	</section>
-	<section class="slide">
-	  <h2>Corrected \(K\)'s fall in a fairly narrow range</h2>
-	  <img id="kappa_kde_quiet" src="pictures/ib_quiet/kappa_kde.svg"/>
-	  <style>
-	    #kappa_kde_quiet{
-	    width:500px;
-	    position:relative;
-	    left:100px;
-	    }
-	  </style>
-	</section>
-	<section class="slide">
-	  <h2 id="ib_time_title">IB properties vary significantly during storms</h2>
-	  <img id="ib_time" src="pictures/ib_storm/ib_time.svg"/>
-	  <style>
-	    #ib_time_title{
-	    position:absolute; top:20px;
-	    }
-	    #ib_time{
-	    width:500px;
-	    position:absolute;
-	    left:100px;
-	    top:80px;
-	    }
-	  </style>
-	</section>
-	<section class="slide" id="mlt_symh_lat_slide">
-	  <h2 id="mlt_symh_lat_title">Sym-H and MLT correlate with IB latitude but not \(K^*\)</h2>
-	  <img id="mlt_symh_lat" src="pictures/ib_storm/mlt_lat_kappastar_lineplot.svg"/>
-	  <ul id="mlt_symh_lat_bullets">
-	    <li>Indicates that CSS process is active for a significant portion of IB observations</li>
-	  </ul>
-	  <style>
-	    #mlt_symh_lat_title{
-	    position:absolute;
-	    top:20px;
-	    }
-	    #mlt_symh_lat{
-	    width:600px;
-	    position:absolute;
-	    left:400px;
-	    top:90px;
-	    }
-	    #mlt_symh_lat_bullets{
-	    width:300px;
-	    position:absolute;
-	    top:200px;
-	    left:100px;
-	    }
-	    #mlt_symh_lat_slide::after{visibility:hidden}
-	    #mlt_symh_lat_bullets{}
-	  </style>
-	</section>
-	<section class="slide" id="kappa_kde_storm_slide">
-	  <h2 id="kappa_kde_storm_title">Storm-time \(K\) is often within the range for CSS</h2>
-	  <ul id="kappa_kde_storm_bullets">
-	    <li>Between 21% to 69% of \(K^*\) values are in range for CSS, depending on threshold and latitude set used</li>
-	    <li>Indicates that CSS is not the sole mechanism</li>
-	  </ul>
-	  <img id="kappa_kde_storm" src="pictures/ib_storm/kappa_kde_storm.svg"/>
-	  <style>
-	    #kappa_kde_storm_title{
-	    position:absolute;
-	    top:20px;
-	    }
-	    #kappa_kde_storm{
-	    width:330px;
-	    position:absolute;
-	    left:600px;
-	    top:90px;
-	    }
-	    #kappa_kde_storm_bullets{
-	    width:450px; 
-	    position:absolute;
-	    top:120px;
-	    left:100px;
-	    }
-	    #kappa_kde_storm_slide::after{visibility:hidden}
-	  </style>
-	</section>
 	<section class="slide" id="substorm_identification"><div>
 	    <h2>Summary</h2>
 	    <nav class="toc"/>
@@ -593,8 +423,6 @@ with Magnetohydrodynamic Simulations</h2>
 	<section class="slide"><div>
 	    <h2>Conclusions</h2>
 	    <ul>
-	      <li>SWMF does well in predicting geomagnetic indices</li>
-	      <li>CSS plays dominant role for IB formation during quiet conditions and a significant role during storm conditions</li>
 	      <li>Substorm identification procedure fulfills a community need to move toward multiple-signature identification
 		<ul>
 		  <li>False identifications are rejected</li>
@@ -604,44 +432,18 @@ with Magnetohydrodynamic Simulations</h2>
 	      <li>Substorm prediction with MHD is possible</li>
 	    </ul>
 	</div></section>
-	<section class="slide">
-	  <h2>What's next: Isotropic boundaries</h2>
-	  <ul>
-	    <li>Study additional time periods for better statistics</li>
-	    <li>Compare with EMIC wave observations</li>
-	    <li>Test day-side IB observations</li>
-	  </ul>
-	</section>
 	<section class="slide" id="next_steps"><div>
-	    <h2>What's next: Identification procedure</h2>
+	    <h2>What's next</h2>
 	    <ul>
-	      <li>More tests of identification procedure
+	      <li>Explore interaction of substorms with the ionosphere
 		<ul>
-		  <li>Randomized data</li>
-		  <li>Additional signatures and time periods</li>
+		  <li>Model substorm-initiated ionospheric disturbances</li>
+		  <li>Observations from VLA Low Band Ionospheric and Transient Experiment (VLITE)</li>
 		</ul>
 	      </li>
-	      <li>Improvements to identification procedure
-		<ul>
-		  <li>Asymmetric kernels to account for time offsets</li>
-		  <li>Non-uniform weights</li>
-		  <li>Variable threshold</li>
-		</ul>
-	      </li>
-	</div></section>
-	<section class="slide" id="next_steps"><div>
-	    <h2>What's next: SWMF magnetosphere modeling</h2>
-	      <li>Test methods of improving field line stretching</li>
-	      <li>Better physics in reconnection region
-	      </li>
-	      <li>Uncertainty quantification
-	      </li>
-	      <li>Data assimilation
-	      </li>
+	      <li>More tests/improvements of identification procedure</li>
+	      <li>Explore paths to improve substorm prediction ability of MHD</li>
 	    </ul>
-	    <style>
-	      #next_steps li{line-height:150%;}
-	    </style>
 	</div></section>
 	
 	<section class="slide" id="slide_sea"><div>
@@ -782,9 +584,8 @@ with Magnetohydrodynamic Simulations</h2>
 	  // Table of contents entries
 	  var tocEntries = [
 	      {"index": "the_space_environment", "title": "Objectives and motivation"},
-	      {"index": "model_overview", "title": "Model overview and validation"},
-	      {"index": "ib", "title": "Magnetosphere-ionosphere mapping"},
-	      {"index": "substorm_identification", "title": "Substorm prediction"},
+	      {"index": "model_overview", "title": "Model overview"},
+	      {"index": "substorm_identification", "title": "Substorm identification"},
 	      {"index": "conclusions", "title": "Conclusions"},
 	  ];
 
